@@ -6,4 +6,11 @@ public abstract class Characters {
     private double damage;
     private Position position;
     private int speed;
+
+    Characters(){
+        health = 100;
+        damage = 10;
+        position = new Position();
+        speed = 5;
+    }
 }
