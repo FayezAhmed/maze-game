@@ -8,7 +8,7 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setIdleFPS(60);
         config.useVsync(true);
-        config.setTitle("Tutorial");
+        config.setTitle("Raccoon Raiders");
 
         config.setWindowedMode(1280,720);
 //        config.setFullscreenMode(Lwjgl3ApplicationConfiguration.getDisplayMode());
