@@ -3,7 +3,6 @@ package com.group21;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.Graphics2D;
-import javax.imageio.ImageIO;
 
 public class BubbleTea extends Items{
     /**
