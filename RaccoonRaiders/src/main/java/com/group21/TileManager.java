@@ -12,6 +12,9 @@ import java.awt.image.*;
 
 import javax.imageio.ImageIO;
 
+/**
+ * TileManager Class
+ */
 public class TileManager {
 
     // Tile Manager default variables
