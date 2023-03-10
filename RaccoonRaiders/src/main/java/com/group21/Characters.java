@@ -4,8 +4,11 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+/**
+ * Character class
+ */
 public abstract class Characters {
-    
+
     // Character Variables
     public int x, y;    
     public int speed;
