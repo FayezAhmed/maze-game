@@ -16,5 +16,7 @@ public class Launcher {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        gamePanel.startGameThread();
     }
 }
