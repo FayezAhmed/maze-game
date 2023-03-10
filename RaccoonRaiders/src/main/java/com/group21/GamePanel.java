@@ -26,6 +26,11 @@ public class GamePanel extends JPanel implements Runnable{
     int playerY = 100;  // y coordinate
     int PlayerS = 5;    // player speed
 
+    Thread gameThread;
+    KeyHandler key = new KeyHandler();
+    Student student = new Student(this, key);
+    TileManager tm = new TileManager(this);
+
     /**
      * Default Constructor. Creates Game Panel 
      */
@@ -33,13 +38,47 @@ public class GamePanel extends JPanel implements Runnable{
         this.setPreferredSize(new Dimension(screenWidth, screenHeight)); // setup size
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+        this.addKeyListener(key);
+        this.setFocusable(true); // let GamePanel focus to recieve key input
+    }
+
+    /**
+     * let Thread start the game
+     */
+    public void startGameThread(){
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public void run() {
+
+        // game loop
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+    
+        while (gameThread != null){
+
+            currentTime = System.nanoTime();
+
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+
+            if (delta >= 1){
+                this.update();
+                this.repaint();
+                delta--;
+            }
+        }
     }
 
     /**
      * updates the game
      */
     public void update(){
-
+        student.update(); 
     }
 
     /**
@@ -47,12 +86,14 @@ public class GamePanel extends JPanel implements Runnable{
      * @param g Graphic 
      */
     public void printComponent(Graphics g){
+        super.paintComponent(g);
 
-    }
+        Graphics2D g2 = (Graphics2D) g;
 
-    @Override
-    public void run() {
-        
+        tm.draw(g2);
+
+        student.draw(g2);
+
+        g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using
     }
-    
 }
