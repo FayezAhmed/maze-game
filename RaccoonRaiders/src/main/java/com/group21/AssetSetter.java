@@ -28,5 +28,15 @@ public class AssetSetter {
         // randomize later
         gp.items[1].x = 30 * gp.tileSize;
         gp.items[1].y = 10 * gp.tileSize;
+
+        gp.items[2] = new BubbleTea();
+        // randomize later
+        gp.items[2].x = 13 * gp.tileSize;
+        gp.items[2].y = 4 * gp.tileSize;
+
+        gp.items[3] = new BubbleTea();
+        // randomize later
+        gp.items[3].x = 25 * gp.tileSize;
+        gp.items[3].y = 14 * gp.tileSize;
     }
 }
