@@ -13,7 +13,7 @@ public class BubbleTea extends Items{
         name = "BubbleTea";
         score = 100;
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/items_image/coffee.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/items_image/BubbleTea.png"));
         } catch(IOException e){
             e.printStackTrace();
         }
