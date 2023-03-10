@@ -1,9 +1,0 @@
-package com.group21;
-import com.badlogic.gdx.Game;
-
-public class Boot extends Game {
-    @Override
-    public void create() {
-
-    }
-}
