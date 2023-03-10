@@ -79,6 +79,25 @@ public class Student extends Characters {
                 direction = "left";
             }
 
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            int objIndex = gp.cChecker.checkObject(this, true);
+            pickUpItems(objIndex);
+
+            if (collisionOn == false){
+                switch(direction){
+                    case "up": y -= speed;
+                        break;
+                    case "down": y += speed;
+                        break;
+                    case "right": x += speed;
+                        break;
+                    case "left": x -= speed;
+                        break;
+                }
+            }
+
             spriteCounter++;
             if (spriteCounter > 15){
                 if (spriteNumber == 1){
@@ -90,7 +109,18 @@ public class Student extends Characters {
                 spriteCounter = 0;
             }
         }
-        
+    }
+
+    /**
+     * picking up the item
+     * @param index index of the item on items array
+     */
+    public void pickUpItems(int index){
+        if (index != -1){
+            score += 100;
+            System.out.println(gp.items[index].name + " !! Score: " + score);
+            gp.items[index] = null;
+        }
     }
 
     /**
