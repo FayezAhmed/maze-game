@@ -115,7 +115,5 @@ public class TileManager {
                 y+= gp.tileSize;
             }
         }
-
-
     }
 }
