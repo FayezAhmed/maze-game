@@ -1,5 +1,7 @@
 package com.group21;
+
 import java.awt.event.*;
+
 /**
  * KeyHanler class -- interact with Students <--> Keyboard input from player
  */
