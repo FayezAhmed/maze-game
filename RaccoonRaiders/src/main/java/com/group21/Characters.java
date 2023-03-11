@@ -1,6 +1,9 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
+
+import javax.swing.text.html.parser.Entity;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -8,6 +11,8 @@ import java.awt.Rectangle;
  * Character class
  */
 public abstract class Characters {
+
+    GamePanel gp;
 
     // Character Variables
     public int x, y;    
@@ -25,4 +30,8 @@ public abstract class Characters {
 
     public abstract void update();
     public abstract void draw(Graphics2D g2);
+
+    public Characters(GamePanel gp) {
+        this.gp = gp;
+    }
 }

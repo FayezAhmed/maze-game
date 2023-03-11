@@ -11,7 +11,6 @@ import java.awt.image.*;
  */
 public class Student extends Characters {
    
-    GamePanel gp;
     KeyHandler key;
 
     public int heart = 3;
@@ -22,7 +21,8 @@ public class Student extends Characters {
      * @param key KeyHanlder
      */
     public Student(GamePanel gp, KeyHandler key) {
-        this.gp = gp;
+        super(gp);
+
         this.key = key;
 
         // hitting area
