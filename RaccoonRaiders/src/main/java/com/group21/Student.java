@@ -84,8 +84,13 @@ public class Student extends Characters {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            // object collision
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpItems(objIndex);
+
+            // enemy collision
+            int enemyIndex = gp.cChecker.checkEntity(this);
+            interactEnemy(enemyIndex);
 
             if (collisionOn == false){
                 switch(direction){
@@ -122,6 +127,16 @@ public class Student extends Characters {
             score += gp.items[index].score;
             System.out.println(gp.items[index].name + " !! Score: " + score);
             gp.items[index] = null;
+        }
+    }
+    
+    /**
+     * touching an enemy
+     * @param index index of the item on items array
+     */
+    public void interactEnemy(int index){
+        if (index != -1){
+            System.out.println("You are hitting an enemy!");
         }
     }
 

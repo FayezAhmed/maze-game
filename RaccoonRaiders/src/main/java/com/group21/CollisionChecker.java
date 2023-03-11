@@ -1,5 +1,7 @@
 package com.group21;
 
+import javax.swing.text.html.parser.Entity;
+
 /**
  * CollisionChecker class
  */
@@ -137,6 +139,63 @@ public class CollisionChecker {
                 stu.solidArea.y = stu.solidAreaDefaultY;
                 gp.items[i].solidArea.x = gp.items[i].solidAreaDefaultX;
                 gp.items[i].solidArea.y = gp.items[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
+
+    /**
+     * checks the collision if player contacts enemy
+     * @param stu student
+     * @return index of enemy
+     */
+    public int checkEntity(Characters stu) {
+        int index = -1;
+
+        for (int i = 0; i < gp.raccoons.length; i++){
+            if (gp.raccoons[i] != null){
+                // get character's solid area position
+                stu.solidArea.x = stu.x + stu.solidArea.x;
+                stu.solidArea.y = stu.y + stu.solidArea.y;
+
+                // get the imtem's solid area position
+                gp.raccoons[i].solidArea.x = gp.raccoons[i].x + gp.raccoons[i].solidArea.x;
+                gp.raccoons[i].solidArea.y = gp.raccoons[i].y + gp.raccoons[i].solidArea.y;
+            
+                switch(stu.direction){
+                    case "up":
+                        stu.solidArea.y -= stu.speed;
+                        if (stu.solidArea.intersects(gp.raccoons[i].solidArea)){
+                            stu.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "down":
+                        stu.solidArea.y += stu.speed;
+                        if (stu.solidArea.intersects(gp.raccoons[i].solidArea)){
+                            stu.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "left":
+                        stu.solidArea.x -= stu.speed;
+                        if (stu.solidArea.intersects(gp.raccoons[i].solidArea)){
+                            stu.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "right":
+                        stu.solidArea.x += stu.speed;
+                        if (stu.solidArea.intersects(gp.raccoons[i].solidArea)){
+                            stu.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                }
+                stu.solidArea.x = stu.solidAreaDefaultX;
+                stu.solidArea.y = stu.solidAreaDefaultY;
+                gp.raccoons[i].solidArea.x = gp.raccoons[i].solidAreaDefaultX;
+                gp.raccoons[i].solidArea.y = gp.raccoons[i].solidAreaDefaultY;
             }
         }
         return index;
