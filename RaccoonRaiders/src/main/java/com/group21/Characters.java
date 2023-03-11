@@ -22,6 +22,7 @@ public abstract class Characters {
     public boolean collisionOn = false;
     public Rectangle solidArea = new Rectangle(0, 0, 32, 32);
     public int score = 0;
+    public int actionLockCounter = 0;
 
     public int solidAreaDefaultX, solidAreaDefaultY;
 
