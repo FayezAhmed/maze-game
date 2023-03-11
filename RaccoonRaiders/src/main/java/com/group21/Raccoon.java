@@ -13,7 +13,7 @@ public class Raccoon extends Characters{
         super(gp);
 
         direction = "down";
-        speed = 5;
+        speed = 4;
 
         getImage();
 
@@ -41,7 +41,7 @@ public class Raccoon extends Characters{
     public void setAction() {
         actionLockCounter++;
 
-        if (actionLockCounter == 60) {
+        if (actionLockCounter == 90) {
 
             Random random = new Random();
             int i = random.nextInt(100) + 1; // Picks num from 1-100
