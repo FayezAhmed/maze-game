@@ -35,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
     CollisionChecker cChecker = new CollisionChecker(this);
     Items items[] = new Items[10];
     AssetSetter setter = new AssetSetter(this);
+    Characters raccoons[] = new Characters[5];
 
     //STATE
     public int state;
@@ -57,6 +58,7 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void setupGame(){
         setter.setObject();
+        setter.setRaccoon();
         state = titleState;
         playMusic(1);
     }
@@ -100,7 +102,15 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void update(){
         if(state == gameState) {
+            // PLAYER
             student.update();
+
+            //ENEMIES
+            for (int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null) {
+                    raccoons[i].update();
+                }
+            }
         }
         if (gameState == pauseState) {
 
@@ -124,14 +134,23 @@ public class GamePanel extends JPanel implements Runnable{
         else {
             //TITLE
             tm.draw(g2);
+            
             //ITEMS
             for (int i = 0; i < items.length; i++){
                 if (items[i] != null)
                     items[i].draw(g2, this);
             }
+            
+            //ENEMIES
+            for(int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null)
+                    raccoons[i].draw(g2);
+            }
+
             //UI
             ui.draw(g2);
-            //player
+            
+            //PLAYER
             student.draw(g2);
         }
 
