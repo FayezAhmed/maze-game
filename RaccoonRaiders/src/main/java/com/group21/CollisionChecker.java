@@ -200,4 +200,45 @@ public class CollisionChecker {
         }
         return index;
     }
+
+    public void checkPlayer(Characters enemy) {
+        // get character's solid area position
+        enemy.solidArea.x = enemy.x + enemy.solidArea.x;
+        enemy.solidArea.y = enemy.y + enemy.solidArea.y;
+
+        // get the imtem's solid area position
+        gp.student.solidArea.x = gp.student.x + gp.student.solidArea.x;
+        gp.student.solidArea.y = gp.student.y + gp.student.solidArea.y;
+    
+        switch(enemy.direction){
+            case "up":
+                enemy.solidArea.y -= enemy.speed;
+                if (enemy.solidArea.intersects(gp.student.solidArea)){
+                    enemy.collisionOn = true;
+                }
+                break;
+            case "down":
+                enemy.solidArea.y += enemy.speed;
+                if (enemy.solidArea.intersects(gp.student.solidArea)){
+                    enemy.collisionOn = true;
+                }
+                break;
+            case "left":
+                enemy.solidArea.x -= enemy.speed;
+                if (enemy.solidArea.intersects(gp.student.solidArea)){
+                    enemy.collisionOn = true;
+                }
+                break;
+            case "right":
+                enemy.solidArea.x += enemy.speed;
+                if (enemy.solidArea.intersects(gp.student.solidArea)){
+                    enemy.collisionOn = true;
+                }
+                break;
+        }
+        enemy.solidArea.x = enemy.solidAreaDefaultX;
+        enemy.solidArea.y = enemy.solidAreaDefaultY;
+        gp.student.solidArea.x = gp.student.solidAreaDefaultX;
+        gp.student.solidArea.y = gp.student.solidAreaDefaultY;   
+    }
 }

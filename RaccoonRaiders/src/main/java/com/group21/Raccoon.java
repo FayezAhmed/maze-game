@@ -63,6 +63,8 @@ public class Raccoon extends Characters{
 
         collisionOn = false;
         gp.cChecker.checkTile(this);
+        gp.cChecker.checkObject(this, false);
+        gp.cChecker.checkPlayer(this);
 
         if (collisionOn == false){
             switch(direction){
