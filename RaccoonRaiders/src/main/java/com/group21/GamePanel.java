@@ -29,6 +29,8 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     KeyHandler key = new KeyHandler();
     Student student = new Student(this, key);
+    Sound sound = new Sound();
+    UI ui = new UI (this);
     TileManager tm = new TileManager(this);
     CollisionChecker cChecker = new CollisionChecker(this);
     Items items[] = new Items[10];
@@ -50,6 +52,8 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void setupGame(){
         setter.setObject();
+        //music
+        playMusic(0);
     }
 
     /**
@@ -58,6 +62,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
+
+
     }
 
     @Override
@@ -106,8 +112,24 @@ public class GamePanel extends JPanel implements Runnable{
             if (items[i] != null)
                 items[i].draw(g2, this);
         }
+        //UI
+        ui.draw(g2);
+        //player
         student.draw(g2);
+
 
         g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using    }
     }
+    public void playMusic(int i)
+    {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic()
+    {
+        sound.stop();
+    }
+
+
 }

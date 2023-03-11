@@ -14,7 +14,6 @@ public class Coffee extends Items{
      */
     public Coffee(){
         name = "Coffee";
-        score = 50;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/items_image/coffee.png"));
         } catch(IOException e){
