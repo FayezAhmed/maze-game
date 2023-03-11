@@ -52,6 +52,33 @@ public class Raccoon extends Characters{
     public void update() {
         
         setAction();
+
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        if (collisionOn == false){
+            switch(direction){
+                case "up": y -= speed;
+                    break;
+                case "down": y += speed;
+                    break;
+                case "right": x += speed;
+                    break;
+                case "left": x -= speed;
+                    break;
+            }
+        }
+
+        spriteCounter++;
+        if (spriteCounter > 15){
+            if (spriteNumber == 1){
+                spriteNumber = 2;
+            }
+            else if (spriteNumber == 2){
+                spriteNumber = 1;
+            }
+            spriteCounter = 0;
+        }
     }
 
     @Override

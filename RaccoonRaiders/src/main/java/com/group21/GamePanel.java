@@ -102,7 +102,15 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void update(){
         if(state == gameState) {
+            // PLAYER
             student.update();
+
+            //ENEMIES
+            for (int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null) {
+                    raccoons[i].update();
+                }
+            }
         }
         if (gameState == pauseState) {
 
