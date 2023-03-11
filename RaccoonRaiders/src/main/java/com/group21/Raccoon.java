@@ -2,6 +2,8 @@ package com.group21;
 
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.util.Random;
+
 import javax.imageio.ImageIO;
 import java.awt.image.*;
 
@@ -36,10 +38,20 @@ public class Raccoon extends Characters{
         }
     }
 
+    public void setAction() {
+        Random random = new Random();
+        int i = random.nextInt(100) + 1; // Picks num from 1-100
+
+        if (i <= 25) direction = "up";
+        if (i > 25 && i <= 50) direction = "down";
+        if (i > 50 && i <= 75) direction = "left";
+        if (i > 75 && i <= 100) direction = "right";
+    }
+
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        
+        setAction();
     }
 
     @Override

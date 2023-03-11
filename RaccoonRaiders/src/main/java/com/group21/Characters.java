@@ -28,6 +28,8 @@ public abstract class Characters {
     public int spriteCounter = 0;
     public int spriteNumber = 1;
 
+    public void setAction() {}
+
     public abstract void update();
     public abstract void draw(Graphics2D g2);
 
