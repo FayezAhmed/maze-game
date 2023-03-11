@@ -14,6 +14,8 @@ public class Student extends Characters {
     GamePanel gp;
     KeyHandler key;
 
+    public int heart = 3;
+
     /**
      * Construct new Student
      * @param gp Game Panel
@@ -117,8 +119,8 @@ public class Student extends Characters {
      */
     public void pickUpItems(int index){
         if (index != -1){
-            score+= gp.items[index].score;
-            System.out.println("Picked up : " + gp.items[index].name + "!! Score updated!: " + score);
+            score += 100;
+            System.out.println(gp.items[index].name + " !! Score: " + score);
             gp.items[index] = null;
         }
     }

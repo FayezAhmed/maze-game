@@ -12,7 +12,6 @@ public abstract class Items {
     //default variables
     public BufferedImage image;
     public String name;
-    public int score;
     public boolean collision = false;
     public int x,y;
     public Rectangle solidArea = new Rectangle(0,0,48,48);
