@@ -2,8 +2,8 @@ package com.group21;
 
 import java.awt.Graphics2D;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+import java.awt.image.*;
 
 public class Raccoon extends Characters{
     
@@ -16,19 +16,7 @@ public class Raccoon extends Characters{
         getImage();
 
     }
-
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public void draw(Graphics2D g2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
-    }
-
+    
     /**
      * Read the student sprite images 
      */
@@ -46,6 +34,56 @@ public class Raccoon extends Characters{
         catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+
+        BufferedImage image = null;
+        
+        switch(direction){
+            case "up":
+                if (spriteNumber == 1){
+                    image = up1;
+                }
+                if (spriteNumber == 2){
+                    image = up2;
+                }
+                break;
+            case "down":
+                if (spriteNumber == 1){
+                    image = down1;
+                }
+                if (spriteNumber == 2){
+                    image = down2;
+                }
+                break;
+            case "left":
+                if (spriteNumber == 1){
+                    image = left1;
+                }
+                if (spriteNumber == 2){
+                    image = left2;
+                }
+                break;
+            case "right":
+                if (spriteNumber == 1){
+                    image = right1;
+                }
+                if (spriteNumber == 2){
+                    image = right2;
+                }
+                break;
+            
+        }
+
+        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
 
 }

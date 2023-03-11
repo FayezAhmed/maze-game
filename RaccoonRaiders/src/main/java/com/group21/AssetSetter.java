@@ -57,8 +57,8 @@ public class AssetSetter {
 
     public void setRaccoon() {
         gp.raccoons[0] = new Raccoon(gp);
-        gp.raccoons[0].x = gp.tileSize * 30;
-        gp.raccoons[0].y = gp.tileSize * 10;
+        gp.raccoons[0].x = gp.tileSize * 35;
+        gp.raccoons[0].y = gp.tileSize * 9;
         
     }
 }

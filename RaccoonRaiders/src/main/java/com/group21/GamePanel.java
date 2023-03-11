@@ -133,6 +133,12 @@ public class GamePanel extends JPanel implements Runnable{
                     items[i].draw(g2, this);
             }
             
+            //ENEMIES
+            for(int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null)
+                    raccoons[i].draw(g2);
+            }
+
             //UI
             ui.draw(g2);
             
