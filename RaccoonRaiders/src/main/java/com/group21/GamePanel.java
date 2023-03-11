@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable{
     int PlayerS = 5;    // player speed
 
     Thread gameThread;
-    KeyHandler key = new KeyHandler();
+    KeyHandler key = new KeyHandler(this);
     Student student = new Student(this, key);
     Sound sound = new Sound();
     UI ui = new UI (this);
@@ -36,6 +36,11 @@ public class GamePanel extends JPanel implements Runnable{
     Items items[] = new Items[10];
     AssetSetter setter = new AssetSetter(this);
 
+    //STATE
+    public int state;
+    public final int titleState = 0;
+    public final int gameState = 1;
+    public final int pauseState = 2;
     /**
      * Default Constructor. Creates Game Panel 
      */
@@ -52,8 +57,8 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void setupGame(){
         setter.setObject();
-        //music
-        playMusic(0);
+        state = titleState;
+        playMusic(1);
     }
 
     /**
@@ -94,7 +99,13 @@ public class GamePanel extends JPanel implements Runnable{
      * updates the game
      */
     public void update(){
-        student.update(); 
+        if(state == gameState) {
+            student.update();
+        }
+        if (gameState == pauseState) {
+
+        }
+
     }
 
     /**
@@ -106,16 +117,24 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        tm.draw(g2);
-
-        for (int i = 0; i < items.length; i++){
-            if (items[i] != null)
-                items[i].draw(g2, this);
+        if (state == titleState)
+        {
+            ui.draw(g2);
         }
-        //UI
-        ui.draw(g2);
-        //player
-        student.draw(g2);
+        else {
+            //TITLE
+            tm.draw(g2);
+            //ITEMS
+            for (int i = 0; i < items.length; i++){
+                if (items[i] != null)
+                    items[i].draw(g2, this);
+            }
+            //UI
+            ui.draw(g2);
+            //player
+            student.draw(g2);
+        }
+
 
 
         g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using    }
