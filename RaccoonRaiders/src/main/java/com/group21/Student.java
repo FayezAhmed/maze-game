@@ -119,7 +119,7 @@ public class Student extends Characters {
      */
     public void pickUpItems(int index){
         if (index != -1){
-            score += 100;
+            score += gp.items[index].score;
             System.out.println(gp.items[index].name + " !! Score: " + score);
             gp.items[index] = null;
         }
