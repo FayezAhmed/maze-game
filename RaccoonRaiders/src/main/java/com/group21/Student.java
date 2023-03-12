@@ -13,7 +13,7 @@ public class Student extends Characters {
    
     KeyHandler key;
 
-    public int heart = 3;
+    protected int heart = 3;
 
     /**
      * Construct new Student
@@ -22,7 +22,6 @@ public class Student extends Characters {
      */
     public Student(GamePanel gp, KeyHandler key) {
         super(gp);
-
         this.key = key;
 
         // hitting area

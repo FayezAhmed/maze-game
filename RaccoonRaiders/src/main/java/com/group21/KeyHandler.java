@@ -8,8 +8,8 @@ import java.awt.event.*;
 
 
 public class KeyHandler implements KeyListener {
-    GamePanel gp;
-    public boolean up, down, right, left;
+    protected GamePanel gp;
+    protected boolean up, down, right, left;
 
     public KeyHandler(GamePanel gp){
         this.gp = gp;
