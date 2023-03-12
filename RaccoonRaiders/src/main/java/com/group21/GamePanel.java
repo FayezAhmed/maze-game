@@ -22,26 +22,26 @@ public class GamePanel extends JPanel implements Runnable{
     protected final int FPS = 60;
 
     // default Position
-    int playerX = 100;  // x coordinate
-    int playerY = 100;  // y coordinate
-    int PlayerS = 5;    // player speed
+    protected int playerX = 100;  // x coordinate
+    protected int playerY = 100;  // y coordinate
+    protected int PlayerS = 5;    // player speed
 
-    Thread gameThread;
-    KeyHandler key = new KeyHandler(this);
-    Student student = new Student(this, key);
-    Sound sound = new Sound();
-    UI ui = new UI (this);
-    TileManager tm = new TileManager(this);
-    CollisionChecker cChecker = new CollisionChecker(this);
-    Items items[] = new Items[10];
-    AssetSetter setter = new AssetSetter(this);
-    Characters raccoons[] = new Characters[5];
+    protected Thread gameThread;
+    protected KeyHandler key = new KeyHandler(this);
+    protected Student student = new Student(this, key);
+    protected Sound sound = new Sound();
+    protected UI ui = new UI (this);
+    protected TileManager tm = new TileManager(this);
+    protected CollisionChecker cChecker = new CollisionChecker(this);
+    protected Items items[] = new Items[10];
+    protected AssetSetter setter = new AssetSetter(this);
+    protected Characters raccoons[] = new Characters[5];
 
     //STATE
-    public int state;
-    public final int titleState = 0;
-    public final int gameState = 1;
-    public final int pauseState = 2;
+    protected int state;
+    protected final int titleState = 0;
+    protected final int gameState = 1;
+    protected final int pauseState = 2;
     /**
      * Default Constructor. Creates Game Panel 
      */

@@ -18,9 +18,9 @@ import javax.imageio.ImageIO;
 public class TileManager {
 
     // Tile Manager default variables
-    GamePanel gp;
-    ArrayList<Tile> tiles;  // store types of tile
-    int mapArr[][]; // store map info
+    protected GamePanel gp;
+    protected ArrayList<Tile> tiles;  // store types of tile
+    protected int mapArr[][]; // store map info
 
     /**
      * Deafult Constructor
