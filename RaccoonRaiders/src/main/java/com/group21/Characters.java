@@ -23,6 +23,7 @@ public abstract class Characters {
     protected int actionLockCounter = 0;
     protected boolean invincible = false;
     protected int invincibleCounter = 0;
+    protected int type; // 0 = player, 1 = enemy
 
     protected int solidAreaDefaultX, solidAreaDefaultY;
 

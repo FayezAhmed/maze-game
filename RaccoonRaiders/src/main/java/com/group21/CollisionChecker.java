@@ -201,7 +201,9 @@ public class CollisionChecker {
         return index;
     }
 
-    public void checkPlayer(Characters enemy) {
+    public boolean checkPlayer(Characters enemy) {
+        boolean touchPlayer = false;
+
         // get character's solid area position
         enemy.solidArea.x = enemy.x + enemy.solidArea.x;
         enemy.solidArea.y = enemy.y + enemy.solidArea.y;
@@ -215,24 +217,28 @@ public class CollisionChecker {
                 enemy.solidArea.y -= enemy.speed;
                 if (enemy.solidArea.intersects(gp.student.solidArea)){
                     enemy.collisionOn = true;
+                    touchPlayer = true;
                 }
                 break;
-            case "down":
+                case "down":
                 enemy.solidArea.y += enemy.speed;
                 if (enemy.solidArea.intersects(gp.student.solidArea)){
                     enemy.collisionOn = true;
+                    touchPlayer = true;
                 }
                 break;
-            case "left":
+                case "left":
                 enemy.solidArea.x -= enemy.speed;
                 if (enemy.solidArea.intersects(gp.student.solidArea)){
                     enemy.collisionOn = true;
+                    touchPlayer = true;
                 }
                 break;
-            case "right":
+                case "right":
                 enemy.solidArea.x += enemy.speed;
                 if (enemy.solidArea.intersects(gp.student.solidArea)){
                     enemy.collisionOn = true;
+                    touchPlayer = true;
                 }
                 break;
         }
@@ -240,5 +246,7 @@ public class CollisionChecker {
         enemy.solidArea.y = enemy.solidAreaDefaultY;
         gp.student.solidArea.x = gp.student.solidAreaDefaultX;
         gp.student.solidArea.y = gp.student.solidAreaDefaultY;   
+
+        return touchPlayer;
     }
 }

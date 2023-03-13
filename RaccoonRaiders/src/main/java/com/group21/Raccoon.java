@@ -12,6 +12,7 @@ public class Raccoon extends Characters{
     public Raccoon(GamePanel gp) {
         super(gp);
 
+        type = 1;
         direction = "down";
         speed = 4;
 
@@ -64,7 +65,15 @@ public class Raccoon extends Characters{
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.cChecker.checkObject(this, false);
-        gp.cChecker.checkPlayer(this);
+        boolean touchPlayer = gp.cChecker.checkPlayer(this);
+
+        if (this.type == 1 && touchPlayer == true) {
+            if (gp.student.invincible == false) {
+                gp.student.score = 0;
+                System.out.println("Enemy is hitting you!! Score: " + score);
+                gp.student.invincible = true;
+            }
+        }
 
         if (collisionOn == false){
             switch(direction){
