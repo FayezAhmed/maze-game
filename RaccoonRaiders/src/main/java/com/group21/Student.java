@@ -196,6 +196,14 @@ public class Student extends Characters {
                 break;
             
         }
+
+        if (invincible == true) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+        }
+        
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        
     }
 }
