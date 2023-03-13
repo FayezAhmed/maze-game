@@ -21,6 +21,8 @@ public abstract class Characters {
     protected Rectangle solidArea = new Rectangle(0, 0, 32, 32);
     protected int score = 0;
     protected int actionLockCounter = 0;
+    protected boolean invincible = false;
+    protected int invincibleCounter = 0;
 
     protected int solidAreaDefaultX, solidAreaDefaultY;
 

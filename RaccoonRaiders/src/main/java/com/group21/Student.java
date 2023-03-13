@@ -115,6 +115,15 @@ public class Student extends Characters {
                 spriteCounter = 0;
             }
         }
+
+        // Keep outside of the main if statement
+        if (invincible == true) {
+            invincibleCounter++;
+            if (invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
 
     /**
@@ -135,7 +144,11 @@ public class Student extends Characters {
      */
     public void interactEnemy(int index){
         if (index != -1){
-            System.out.println("You are hitting an enemy!");
+            if (invincible == false) {
+                score = 0;
+                System.out.println("You are hitting an enemy!! Score: " + score);
+                invincible = true;
+            }
         }
     }
 
