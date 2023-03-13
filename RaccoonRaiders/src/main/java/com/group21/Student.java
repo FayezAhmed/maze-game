@@ -145,7 +145,8 @@ public class Student extends Characters {
     public void interactEnemy(int index){
         if (index != -1){
             if (invincible == false) {
-                score = 0;
+                // score = 0;
+                heart -= 1;
                 System.out.println("You are hitting an enemy!! Score: " + score);
                 invincible = true;
             }
