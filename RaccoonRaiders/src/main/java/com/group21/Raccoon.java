@@ -48,8 +48,8 @@ public class Raccoon extends Characters{
     public void setAction() {
 
         if (onPath == true) {
-            int goalCol = 12;
-            int goalRow = 9;
+            int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
+            int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
 
             searchPath(goalCol, goalRow);
         } else {
@@ -138,12 +138,12 @@ public class Raccoon extends Characters{
                 }
             }
 
-            int nextCol = gp.pFinder.pathList.get(0).col;
-            int nextRow = gp.pFinder.pathList.get(0).row;
-            if (nextCol == goalCol && nextRow == goalRow) {
-                onPath = false;
-                System.out.println("path found");
-            }
+            // int nextCol = gp.pFinder.pathList.get(0).col;
+            // int nextRow = gp.pFinder.pathList.get(0).row;
+            // if (nextCol == goalCol && nextRow == goalRow) {
+            //     onPath = false;
+            //     System.out.println("path found");
+            // }
         }
     }
 
