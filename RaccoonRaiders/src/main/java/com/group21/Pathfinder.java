@@ -117,4 +117,79 @@ public class PathFinder {
         node.fCost = node.gCost + node.hCost;
         
     }
+
+    public boolean search() {
+        while (goalReached == false && step < 500) {
+
+            int col = currentNode.col;
+            int row = currentNode.row;
+
+            // check the current node
+            currentNode.checked = true;
+            openList.remove(currentNode);
+
+            // open the up node
+            if (row - 1 >= 0) {
+                openNode(node[col][row - 1]);
+            }
+            // open the left node
+            if (col - 1 >= 0) {
+                openNode(node[col - 1][row]);
+            }
+            // open the down node
+            if (row + 1 < gp.maxScreenCol) {
+                openNode(node[col][row + 1]);
+            }
+            // open the right node
+            if (col + 1 < gp.maxScreenCol) {
+                openNode(node[col + 1][row]);
+            }
+
+            // find the best node
+            int bestNodeIndex = 0;
+            int bestNodefCost = 999;
+
+            for (int i = 0; i < openList.size(); i++) {
+
+                //  check if this node's F cost is better
+                if(openList.get(i).fCost < bestNodefCost) {
+                    bestNodeIndex = i;
+                    bestNodefCost = openList.get(i).fCost;
+                }
+
+                // if F cost is equal, check the G cost
+                else if (openList.get(i).fCost == bestNodefCost) {
+                    if(openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
+                        bestNodeIndex = i;
+                    }
+                }
+            }
+
+            // if there is no node in openList, end the loop
+
+            if (openList.size() == 0) {
+                break;
+            }
+
+            // after the loop, openList[bestNodeIndex] is the next step 
+            currentNode = openList.get(bestNodeIndex);
+
+            if (currentNode == goalNode) {
+                goalReached = true;
+                // trackThePath();
+            }
+            step++;
+        }
+
+        return goalReached;
+    }
+
+    public void openNode(Node node) {
+        if(node.open == false && node.checked == false && node.solid == false) {
+            
+            node.open = true;
+            node.parent = currentNode;
+            openList.add(node);
+        }
+    }
 }
