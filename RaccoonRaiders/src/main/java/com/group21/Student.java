@@ -14,7 +14,7 @@ public class Student extends Characters {
     protected KeyHandler key;
 
     protected int heart = 3;
-    protected boolean flag = false;
+    protected int numCollected = 0;
 
     /**
      * Construct new Student
@@ -40,7 +40,7 @@ public class Student extends Characters {
     public void setDefaultValues(){
         x = 100;
         y = 100;
-        speed = 4;
+        speed = 1;
         direction = "up";
     }
 
@@ -110,6 +110,15 @@ public class Student extends Characters {
                 }
             }
 
+            switch(numCollected){
+                case 2: speed = 2;
+                    break;
+                case 4: speed = 3;
+                    break;
+                case 8: speed = 4;
+                    break;
+            }
+
             spriteCounter++;
             if (spriteCounter > 15){
                 if (spriteNumber == 1){
@@ -141,6 +150,7 @@ public class Student extends Characters {
             score += gp.rewards[index].score;
             System.out.println(gp.rewards[index].name + " !! Score: " + score);
             gp.rewards[index] = null;
+            numCollected++;
         }
     }
 
@@ -153,6 +163,7 @@ public class Student extends Characters {
             score -= gp.punishments[index].score;
             System.out.println(gp.punishments[index].name + " !! Score: " + score);
             gp.punishments[index] = null;
+            if (speed > 1) speed -= 1;
         }
     }
     
@@ -176,14 +187,10 @@ public class Student extends Characters {
      * @return true --> all rewards are collected // false otherwise
      */
     public boolean collectAllChecker(){
-        flag = true;
-        for (Items i : gp.rewards){
-            if ( i != null ) {
-                flag = false;
-                break;
-            }
+        if (numCollected == 10){
+            return true;
         }
-        return flag;
+        return false;
     }
 
     /**
