@@ -40,6 +40,8 @@ public class GamePanel extends JPanel implements Runnable{
     protected AssetSetter setter = new AssetSetter(this);
     protected Characters raccoons[] = new Characters[5];
 
+    protected Items portal = new Portal();
+
     //STATE
     protected int state;
     protected final int titleState = 0;
@@ -72,8 +74,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
-
-
     }
 
     @Override
@@ -137,13 +137,22 @@ public class GamePanel extends JPanel implements Runnable{
         else {
             //TITLE
             tm.draw(g2);
-            
-            //rewards
-            for (int i = 0; i < rewards.length; i++){
-                if (rewards[i] != null)
-                    rewards[i].draw(g2, this);
+
+            if (!student.collectAllChecker()){
+                //rewards
+                for (int i = 0; i < rewards.length; i++){
+                    if (rewards[i] != null)
+                        rewards[i].draw(g2, this);
+                }
+            }
+            else{
+                portal.x = 38 * this.tileSize;
+                portal.y = 1 * this.tileSize;
+                portal.draw(g2, this);
             }
             
+            
+
             //Punishments
             for (int i = 0; i < rewards.length; i++){
                 if (punishments[i] != null)
@@ -165,7 +174,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
 
-        g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using    }
+        g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using  
     }
     public void playMusic(int i)
     {

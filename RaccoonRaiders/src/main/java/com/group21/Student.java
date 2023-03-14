@@ -11,9 +11,10 @@ import java.awt.image.*;
  */
 public class Student extends Characters {
    
-    KeyHandler key;
+    protected KeyHandler key;
 
     protected int heart = 3;
+    protected boolean flag = false;
 
     /**
      * Construct new Student
@@ -30,6 +31,7 @@ public class Student extends Characters {
         solidAreaDefaultY = solidArea.y;
         setDefaultValues();
         getPlayerImage();
+        
     }
 
     /**
@@ -167,6 +169,21 @@ public class Student extends Characters {
                 invincible = true;
             }
         }
+    }
+
+    /**
+     * Check if all the rewards are collected
+     * @return true --> all rewards are collected // false otherwise
+     */
+    public boolean collectAllChecker(){
+        flag = true;
+        for (Items i : gp.rewards){
+            if ( i != null ) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
     /**
