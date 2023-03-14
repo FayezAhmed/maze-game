@@ -14,5 +14,27 @@ public class PathFinder {
 
     public PathFinder(GamePanel gp) {
         this.gp = gp;
+        instantiateNode();
+    }
+
+    /*
+     * Creates node for every tile on the map
+     */
+    public void instantiateNode() {
+        node = new Node[gp.maxScreenCol][gp.maxScreenRow];
+
+        int col = 0;
+        int row = 0;
+
+        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+            
+            node[col][row] = new Node(col,row);
+
+            col++;
+            if (col == gp.maxScreenCol) {
+                col = 0;
+                row++;
+            }
+        }
     }
 }
