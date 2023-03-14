@@ -19,11 +19,6 @@ public class GamePanel extends JPanel implements Runnable{
     // FPS
     protected final int FPS = 60;
 
-    // default Position
-    protected int playerX = 100;  // x coordinate
-    protected int playerY = 100;  // y coordinate
-    protected int PlayerS = 5;    // player speed
-
     protected Thread gameThread;
     protected KeyHandler key = new KeyHandler(this);
     protected Student student = new Student(this, key);
