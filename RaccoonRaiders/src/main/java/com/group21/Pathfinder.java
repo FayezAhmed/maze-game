@@ -11,4 +11,8 @@ public class PathFinder {
     Node startNode, goalNode, currentNode;
     boolean goalReached = false;
     int step = 0;
+
+    public PathFinder(GamePanel gp) {
+        this.gp = gp;
+    }
 }
