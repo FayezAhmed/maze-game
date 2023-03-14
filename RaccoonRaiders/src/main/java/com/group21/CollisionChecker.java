@@ -71,29 +71,29 @@ public class CollisionChecker {
     }
 
     /**
-     * checks the collision with items and return the index of item
+     * checks the collision with rewards and return the index of item
      * @param stu student
      * @param isStudent true if student, false otherwise
      * @return index of item
      */
-    public int checkObject(Characters stu, boolean isStudent){
+    public int checkRewards(Characters stu, boolean isStudent){
         int index = -1;
 
-        for (int i = 0; i < gp.items.length; i++){
-            if (gp.items[i] != null){
+        for (int i = 0; i < gp.rewards.length; i++){
+            if (gp.rewards[i] != null){
                 // get character's solid area position
                 stu.solidArea.x = stu.x + stu.solidArea.x;
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
                 // get the imtem's solid area position
-                gp.items[i].solidArea.x = gp.items[i].x + gp.items[i].solidArea.x;
-                gp.items[i].solidArea.y = gp.items[i].y + gp.items[i].solidArea.y;
+                gp.rewards[i].solidArea.x = gp.rewards[i].x + gp.rewards[i].solidArea.x;
+                gp.rewards[i].solidArea.y = gp.rewards[i].y + gp.rewards[i].solidArea.y;
             
                 switch(stu.direction){
                     case "up":
                         stu.solidArea.y -= stu.speed;
-                        if (stu.solidArea.intersects(gp.items[i].solidArea)){
-                            if (gp.items[i].collision == true){
+                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                            if (gp.rewards[i].collision == true){
                                 stu.collisionOn = true;
                             }
                             if (isStudent == true){
@@ -103,8 +103,8 @@ public class CollisionChecker {
                         break;
                     case "down":
                         stu.solidArea.y += stu.speed;
-                        if (stu.solidArea.intersects(gp.items[i].solidArea)){
-                            if (gp.items[i].collision == true){
+                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                            if (gp.rewards[i].collision == true){
                                 stu.collisionOn = true;
                             }
                             if (isStudent == true){
@@ -114,8 +114,8 @@ public class CollisionChecker {
                         break;
                     case "left":
                         stu.solidArea.x -= stu.speed;
-                        if (stu.solidArea.intersects(gp.items[i].solidArea)){
-                            if (gp.items[i].collision == true){
+                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                            if (gp.rewards[i].collision == true){
                                 stu.collisionOn = true;
                             }
                             if (isStudent == true){
@@ -125,8 +125,8 @@ public class CollisionChecker {
                         break;
                     case "right":
                         stu.solidArea.x += stu.speed;
-                        if (stu.solidArea.intersects(gp.items[i].solidArea)){
-                            if (gp.items[i].collision == true){
+                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                            if (gp.rewards[i].collision == true){
                                 stu.collisionOn = true;
                             }
                             if (isStudent == true){
@@ -137,8 +137,8 @@ public class CollisionChecker {
                 }
                 stu.solidArea.x = stu.solidAreaDefaultX;
                 stu.solidArea.y = stu.solidAreaDefaultY;
-                gp.items[i].solidArea.x = gp.items[i].solidAreaDefaultX;
-                gp.items[i].solidArea.y = gp.items[i].solidAreaDefaultY;
+                gp.rewards[i].solidArea.x = gp.rewards[i].solidAreaDefaultX;
+                gp.rewards[i].solidArea.y = gp.rewards[i].solidAreaDefaultY;
             }
         }
         return index;

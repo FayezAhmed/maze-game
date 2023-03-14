@@ -84,8 +84,8 @@ public class Student extends Characters {
             gp.cChecker.checkTile(this);
 
             // object collision
-            int objIndex = gp.cChecker.checkObject(this, true);
-            pickUpItems(objIndex);
+            int objIndex = gp.cChecker.checkRewards(this, true);
+            pickUpRewards(objIndex);
 
             // enemy collision
             int enemyIndex = gp.cChecker.checkEntity(this);
@@ -130,11 +130,11 @@ public class Student extends Characters {
      * picking up the item
      * @param index index of the item on items array
      */
-    public void pickUpItems(int index){
+    public void pickUpRewards(int index){
         if (index != -1){
-            score += gp.items[index].score;
-            System.out.println(gp.items[index].name + " !! Score: " + score);
-            gp.items[index] = null;
+            score += gp.rewards[index].score;
+            System.out.println(gp.rewards[index].name + " !! Score: " + score);
+            gp.rewards[index] = null;
         }
     }
     

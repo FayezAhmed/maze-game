@@ -33,7 +33,10 @@ public class GamePanel extends JPanel implements Runnable{
     protected UI ui = new UI (this);
     protected TileManager tm = new TileManager(this);
     protected CollisionChecker cChecker = new CollisionChecker(this);
-    protected Items items[] = new Items[10];
+
+    protected Items rewards[] = new Items[10];
+    protected Items punishments[] = new Items[10];
+
     protected AssetSetter setter = new AssetSetter(this);
     protected Characters raccoons[] = new Characters[5];
 
@@ -136,9 +139,9 @@ public class GamePanel extends JPanel implements Runnable{
             tm.draw(g2);
             
             //ITEMS
-            for (int i = 0; i < items.length; i++){
-                if (items[i] != null)
-                    items[i].draw(g2, this);
+            for (int i = 0; i < rewards.length; i++){
+                if (rewards[i] != null)
+                    rewards[i].draw(g2, this);
             }
             
             //ENEMIES

@@ -56,7 +56,6 @@ public class Raccoon extends Characters{
         }
     }
 
-
     @Override
     public void update() {
         
@@ -64,7 +63,7 @@ public class Raccoon extends Characters{
 
         collisionOn = false;
         gp.cChecker.checkTile(this);
-        gp.cChecker.checkObject(this, false);
+        gp.cChecker.checkRewards(this, false);
         boolean touchPlayer = gp.cChecker.checkPlayer(this);
 
         if (this.type == 1 && touchPlayer == true) {
