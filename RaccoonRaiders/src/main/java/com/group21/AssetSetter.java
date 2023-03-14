@@ -106,5 +106,12 @@ public class AssetSetter {
         gp.raccoons[0].x = gp.tileSize * 35;
         gp.raccoons[0].y = gp.tileSize * 9;
         
+        gp.raccoons[1] = new Raccoon(gp);
+        gp.raccoons[1].x = gp.tileSize * 14;
+        gp.raccoons[1].y = gp.tileSize * 18;
+
+        gp.raccoons[2] = new Raccoon(gp);
+        gp.raccoons[2].x = gp.tileSize * 20;
+        gp.raccoons[2].y = gp.tileSize * 5;
     }
 }

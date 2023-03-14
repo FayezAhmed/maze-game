@@ -1,6 +1,7 @@
 package com.group21;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.Random;
 
@@ -14,7 +15,11 @@ public class Raccoon extends Characters{
 
         type = 1;
         direction = "down";
-        speed = 4;
+        speed = 2;
+        
+        solidArea = new Rectangle(5, 16, 32, 32);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
         getImage();
 
