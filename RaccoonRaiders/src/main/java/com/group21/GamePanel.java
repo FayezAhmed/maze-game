@@ -138,10 +138,16 @@ public class GamePanel extends JPanel implements Runnable{
             //TITLE
             tm.draw(g2);
             
-            //ITEMS
+            //rewards
             for (int i = 0; i < rewards.length; i++){
                 if (rewards[i] != null)
                     rewards[i].draw(g2, this);
+            }
+            
+            //Punishments
+            for (int i = 0; i < rewards.length; i++){
+                if (punishments[i] != null)
+                punishments[i].draw(g2, this);
             }
             
             //ENEMIES

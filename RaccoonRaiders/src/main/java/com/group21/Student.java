@@ -83,9 +83,13 @@ public class Student extends Characters {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-            // object collision
-            int objIndex = gp.cChecker.checkRewards(this, true);
-            pickUpRewards(objIndex);
+            // rewards collision
+            int rewardIndex = gp.cChecker.checkRewards(this, true);
+            pickUpRewards(rewardIndex);
+
+            // punishments collision
+            int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
+            pickUpPunishments(punishmentsIndex);
 
             // enemy collision
             int enemyIndex = gp.cChecker.checkEntity(this);
@@ -128,13 +132,25 @@ public class Student extends Characters {
 
     /**
      * picking up the item
-     * @param index index of the item on items array
+     * @param index index of the item on rewards array
      */
     public void pickUpRewards(int index){
         if (index != -1){
             score += gp.rewards[index].score;
             System.out.println(gp.rewards[index].name + " !! Score: " + score);
             gp.rewards[index] = null;
+        }
+    }
+
+    /**
+     * picking up the item
+     * @param index index of the item on punishments array
+     */
+    public void pickUpPunishments(int index){
+        if (index != -1){
+            score -= gp.punishments[index].score;
+            System.out.println(gp.punishments[index].name + " !! Score: " + score);
+            gp.punishments[index] = null;
         }
     }
     

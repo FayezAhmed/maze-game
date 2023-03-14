@@ -145,6 +145,80 @@ public class CollisionChecker {
     }
 
     /**
+     * checks the collision with punishments and return the index of item
+     * @param stu student
+     * @param isStudent true if student, false otherwise
+     * @return index of item
+     */
+    public int checkPunishments(Characters stu, boolean isStudent){
+        int index = -1;
+
+        for (int i = 0; i < gp.punishments.length; i++){
+            if (gp.punishments[i] != null){
+                // get character's solid area position
+                stu.solidArea.x = stu.x + stu.solidArea.x;
+                stu.solidArea.y = stu.y + stu.solidArea.y;
+
+                // get the imtem's solid area position
+                gp.punishments[i].solidArea.x = gp.punishments[i].x + gp.punishments[i].solidArea.x;
+                gp.punishments[i].solidArea.y = gp.punishments[i].y + gp.punishments[i].solidArea.y;
+            
+                switch(stu.direction){
+                    case "up":
+                        stu.solidArea.y -= stu.speed;
+                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
+                            if (gp.punishments[i].collision == true){
+                                stu.collisionOn = true;
+                            }
+                            if (isStudent == true){
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        stu.solidArea.y += stu.speed;
+                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
+                            if (gp.punishments[i].collision == true){
+                                stu.collisionOn = true;
+                            }
+                            if (isStudent == true){
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        stu.solidArea.x -= stu.speed;
+                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
+                            if (gp.punishments[i].collision == true){
+                                stu.collisionOn = true;
+                            }
+                            if (isStudent == true){
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        stu.solidArea.x += stu.speed;
+                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
+                            if (gp.punishments[i].collision == true){
+                                stu.collisionOn = true;
+                            }
+                            if (isStudent == true){
+                                index = i;
+                            }
+                        }
+                        break;
+                }
+                stu.solidArea.x = stu.solidAreaDefaultX;
+                stu.solidArea.y = stu.solidAreaDefaultY;
+                gp.punishments[i].solidArea.x = gp.punishments[i].solidAreaDefaultX;
+                gp.punishments[i].solidArea.y = gp.punishments[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
+
+    /**
      * checks the collision if player contacts enemy
      * @param stu student
      * @return index of enemy

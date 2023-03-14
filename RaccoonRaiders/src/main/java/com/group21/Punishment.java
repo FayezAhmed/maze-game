@@ -14,7 +14,7 @@ public class Punishment extends Items{
      */
     public Punishment(){
         name = "Punishment";
-        score = -50;
+        score = 50;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/items_image/punishment.png"));
         } catch(IOException e){
