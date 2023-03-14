@@ -10,7 +10,7 @@ import java.awt.Rectangle;
  */
 public abstract class Characters {
 
-    GamePanel gp;
+    protected GamePanel gp;
 
     // Character Variables
     protected int x, y;    

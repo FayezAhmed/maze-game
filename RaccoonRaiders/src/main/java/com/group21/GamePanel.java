@@ -8,10 +8,8 @@ import java.awt.Color;
 
 public class GamePanel extends JPanel implements Runnable{
     // Screen Setting Variables
-    protected final int originalTileSize = 16; // 16*16 tiles
-    protected final int scale = 2;    // scaler size
 
-    protected final int tileSize = originalTileSize * scale; // 32*32 tile
+    protected final int tileSize = 32; // 32*32 tile
     protected final int maxScreenCol = 40;
     protected final int maxScreenRow = 24;
 
@@ -20,11 +18,6 @@ public class GamePanel extends JPanel implements Runnable{
     
     // FPS
     protected final int FPS = 60;
-
-    // default Position
-    protected int playerX = 100;  // x coordinate
-    protected int playerY = 100;  // y coordinate
-    protected int PlayerS = 5;    // player speed
 
     protected Thread gameThread;
     protected KeyHandler key = new KeyHandler(this);
