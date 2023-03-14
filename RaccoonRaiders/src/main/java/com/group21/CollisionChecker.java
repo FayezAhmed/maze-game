@@ -86,8 +86,8 @@ public class CollisionChecker {
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
                 // get the imtem's solid area position
-                gp.rewards[i].solidArea.x = gp.rewards[i].x + gp.rewards[i].solidArea.x;
-                gp.rewards[i].solidArea.y = gp.rewards[i].y + gp.rewards[i].solidArea.y;
+                gp.rewards[i].solidArea.x = gp.rewards[i].x + gp.rewards[i].solidArea.x + 10;
+                gp.rewards[i].solidArea.y = gp.rewards[i].y + gp.rewards[i].solidArea.y + 10;
             
                 switch(stu.direction){
                     case "up":
@@ -160,8 +160,8 @@ public class CollisionChecker {
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
                 // get the imtem's solid area position
-                gp.punishments[i].solidArea.x = gp.punishments[i].x + gp.punishments[i].solidArea.x;
-                gp.punishments[i].solidArea.y = gp.punishments[i].y + gp.punishments[i].solidArea.y;
+                gp.punishments[i].solidArea.x = gp.punishments[i].x + gp.punishments[i].solidArea.x + 10;
+                gp.punishments[i].solidArea.y = gp.punishments[i].y + gp.punishments[i].solidArea.y + 10;
             
                 switch(stu.direction){
                     case "up":
