@@ -11,10 +11,11 @@ import java.awt.image.*;
  */
 public class Student extends Characters {
    
-    GamePanel gp;
-    KeyHandler key;
+    protected KeyHandler key;
 
-    public int heart = 3;
+    protected int heart = 3;            
+    protected int numCollected = 0;     // number of collected rewards
+    protected boolean isDone = false;   // if game is over ==> true
 
     /**
      * Construct new Student
@@ -22,7 +23,7 @@ public class Student extends Characters {
      * @param key KeyHanlder
      */
     public Student(GamePanel gp, KeyHandler key) {
-        this.gp = gp;
+        super(gp);
         this.key = key;
 
         // hitting area
@@ -31,16 +32,17 @@ public class Student extends Characters {
         solidAreaDefaultY = solidArea.y;
         setDefaultValues();
         getPlayerImage();
+        
     }
 
     /**
      * set character's default value
      */
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
-        speed = 4;
-        direction = "up";
+        x = 7 * gp.tileSize;
+        y = 1 * gp.tileSize;
+        speed = 2;
+        direction = "down";
     }
 
     /**
@@ -66,6 +68,13 @@ public class Student extends Characters {
      * update the student's location (status) by interacting with keyboard inputs
      */
     public void update(){
+
+        // if score is negative...game is over
+        if (score < 0){
+            isDone = true;
+            // need to change this 
+            System.exit(actionLockCounter);
+        }
         
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
@@ -84,8 +93,17 @@ public class Student extends Characters {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-            int objIndex = gp.cChecker.checkObject(this, true);
-            pickUpItems(objIndex);
+            // rewards collision
+            int rewardIndex = gp.cChecker.checkRewards(this, true);
+            pickUpRewards(rewardIndex);
+
+            // punishments collision
+            int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
+            pickUpPunishments(punishmentsIndex);
+
+            // enemy collision
+            int enemyIndex = gp.cChecker.checkEntity(this);
+            interactEnemy(enemyIndex);
 
             if (collisionOn == false){
                 switch(direction){
@@ -111,18 +129,72 @@ public class Student extends Characters {
                 spriteCounter = 0;
             }
         }
+
+        // Keep outside of the main if statement
+        if (invincible == true) {
+            invincibleCounter++;
+            if (invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
 
     /**
      * picking up the item
+     * @param index index of the item on rewards array
+     */
+    public void pickUpRewards(int index){
+        if (index != -1){
+            score += gp.rewards[index].score;
+            System.out.println(gp.rewards[index].name + " !! Score: " + score);
+
+            // double the speed , if bubble tea
+            if (gp.rewards[index].name == "BubbleTea")
+                speed*=2;
+
+            gp.rewards[index] = null;
+            numCollected++;
+        }
+    }
+
+    /**
+     * picking up the item
+     * @param index index of the item on punishments array
+     */
+    public void pickUpPunishments(int index){
+        if (index != -1){
+            score -= gp.punishments[index].score;
+            System.out.println(gp.punishments[index].name + " !! Score: " + score);
+            gp.punishments[index] = null;
+            if (speed > 1) speed -= 1;
+        }
+    }
+    
+    /**
+     * touching an enemy
      * @param index index of the item on items array
      */
-    public void pickUpItems(int index){
+    public void interactEnemy(int index){
         if (index != -1){
-            score += 100;
-            System.out.println(gp.items[index].name + " !! Score: " + score);
-            gp.items[index] = null;
+            if (invincible == false) {
+                // score = 0;
+                heart -= 1;
+                System.out.println("You are hitting an enemy!! Score: " + score);
+                invincible = true;
+            }
         }
+    }
+
+    /**
+     * Check if all the rewards are collected
+     * @return true --> all rewards are collected // false otherwise
+     */
+    public boolean collectAllChecker(){
+        if (numCollected == 10){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -168,6 +240,14 @@ public class Student extends Characters {
                 break;
             
         }
+
+        if (invincible == true) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+        }
+        
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        
     }
 }

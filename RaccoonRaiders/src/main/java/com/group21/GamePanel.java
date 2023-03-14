@@ -8,10 +8,8 @@ import java.awt.Color;
 
 public class GamePanel extends JPanel implements Runnable{
     // Screen Setting Variables
-    protected final int originalTileSize = 16; // 16*16 tiles
-    protected final int scale = 2;    // scaler size
 
-    protected final int tileSize = originalTileSize * scale; // 32*32 tile
+    protected final int tileSize = 32; // 32*32 tile
     protected final int maxScreenCol = 40;
     protected final int maxScreenRow = 24;
 
@@ -21,26 +19,28 @@ public class GamePanel extends JPanel implements Runnable{
     // FPS
     protected final int FPS = 60;
 
-    // default Position
-    int playerX = 100;  // x coordinate
-    int playerY = 100;  // y coordinate
-    int PlayerS = 5;    // player speed
+    protected Thread gameThread;
+    protected KeyHandler key = new KeyHandler(this);
+    protected Student student = new Student(this, key);
+    protected Sound sound = new Sound();
+    protected UI ui = new UI (this);
+    protected TileManager tm = new TileManager(this);
+    protected CollisionChecker cChecker = new CollisionChecker(this);
+    protected Pathfinder pFinder = new Pathfinder(this);
 
-    Thread gameThread;
-    KeyHandler key = new KeyHandler(this);
-    Student student = new Student(this, key);
-    Sound sound = new Sound();
-    UI ui = new UI (this);
-    TileManager tm = new TileManager(this);
-    CollisionChecker cChecker = new CollisionChecker(this);
-    Items items[] = new Items[10];
-    AssetSetter setter = new AssetSetter(this);
+    protected Items rewards[] = new Items[10];
+    protected Items punishments[] = new Items[10];
+
+    protected AssetSetter setter = new AssetSetter(this);
+    protected Characters raccoons[] = new Characters[5];
+
+    protected Portal portal = new Portal();
 
     //STATE
-    public int state;
-    public final int titleState = 0;
-    public final int gameState = 1;
-    public final int pauseState = 2;
+    protected int state;
+    protected final int titleState = 0;
+    protected final int gameState = 1;
+    protected final int pauseState = 2;
     /**
      * Default Constructor. Creates Game Panel 
      */
@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void setupGame(){
         setter.setObject();
+        setter.setRaccoon();
         state = titleState;
         playMusic(1);
     }
@@ -67,8 +68,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
-
-
     }
 
     @Override
@@ -100,7 +99,15 @@ public class GamePanel extends JPanel implements Runnable{
      */
     public void update(){
         if(state == gameState) {
+            // PLAYER
             student.update();
+
+            //ENEMIES
+            for (int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null) {
+                    raccoons[i].update();
+                }
+            }
         }
         if (gameState == pauseState) {
 
@@ -124,20 +131,44 @@ public class GamePanel extends JPanel implements Runnable{
         else {
             //TITLE
             tm.draw(g2);
-            //ITEMS
-            for (int i = 0; i < items.length; i++){
-                if (items[i] != null)
-                    items[i].draw(g2, this);
+
+            if (!student.collectAllChecker()){
+                //rewards
+                for (int i = 0; i < rewards.length; i++){
+                    if (rewards[i] != null)
+                        rewards[i].draw(g2, this);
+                }
             }
+            else{
+                portal.x = 38 * this.tileSize;
+                portal.y = 1 * this.tileSize;
+                portal.draw(g2, this);
+            }
+            
+            
+
+            //Punishments
+            for (int i = 0; i < rewards.length; i++){
+                if (punishments[i] != null)
+                punishments[i].draw(g2, this);
+            }
+            
+            //ENEMIES
+            for(int i = 0; i < raccoons.length; i++) {
+                if (raccoons[i] != null)
+                    raccoons[i].draw(g2);
+            }
+
             //UI
             ui.draw(g2);
-            //player
+            
+            //PLAYER
             student.draw(g2);
         }
 
 
 
-        g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using    }
+        g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using  
     }
     public void playMusic(int i)
     {

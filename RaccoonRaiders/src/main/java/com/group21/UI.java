@@ -1,6 +1,6 @@
 package com.group21;
 
-import com.sun.xml.internal.ws.addressing.WsaTubeHelper;
+// import com.sun.xml.internal.ws.addressing.WsaTubeHelper;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
@@ -36,8 +36,13 @@ public class UI {
         this.g2 = g2;
         g2.setFont(arial_italic);
         g2.setColor(Color.white);
+
+        // HEART
         g2.drawImage(heartImage, 16, 12,48,48, null);
         g2.drawString("x " + gp.student.heart, 74, 50);
+
+        // Score
+        g2.drawString("Score: " + gp.student.score, 16, 100);
 
         //TITLE STATE
         if(gp.state == gp.titleState)

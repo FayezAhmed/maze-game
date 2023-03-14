@@ -10,14 +10,14 @@ import java.awt.Rectangle;
 public abstract class Items {
 
     //default variables
-    public BufferedImage image;
-    public String name;
-    public int score;
-    public boolean collision = false;
-    public int x,y;
-    public Rectangle solidArea = new Rectangle(0,0,48,48);
-    public int solidAreaDefaultX = 0;
-    public int solidAreaDefaultY = 0;
+    protected BufferedImage image;
+    protected String name;
+    protected int score;
+    protected boolean collision = false;
+    protected int x,y;
+    protected Rectangle solidArea = new Rectangle(0,0,16,16);
+    protected int solidAreaDefaultX = 0;
+    protected int solidAreaDefaultY = 0;
 
     public abstract void draw(Graphics2D g2, GamePanel gp);
 }
