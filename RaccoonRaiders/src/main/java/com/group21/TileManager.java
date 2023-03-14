@@ -21,6 +21,7 @@ public class TileManager {
     protected GamePanel gp;
     protected ArrayList<Tile> tiles;  // store types of tile
     protected int mapArr[][]; // store map info
+    protected boolean drawPath = false;
 
     /**
      * Deafult Constructor
@@ -120,6 +121,19 @@ public class TileManager {
                 x = 0;
                 row++;
                 y+= gp.tileSize;
+            }
+        }
+
+        if (drawPath == true) {
+            g2.setColor(new Color(255, 0, 0, 70));
+
+            for (int i = 0; i < gp.pFinder.pathList.size(); i++) {
+
+                int mapX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+                int mapY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+
+                g2.fillRect(mapX, mapY, 32, 32);
+
             }
         }
     }

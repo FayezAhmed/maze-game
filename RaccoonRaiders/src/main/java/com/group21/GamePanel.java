@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable{
     protected UI ui = new UI (this);
     protected TileManager tm = new TileManager(this);
     protected CollisionChecker cChecker = new CollisionChecker(this);
+    protected PathFinder pFinder = new PathFinder(this);
 
     protected Items rewards[] = new Items[10];
     protected Items punishments[] = new Items[10];

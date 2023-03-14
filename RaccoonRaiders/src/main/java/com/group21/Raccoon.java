@@ -16,6 +16,7 @@ public class Raccoon extends Characters{
         type = 1;
         direction = "down";
         speed = 2;
+        onPath = true;
         
         solidArea = new Rectangle(5, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
@@ -45,27 +46,108 @@ public class Raccoon extends Characters{
     }
 
     public void setAction() {
-        actionLockCounter++;
 
-        if (actionLockCounter == 90) {
+        if (onPath == true) {
+            int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
+            int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
 
-            Random random = new Random();
-            int i = random.nextInt(100) + 1; // Picks num from 1-100
+            searchPath(goalCol, goalRow);
+        } else {
+            actionLockCounter++;
     
-            if (i <= 25) direction = "up";
-            if (i > 25 && i <= 50) direction = "down";
-            if (i > 50 && i <= 75) direction = "left";
-            if (i > 75 && i <= 100) direction = "right";
-
-            actionLockCounter = 0;
+            if (actionLockCounter == 90) {
+    
+                Random random = new Random();
+                int i = random.nextInt(100) + 1; // Picks num from 1-100
+        
+                if (i <= 25) direction = "up";
+                if (i > 25 && i <= 50) direction = "down";
+                if (i > 50 && i <= 75) direction = "left";
+                if (i > 75 && i <= 100) direction = "right";
+    
+                actionLockCounter = 0;
+            }
         }
     }
 
-    @Override
-    public void update() {
-        
-        setAction();
+    public void searchPath(int goalCol, int goalRow) {
 
+        int startCol = (x + solidArea.x)/gp.tileSize;
+        int startRow = (y + solidArea.y)/gp.tileSize;
+
+        gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
+
+        if(gp.pFinder.search() == true) {
+
+            // next x and y
+            int nextX = gp.pFinder.pathList.get(0).col * gp.tileSize;
+            int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
+
+            // enemies solidarea positions
+            int enLeftX = x + solidArea.x;
+            int enRightX = x + solidArea.x + solidArea.width;
+            int enTopY = y + solidArea.y;
+            int enBottomY = y + solidArea.y + solidArea.height;
+
+            if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+                direction = "up";
+            }
+            else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+                direction = "down";
+            }
+            else if (enTopY >= nextY && enBottomY <= nextY + gp.tileSize) {
+                // left or right
+                if (enLeftX > nextX) {
+                    direction = "left";
+                }
+                if (enLeftX < nextX) {
+                    direction = "right";
+                }
+            }
+            else if (enTopY > nextY && enLeftX > nextX) {
+                // up or left
+                direction = "up";
+                checkCollision();
+                if(collisionOn == true) {
+                    direction = "left";
+                }
+            }
+            else if (enTopY > nextY && enLeftX < nextX) {
+                // up or right
+                direction = "up";
+                checkCollision();
+                if(collisionOn == true) {
+                    direction = "right";
+                }
+                
+            }
+            else if (enTopY < nextY && enLeftX > nextX) {
+                // down or left
+                direction = "down";
+                checkCollision();
+                if(collisionOn == true) {
+                    direction = "left";
+                }
+            }
+            else if (enTopY < nextY && enLeftX < nextX) {
+                // down or right
+                direction = "down";
+                checkCollision();
+                if(collisionOn == true) {
+                    direction = "right";
+                }
+            }
+
+            // int nextCol = gp.pFinder.pathList.get(0).col;
+            // int nextRow = gp.pFinder.pathList.get(0).row;
+            // if (nextCol == goalCol && nextRow == goalRow) {
+            //     onPath = false;
+            //     System.out.println("path found");
+            // }
+        }
+    }
+
+    public void checkCollision() {
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.cChecker.checkRewards(this, false);
@@ -79,6 +161,13 @@ public class Raccoon extends Characters{
                 gp.student.invincible = true;
             }
         }
+    }
+
+    @Override
+    public void update() {
+        
+        setAction();
+        checkCollision();
 
         if (collisionOn == false){
             switch(direction){
