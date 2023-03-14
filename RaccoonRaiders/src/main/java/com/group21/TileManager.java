@@ -90,6 +90,7 @@ public class TileManager {
 
             tiles.add(new Tile());
             tiles.get(5).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/tree.png"));
+            tiles.get(5).collision = true;
 
         }catch(IOException e){
             e.printStackTrace();
