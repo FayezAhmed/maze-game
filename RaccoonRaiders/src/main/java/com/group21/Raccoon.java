@@ -157,7 +157,7 @@ public class Raccoon extends Characters{
             if (gp.student.invincible == false) {
                 // gp.student.score = 0;
                 gp.student.heart -= 1;
-                System.out.println("Enemy is hitting you!! Score: " + score);
+                System.out.println("Enemy is hitting you!! Score: " + gp.student.score);
                 gp.student.invincible = true;
             }
         }
