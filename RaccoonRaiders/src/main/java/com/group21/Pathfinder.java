@@ -2,7 +2,7 @@ package com.group21;
 
 import java.util.ArrayList;
 
-public class Pathfinder {
+public class PathFinder {
     
     GamePanel gp;
     Node[][] node;
