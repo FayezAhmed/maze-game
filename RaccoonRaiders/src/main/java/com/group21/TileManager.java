@@ -21,7 +21,7 @@ public class TileManager {
     protected GamePanel gp;
     protected ArrayList<Tile> tiles;  // store types of tile
     protected int mapArr[][]; // store map info
-    // protected boolean drawPath = true;
+    protected boolean drawPath = false;
 
     /**
      * Deafult Constructor
