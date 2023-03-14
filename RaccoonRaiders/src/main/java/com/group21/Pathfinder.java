@@ -176,7 +176,7 @@ public class PathFinder {
 
             if (currentNode == goalNode) {
                 goalReached = true;
-                // trackThePath();
+                trackThePath();
             }
             step++;
         }
@@ -190,6 +190,16 @@ public class PathFinder {
             node.open = true;
             node.parent = currentNode;
             openList.add(node);
+        }
+    }
+
+    public void trackThePath() {
+        Node current = goalNode;
+
+        while(current != startNode) {
+
+            pathList.add(0, current);
+            current = current.parent;
         }
     }
 }
