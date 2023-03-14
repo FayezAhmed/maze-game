@@ -5,15 +5,16 @@ import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-public class Portal extends Items{
+public class Portal {
 
+    protected boolean collision;
     protected BufferedImage p1, p2, p3, p4, p5, p6;
     protected int spriteCounter = 0;
     protected int spriteNumber = 1;
+    protected int x, y;
 
     public Portal(){
-        name = "Portal";
-        score = 50;
+
         collision = true;
 
         try{
