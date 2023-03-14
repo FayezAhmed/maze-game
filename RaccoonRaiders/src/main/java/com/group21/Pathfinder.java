@@ -2,7 +2,7 @@ package com.group21;
 
 import java.util.ArrayList;
 
-public class PathFinder {
+public class Pathfinder {
     
     GamePanel gp;
     Node[][] node;
@@ -12,7 +12,7 @@ public class PathFinder {
     boolean goalReached = false;
     int step = 0;
 
-    public PathFinder(GamePanel gp) {
+    public Pathfinder(GamePanel gp) {
         this.gp = gp;
         instantiateNode();
     }
