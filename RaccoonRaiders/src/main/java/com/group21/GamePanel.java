@@ -40,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable{
     protected AssetSetter setter = new AssetSetter(this);
     protected Characters raccoons[] = new Characters[5];
 
-    protected Items portal = new Portal();
+    protected Portal portal = new Portal();
 
     //STATE
     protected int state;
