@@ -37,4 +37,33 @@ public class PathFinder {
             }
         }
     }
+
+    /*
+     * Resets nodes' status and all other settings.
+     */
+    public void resetNodes() {
+        int col = 0;
+        int row = 0;
+
+        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+            
+            node[col][row].open = false;
+            node[col][row].checked = false;
+            node[col][row].solid = false;
+
+            node[col][row] = new Node(col,row);
+
+            col++;
+            if (col == gp.maxScreenCol) {
+                col = 0;
+                row++;
+            }
+        }
+
+        // Reset other settings
+        openList.clear();
+        pathList.clear();
+        goalReached = false;
+        step = 0;
+    }
 }
