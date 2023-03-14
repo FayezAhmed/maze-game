@@ -1,6 +1,8 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
+import java.net.ProtocolException;
+
 import javax.swing.text.html.parser.Entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -24,6 +26,7 @@ public abstract class Characters {
     protected boolean invincible = false;
     protected int invincibleCounter = 0;
     protected int type; // 0 = player, 1 = enemy
+    protected boolean onPath = false;
 
     protected int solidAreaDefaultX, solidAreaDefaultY;
 
