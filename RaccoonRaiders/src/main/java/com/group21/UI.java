@@ -14,6 +14,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_italic;
+    Font gayabond;
     public String message = "";
     BufferedImage heartImage;
     public int order = 0;
@@ -21,6 +22,7 @@ public class UI {
     {
         this.gp = gp;
         arial_italic = new Font("Arial", Font.ITALIC,40);
+        gayabond = new Font("Gayatri", Font.BOLD, 120);
         //create health heart
         try {
             heartImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/heart.png"));
@@ -56,8 +58,10 @@ public class UI {
         //Background
         g2.setColor(new Color(252,230,201));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
         //TITLE
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 120));
+        g2.setFont(gayabond);
+//        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 120));
         String txt = "RACCOON RAIDERS";
         int x = getCenterX(txt);
         int y = gp.tileSize*9;
