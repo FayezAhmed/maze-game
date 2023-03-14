@@ -1,8 +1,6 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
-import java.net.ProtocolException;
-
 import javax.swing.text.html.parser.Entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -12,7 +10,7 @@ import java.awt.Rectangle;
  */
 public abstract class Characters {
 
-    GamePanel gp;
+    protected GamePanel gp;
 
     // Character Variables
     protected int x, y;    
