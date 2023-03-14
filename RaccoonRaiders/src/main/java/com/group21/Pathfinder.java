@@ -77,5 +77,44 @@ public class PathFinder {
         goalNode = node[goalCol][goalRow];
         openList.add(currentNode);
 
+        int col = 0;
+        int row = 0;
+        
+        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+            
+            // set solid node
+            // check tiles
+            int tileNum = gp.tm.mapArr[col][row];
+            if (gp.tm.tiles.get(tileNum).collision == true) {
+                node[col][row].solid = true;
+            }
+
+            // set cost
+            getCost(node[col][row]);
+
+            col++;
+            if (col == gp.maxScreenCol) {
+                col = 0;
+                row++;
+            }
+        }
+
+    }
+
+    public void getCost(Node node) {
+        
+        // G cost
+        int xDist = Math.abs(node.col - startNode.col);
+        int yDist = Math.abs(node.row - startNode.row);
+        node.gCost = xDist + yDist;
+        
+        // H cost
+        xDist = Math.abs(node.col - goalNode.col);
+        yDist = Math.abs(node.row - goalNode.row);
+        node.hCost = xDist + yDist;
+        
+        // F cost
+        node.fCost = node.gCost + node.hCost;
+        
     }
 }
