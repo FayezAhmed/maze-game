@@ -66,4 +66,16 @@ public class PathFinder {
         goalReached = false;
         step = 0;
     }
+
+    public void setNodes(int startCol, int startRow, int goalCol, int goalRow) {
+
+        resetNodes();
+
+        // set start and goal node
+        startNode = node[startCol][startRow];
+        currentNode = startNode;
+        goalNode = node[goalCol][goalRow];
+        openList.add(currentNode);
+
+    }
 }
