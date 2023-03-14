@@ -13,8 +13,9 @@ public class Student extends Characters {
    
     protected KeyHandler key;
 
-    protected int heart = 3;
-    protected int numCollected = 0;
+    protected int heart = 3;            
+    protected int numCollected = 0;     // number of collected rewards
+    protected boolean isDone = false;   // if game is over ==> true
 
     /**
      * Construct new Student
@@ -38,10 +39,10 @@ public class Student extends Characters {
      * set character's default value
      */
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
-        speed = 1;
-        direction = "up";
+        x = 7 * gp.tileSize;
+        y = 1 * gp.tileSize;
+        speed = 2;
+        direction = "down";
     }
 
     /**
@@ -67,6 +68,13 @@ public class Student extends Characters {
      * update the student's location (status) by interacting with keyboard inputs
      */
     public void update(){
+
+        // if score is negative...game is over
+        if (score < 0){
+            isDone = true;
+            // need to change this 
+            System.exit(actionLockCounter);
+        }
         
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
@@ -110,15 +118,6 @@ public class Student extends Characters {
                 }
             }
 
-            switch(numCollected){
-                case 2: speed = 2;
-                    break;
-                case 4: speed = 3;
-                    break;
-                case 8: speed = 4;
-                    break;
-            }
-
             spriteCounter++;
             if (spriteCounter > 15){
                 if (spriteNumber == 1){
@@ -149,6 +148,11 @@ public class Student extends Characters {
         if (index != -1){
             score += gp.rewards[index].score;
             System.out.println(gp.rewards[index].name + " !! Score: " + score);
+
+            // double the speed , if bubble tea
+            if (gp.rewards[index].name == "BubbleTea")
+                speed*=2;
+
             gp.rewards[index] = null;
             numCollected++;
         }
