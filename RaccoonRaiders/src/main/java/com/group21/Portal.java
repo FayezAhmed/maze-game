@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 public class Portal {
 
@@ -12,6 +13,7 @@ public class Portal {
     protected int spriteCounter = 0;
     protected int spriteNumber = 1;
     protected int x, y;
+    protected Rectangle solidArea = new Rectangle(39 * 32, 32, 16,16);
 
     public Portal(){
 
