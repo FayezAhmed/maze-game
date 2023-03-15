@@ -120,10 +120,6 @@ public class UI {
         if(order == 1) {
             g2.drawString(">",x-gp.tileSize*2 -28,y);
         }
-
-
-
-
     }
 
     public void drawPause(){
