@@ -111,7 +111,7 @@ public class Student extends Characters {
             int enemyIndex = gp.cChecker.checkEntity(this);
             interactEnemy(enemyIndex);
 
-            if (numCollected == 1){
+            if (numCollected == 10){
                 gp.cChecker.checkPortal(this, true, gp.portal);
             }
             
@@ -206,7 +206,7 @@ public class Student extends Characters {
      * @return true --> all rewards are collected // false otherwise
      */
     public boolean collectAllChecker(){
-        if (numCollected == 1){
+        if (numCollected == 10){
             return true;
         }
         return false;
