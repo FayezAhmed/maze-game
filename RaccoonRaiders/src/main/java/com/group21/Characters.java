@@ -1,7 +1,7 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
-import javax.swing.text.html.parser.Entity;
+// import javax.swing.text.html.parser.Entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 

@@ -1,6 +1,6 @@
 package com.group21;
 
-import javax.swing.text.html.parser.Entity;
+// import javax.swing.text.html.parser.Entity;
 
 /**
  * CollisionChecker class

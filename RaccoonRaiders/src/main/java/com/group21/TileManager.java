@@ -6,11 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.image.*;
-
-import javax.imageio.ImageIO;
 
 /**
  * TileManager Class
