@@ -153,7 +153,6 @@ public class GamePanel extends JPanel implements Runnable{
                 portal.draw(g2, this);
             }
             
-            
 
             //Punishments
             for (int i = 0; i < rewards.length; i++){
