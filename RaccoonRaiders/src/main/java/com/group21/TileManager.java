@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 public class TileManager {
 
     // Tile Manager default variables
-    protected GamePanel gp;
+    private GamePanel gp;
     protected ArrayList<Tile> tiles;  // store types of tile
     protected int mapArr[][]; // store map info
     protected boolean drawPath = false;
