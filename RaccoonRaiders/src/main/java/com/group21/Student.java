@@ -31,7 +31,6 @@ public class Student extends Characters {
         solidAreaDefaultY = solidArea.y;
         setDefaultValues();
         getPlayerImage();
-        
     }
 
     /**
@@ -73,13 +72,6 @@ public class Student extends Characters {
      * update the student's location (status) by interacting with keyboard inputs
      */
     public void update(){
-
-        // if score is negative...game is over
-        // if (score < 0){
-        //     isDone = true;
-        //     // need to change this 
-        //     System.exit(actionLockCounter);
-        // }
         
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
@@ -252,7 +244,6 @@ public class Student extends Characters {
                     image = right2;
                 }
                 break;
-            
         }
 
         if (invincible == true) {
