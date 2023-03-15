@@ -38,10 +38,10 @@ public class UI {
             InputStream is = getClass().getResourceAsStream("/font/Retro_Gaming.ttf");
             retro = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
     }
