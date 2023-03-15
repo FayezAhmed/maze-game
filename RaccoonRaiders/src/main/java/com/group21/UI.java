@@ -56,6 +56,10 @@ public class UI {
         {
             drawPause();
         }
+        // GAME OVER
+        if (gp.state == gp.gameOverState) {
+            drawGameOver();
+        }
 
     }
     public void drawTitle()
@@ -117,5 +121,42 @@ public class UI {
         int len = (int)g2.getFontMetrics().getStringBounds(txt, g2).getWidth();
         int x = gp.screenWidth/2 - len/2;
         return x;
+    }
+
+    public void drawGameOver() {
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,150f));
+        text = "GAME OVER";
+        x = getCenterX(text);
+        y = gp.tileSize * 15;
+        
+        // Title
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y-200);
+        
+        // Retry
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        text = "RETRY";
+        x = getCenterX(text);
+        y = gp.tileSize * 15;
+        g2.drawString(text, x, y);
+        if(order == 0) {
+            g2.drawString(">",x-gp.tileSize*3,y);
+        }
+        
+        // Exit
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        text = "QUIT";
+        x = getCenterX(text);
+        y += 55;
+        g2.drawString(text, x, y);
+        if(order == 1) {
+            g2.drawString(">",x-gp.tileSize*3,y);
+        }
     }
 }

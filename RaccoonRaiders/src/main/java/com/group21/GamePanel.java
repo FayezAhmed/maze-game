@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
     protected final int titleState = 0;
     protected final int gameState = 1;
     protected final int pauseState = 2;
+    protected final int gameOverState = 3;
     /**
      * Default Constructor. Creates Game Panel 
      */

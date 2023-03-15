@@ -138,6 +138,11 @@ public class Student extends Characters {
                 invincibleCounter = 0;
             }
         }
+
+        // game over
+        if (heart <= 0) {
+            gp.state = gp.gameOverState;
+        }
     }
 
     /**
