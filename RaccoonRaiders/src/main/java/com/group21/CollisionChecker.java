@@ -323,4 +323,53 @@ public class CollisionChecker {
 
         return touchPlayer;
     }
+
+    public void checkPortal(Characters stu, boolean isStudent, Portal p){
+        if (isStudent){
+            // get character's solid area position
+            stu.solidArea.x = stu.x + stu.solidArea.x;
+            stu.solidArea.y = stu.y + stu.solidArea.y;
+
+            switch(stu.direction){
+                case "up":
+                    stu.solidArea.y -= stu.speed;
+                    if (stu.solidArea.intersects(p.solidArea)){
+                        if (p.collision == true){
+                            stu.collisionOn = true;
+                        }
+                        gp.state = gp.gameOverState;
+                    }
+                    break;
+                case "down":
+                    stu.solidArea.y += stu.speed;
+                    if (stu.solidArea.intersects(p.solidArea)){
+                        if (p.collision == true){
+                            stu.collisionOn = true;
+                        }
+                        gp.state = gp.gameOverState;
+                    }
+                    break;
+                case "left":
+                    stu.solidArea.x -= stu.speed;
+                    if (stu.solidArea.intersects(p.solidArea)){
+                        if (p.collision == true){
+                            stu.collisionOn = true;
+                        }
+                        gp.state = gp.gameOverState;
+                    }
+                    break;
+                case "right":
+                    stu.solidArea.x += stu.speed;
+                    if (stu.solidArea.intersects(p.solidArea)){
+                        if (p.collision == true){
+                            stu.collisionOn = true;
+                        }
+                        gp.state = gp.gameOverState;
+                    }
+                    break;
+            }
+        }
+        gp.student.solidArea.x = gp.student.solidAreaDefaultX;
+        gp.student.solidArea.y = gp.student.solidAreaDefaultY;
+    }
 }
