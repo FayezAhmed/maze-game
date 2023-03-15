@@ -45,6 +45,12 @@ public class Student extends Characters {
         direction = "down";
     }
 
+    public void restoreHealthAndScore() {
+        heart = 3;
+        score = 0;
+        invincible = false;
+    }
+
     /**
      * Read the student sprite images 
      */
