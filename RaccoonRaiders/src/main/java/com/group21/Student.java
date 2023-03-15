@@ -1,7 +1,6 @@
 package com.group21;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import java.awt.*;
 import java.io.IOException;
 import java.awt.image.*;
@@ -41,7 +40,7 @@ public class Student extends Characters {
     public void setDefaultValues(){
         x = 7 * gp.tileSize;
         y = 1 * gp.tileSize;
-        speed = 5;
+        speed = 2;
         direction = "down";
     }
 
