@@ -14,7 +14,6 @@ public class Student extends Characters {
 
     protected int heart = 3;            
     protected int numCollected = 0;     // number of collected rewards
-    protected boolean isDone = false;   // if game is over ==> true
 
     /**
      * Construct new Student
@@ -31,7 +30,6 @@ public class Student extends Characters {
         solidAreaDefaultY = solidArea.y;
         setDefaultValues();
         getPlayerImage();
-        
     }
 
     /**
@@ -42,6 +40,7 @@ public class Student extends Characters {
         y = 1 * gp.tileSize;
         speed = 2;
         direction = "down";
+        numCollected = 0;
     }
 
     public void restoreHealthAndScore() {
@@ -75,13 +74,6 @@ public class Student extends Characters {
      * update the student's location (status) by interacting with keyboard inputs
      */
     public void update(){
-
-        // if score is negative...game is over
-        // if (score < 0){
-        //     isDone = true;
-        //     // need to change this 
-        //     System.exit(actionLockCounter);
-        // }
         
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
@@ -254,7 +246,6 @@ public class Student extends Characters {
                     image = right2;
                 }
                 break;
-            
         }
 
         if (invincible == true) {
