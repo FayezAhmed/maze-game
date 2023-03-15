@@ -3,6 +3,9 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+/**
+ * The Sound class provides methods for Sound control.
+ */
 public class Sound {
     Clip clip;
     URL soundURL[] = new URL[30];
@@ -14,7 +17,11 @@ public class Sound {
 //        soundURL[2] = getClass().getResource("/sound/MainBG.mp3");
 //        soundURL[3] = getClass().getResource("/sound/MainBG.mp3");
     }
-
+    /**
+     * Select the music file input stream.
+     *
+     * @param i index of different music paths.
+     */
     public void setFile(int i) {
 
         try {

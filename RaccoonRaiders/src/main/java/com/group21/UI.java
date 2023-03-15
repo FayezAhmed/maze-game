@@ -10,7 +10,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-
+/**
+ * The UI class provides methods for creating and managing the user interface.
+ */
 public class UI {
 
     GamePanel gp;
@@ -20,12 +22,25 @@ public class UI {
     Font retro;
     public String message = "";
     BufferedImage heartImage;
+    BufferedImage titleImage;
+    BufferedImage raccoonImage;
     public int order = 0;
     public UI(GamePanel gp)
     {
         this.gp = gp;
         // arial_italic = new Font("Arial", Font.ITALIC,40);
-        // gayabond = new Font("Gayatri", Font.PLAIN, 120);
+        //Background Title Image
+        try {
+            titleImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/titleImage.png"));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        //Raccoon Image
+        try {
+            raccoonImage = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_down_1.png"));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         //create health heart
         try {
             heartImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/heart.png"));
@@ -45,7 +60,11 @@ public class UI {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Draw the state of the game character.
+     *
+     * @param g2 the window created by Graphics2D type.
+     */
     public void draw(Graphics2D g2)
     {
         this.g2 = g2;
@@ -74,12 +93,14 @@ public class UI {
             drawGameOver();
         }
     }
-    
+    /**
+     * Creates a new window with the specified title and dimensions.
+     */
     public void drawTitle()
     {
         //Background
-        g2.setColor(new Color(252,230,201));
-        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+        g2.drawImage(titleImage, 0, 0,1280,768, null);
+//        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
         //TITLE
         // g2.setFont(retro);
@@ -95,10 +116,10 @@ public class UI {
 //        String startTxt = "press Enter to begin";
 
         //IMAGE OF Character
-        x = gp.screenWidth/2 - (gp.tileSize*2) /2 - 380;
+        x = gp.screenWidth/2 - (gp.tileSize*2) /2 - 600;
         y += gp.tileSize*2 + 60;
 
-        g2.drawImage(gp.student.down2, x,y, gp.tileSize*6, gp.tileSize*6, null);
+        g2.drawImage(raccoonImage, 0,550, gp.tileSize*14, gp.tileSize*14, null);
 
         //OPTION
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80f));
@@ -118,7 +139,9 @@ public class UI {
             g2.drawString(">",x-gp.tileSize*2 -28,y);
         }
     }
-
+    /**
+     * Creates a new interface on the Pause state
+     */
     public void drawPause(){
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
@@ -134,6 +157,13 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
     }
+
+    /**
+     * Get the middle point of x-axis in the window.
+     *
+     * @param txt a String with different length
+     * @return the index of the middle x in pixel.
+     */
     public int getCenterX (String txt)
     {
         int len = (int)g2.getFontMetrics().getStringBounds(txt, g2).getWidth();
