@@ -41,7 +41,7 @@ public class Student extends Characters {
     public void setDefaultValues(){
         x = 7 * gp.tileSize;
         y = 1 * gp.tileSize;
-        speed = 2;
+        speed = 5;
         direction = "down";
     }
 
@@ -111,6 +111,10 @@ public class Student extends Characters {
             int enemyIndex = gp.cChecker.checkEntity(this);
             interactEnemy(enemyIndex);
 
+            if (numCollected == 1){
+                gp.cChecker.checkPortal(this, true, gp.portal);
+            }
+            
             if (collisionOn == false){
                 switch(direction){
                     case "up": y -= speed;
@@ -202,7 +206,7 @@ public class Student extends Characters {
      * @return true --> all rewards are collected // false otherwise
      */
     public boolean collectAllChecker(){
-        if (numCollected == 10){
+        if (numCollected == 1){
             return true;
         }
         return false;
