@@ -111,10 +111,19 @@ public class UI {
     }
 
     public void drawPause(){
-        String txt = "PAUSE";
-        int x = getCenterX(txt);
-        int y = gp.screenHeight/2;
-        g2.drawString(txt,x,y);
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        String text;
+        int x;
+        int y;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,150f));
+        text = "PAUSED";
+        x = getCenterX(text);
+        y = gp.tileSize * 14;
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
     }
     public int getCenterX (String txt)
     {
