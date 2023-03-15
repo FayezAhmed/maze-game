@@ -72,6 +72,32 @@ public class KeyHandler implements KeyListener {
                     break;
             }
 
+        if (gp.state == gp.gameOverState) {
+            switch (code){
+                case KeyEvent.VK_UP:
+                    gp.ui.order--;
+                    if(gp.ui.order < 0){
+                        gp.ui.order = 1;
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    gp.ui.order++;
+                    if(gp.ui.order > 1){
+                        gp.ui.order = 0;
+                    }
+                    break;
+                case KeyEvent.VK_ENTER:
+                    if(gp.ui.order == 0){
+                        gp.state = gp.gameState;
+                        // gp.stopMusic();
+                        // gp.playMusic(0);
+                    }
+                    if(gp.ui.order == 1){
+                        System.exit(0);
+                    }
+            }
+        }
+
     }
     @Override
     public void keyReleased(KeyEvent e) {
