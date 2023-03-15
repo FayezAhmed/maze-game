@@ -76,11 +76,11 @@ public class Student extends Characters {
     public void update(){
 
         // if score is negative...game is over
-        if (score < 0){
-            isDone = true;
-            // need to change this 
-            System.exit(actionLockCounter);
-        }
+        // if (score < 0){
+        //     isDone = true;
+        //     // need to change this 
+        //     System.exit(actionLockCounter);
+        // }
         
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
@@ -146,7 +146,7 @@ public class Student extends Characters {
         }
 
         // game over
-        if (heart <= 0) {
+        if (heart <= 0 || score < 0) {
             gp.state = gp.gameOverState;
         }
     }
