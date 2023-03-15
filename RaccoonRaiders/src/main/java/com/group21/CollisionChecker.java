@@ -324,6 +324,12 @@ public class CollisionChecker {
         return touchPlayer;
     }
 
+    /**
+     * check whether student goes to portal
+     * @param stu student
+     * @param isStudent check student, true = student, false otherwise
+     * @param p Portal
+     */
     public void checkPortal(Characters stu, boolean isStudent, Portal p){
         if (isStudent){
             // get character's solid area position
