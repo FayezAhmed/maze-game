@@ -117,10 +117,6 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         }
-        if (gameState == pauseState) {
-
-        }
-
     }
 
     /**
@@ -172,9 +168,6 @@ public class GamePanel extends JPanel implements Runnable{
             //PLAYER
             student.draw(g2);
         }
-
-
-
         g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using  
     }
     public void playMusic(int i)

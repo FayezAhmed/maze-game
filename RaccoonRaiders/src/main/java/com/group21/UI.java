@@ -65,9 +65,6 @@ public class UI {
         {
             drawTitle();
         }
-        if(gp.state == gp.gameState)
-        {
-        }
         if(gp.state == gp.pauseState)
         {
             drawPause();
@@ -76,8 +73,8 @@ public class UI {
         if (gp.state == gp.gameOverState) {
             drawGameOver();
         }
-
     }
+    
     public void drawTitle()
     {
         //Background
