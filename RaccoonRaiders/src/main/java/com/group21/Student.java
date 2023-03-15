@@ -14,7 +14,6 @@ public class Student extends Characters {
 
     protected int heart = 3;            
     protected int numCollected = 0;     // number of collected rewards
-    protected boolean isDone = false;   // if game is over ==> true
 
     /**
      * Construct new Student
@@ -41,6 +40,7 @@ public class Student extends Characters {
         y = 1 * gp.tileSize;
         speed = 2;
         direction = "down";
+        numCollected = 0;
     }
 
     public void restoreHealthAndScore() {
