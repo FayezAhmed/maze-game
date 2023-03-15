@@ -48,6 +48,8 @@ public class Student extends Characters {
         heart = 3;
         score = 0;
         invincible = false;
+        isDone = false;
+        numCollected = 0;
     }
 
     /**
