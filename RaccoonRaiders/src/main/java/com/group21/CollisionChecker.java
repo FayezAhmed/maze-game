@@ -7,7 +7,7 @@ import javax.swing.text.html.parser.Entity;
  */
 public class CollisionChecker {
 
-    GamePanel gp;
+    private GamePanel gp;
 
     /**
      * Constructor
