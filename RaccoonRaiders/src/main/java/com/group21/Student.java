@@ -40,14 +40,12 @@ public class Student extends Characters {
         y = 1 * gp.tileSize;
         speed = 2;
         direction = "down";
-        numCollected = 0;
     }
 
     public void restoreHealthAndScore() {
         heart = 3;
         score = 0;
         invincible = false;
-        isDone = false;
         numCollected = 0;
     }
 
