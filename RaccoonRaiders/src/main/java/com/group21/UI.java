@@ -5,9 +5,11 @@ package com.group21;
 import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class UI {
 
@@ -15,18 +17,31 @@ public class UI {
     Graphics2D g2;
     Font arial_italic;
     Font gayabond;
+    Font retro;
     public String message = "";
     BufferedImage heartImage;
     public int order = 0;
     public UI(GamePanel gp)
     {
         this.gp = gp;
-        arial_italic = new Font("Arial", Font.ITALIC,40);
-        gayabond = new Font("Gayatri", Font.BOLD, 120);
+        // arial_italic = new Font("Arial", Font.ITALIC,40);
+        // gayabond = new Font("Gayatri", Font.PLAIN, 120);
         //create health heart
         try {
             heartImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/heart.png"));
         } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        //create font
+        try {
+            InputStream is = getClass().getResourceAsStream("/font/Retro_Gaming.ttf");
+            retro = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -34,7 +49,8 @@ public class UI {
     public void draw(Graphics2D g2)
     {
         this.g2 = g2;
-        g2.setFont(arial_italic);
+        g2.setFont(retro);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 25f));
         g2.setColor(Color.white);
 
         // HEART
@@ -69,8 +85,8 @@ public class UI {
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
         //TITLE
-        g2.setFont(gayabond);
-//        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 120));
+        // g2.setFont(retro);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 100f));
         String txt = "RACCOON RAIDERS";
         int x = getCenterX(txt);
         int y = gp.tileSize*9;
@@ -88,7 +104,7 @@ public class UI {
         g2.drawImage(gp.student.down2, x,y, gp.tileSize*6, gp.tileSize*6, null);
 
         //OPTION
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,80));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80f));
         txt = "NEW GAME";
         x = getCenterX(txt)+150;
         y += gp.tileSize*2;
@@ -117,7 +133,7 @@ public class UI {
         String text;
         int x;
         int y;
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,150f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,150f));
         text = "PAUSED";
         x = getCenterX(text);
         y = gp.tileSize * 14;
@@ -139,7 +155,7 @@ public class UI {
         int x;
         int y;
         String text;
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,150f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,150f));
         text = "GAME OVER";
         x = getCenterX(text);
         y = gp.tileSize * 15;
@@ -148,14 +164,14 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text, x, y-200);
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "Score: " + gp.student.score;
         x = getCenterX(text);
         y = gp.tileSize * 15;
         g2.drawString(text, x, y - 100);
 
         // Retry
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "RETRY";
         x = getCenterX(text);
         y = gp.tileSize * 15;
@@ -165,7 +181,7 @@ public class UI {
         }
         
         // Exit
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "QUIT";
         x = getCenterX(text);
         y += 55;
