@@ -139,6 +139,12 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text, x, y-200);
         
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
+        text = "Score: " + gp.student.score;
+        x = getCenterX(text);
+        y = gp.tileSize * 15;
+        g2.drawString(text, x, y - 100);
+
         // Retry
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50f));
         text = "RETRY";
