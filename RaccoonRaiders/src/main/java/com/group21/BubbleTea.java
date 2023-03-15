@@ -22,7 +22,7 @@ public class BubbleTea extends Items{
     /**
      * draw onto panel
      * @param g2 Graphic
-     * @param GamePanel target panel to draw on
+     * @param gp target panel to draw on
      */
     public void draw(Graphics2D g2, GamePanel gp){
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);

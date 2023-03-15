@@ -7,9 +7,15 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import java.awt.image.*;
-
+/**
+ * Main enemy character -- Raccoon class
+ */
 public class Raccoon extends Characters{
-    
+
+    /**
+     * Constructor
+     * @param gp Game panel to be updated
+     */
     public Raccoon(GamePanel gp) {
         super(gp);
 

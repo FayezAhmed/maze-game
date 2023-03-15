@@ -19,5 +19,10 @@ public abstract class Items {
     protected int solidAreaDefaultX = 0;
     protected int solidAreaDefaultY = 0;
 
+    /**
+     * draw onto panel
+     * @param g2 Graphic
+     * @param gp target panel to draw on
+     */
     public abstract void draw(Graphics2D g2, GamePanel gp);
 }

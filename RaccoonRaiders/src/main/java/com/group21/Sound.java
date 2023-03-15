@@ -10,6 +10,9 @@ public class Sound {
     Clip clip;
     URL soundURL[] = new URL[30];
 
+    /**
+     * Constructor
+     */
     public Sound()
     {
         soundURL[0] = getClass().getResource("/sound/MainBG.wav");
@@ -33,14 +36,23 @@ public class Sound {
             e.printStackTrace();
         }
     }
+    /**
+     * Play the music
+     */
     public void play()
     {
         clip.start();
     }
+    /**
+     * Loop the music
+     */
     public void loop()
     {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+    /**
+     * Stop the music
+     */
     public void stop()
     {
         clip.stop();

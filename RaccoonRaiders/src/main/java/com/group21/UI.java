@@ -25,6 +25,11 @@ public class UI {
     BufferedImage titleImage;
     BufferedImage raccoonImage;
     public int order = 0;
+    /**
+     * Constructor
+     *
+     * @param gp target panel to draw on
+     */
     public UI(GamePanel gp)
     {
         this.gp = gp;
@@ -63,7 +68,7 @@ public class UI {
     /**
      * Draw the state of the game character.
      *
-     * @param g2 the window created by Graphics2D type.
+     * @param g2 target window to draw on
      */
     public void draw(Graphics2D g2)
     {
@@ -170,7 +175,9 @@ public class UI {
         int x = gp.screenWidth/2 - len/2;
         return x;
     }
-
+    /**
+     * Creates a new interface on the GameOver state
+     */
     public void drawGameOver() {
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);

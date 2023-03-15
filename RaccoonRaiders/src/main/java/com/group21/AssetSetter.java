@@ -100,7 +100,9 @@ public class AssetSetter {
         gp.punishments[9].x = 13 * gp.tileSize;
         gp.punishments[9].y = 21 * gp.tileSize;
     }
-
+    /**
+     * set the Raccoon location
+     */
     public void setRaccoon() {
         gp.raccoons[0] = new Raccoon(gp);
         gp.raccoons[0].x = gp.tileSize * 35;

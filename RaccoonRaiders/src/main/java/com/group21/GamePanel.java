@@ -170,12 +170,20 @@ public class GamePanel extends JPanel implements Runnable{
         }
         g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using  
     }
+    /**
+     * Play the music
+     *
+     * @param i index number of target music stream
+     */
     public void playMusic(int i)
     {
         sound.setFile(i);
         sound.play();
         sound.loop();
     }
+    /**
+     * Stop the music
+     */
     public void stopMusic()
     {
         sound.stop();
