@@ -71,6 +71,13 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
     }
 
+    public void retry() {
+        student.setDefaultValues();
+        student.restoreHealthAndScore();
+        setter.setObject();
+        setter.setRaccoon();
+    }
+
     @Override
     public void run() {
 

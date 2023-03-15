@@ -91,6 +91,7 @@ public class KeyHandler implements KeyListener {
                         gp.state = gp.gameState;
                         // gp.stopMusic();
                         // gp.playMusic(0);
+                        gp.retry();
                     }
                     if(gp.ui.order == 1){
                         System.exit(0);
