@@ -21,7 +21,7 @@ public abstract class Items {
 
     /**
      * draw onto panel
-     * @param g2 Graphic
+     * @param g2 the Graphics2D object to draw on
      * @param gp target panel to draw on
      */
     public abstract void draw(Graphics2D g2, GamePanel gp);

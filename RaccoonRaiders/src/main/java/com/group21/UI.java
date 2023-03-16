@@ -68,7 +68,7 @@ public class UI {
     /**
      * Draw the state of the game character.
      *
-     * @param g2 target window to draw on
+     * @param g2 Graphics2D object to draw on
      */
     public void draw(Graphics2D g2)
     {

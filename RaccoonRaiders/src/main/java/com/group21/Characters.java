@@ -31,11 +31,21 @@ public abstract class Characters {
     protected int spriteCounter = 0;
     protected int spriteNumber = 1;
 
+    /**
+     * Constructor
+     *
+     * @param gp Game panel to be updated
+     */
     public Characters(GamePanel gp) {
         this.gp = gp;
     }
 
     public void setAction() {}
     public abstract void update();
+    /**
+     * draw onto panel
+     *
+     * @param g2 the Graphics2D object to draw on
+     */
     public abstract void draw(Graphics2D g2);
 }

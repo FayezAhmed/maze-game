@@ -17,7 +17,7 @@ public class Student extends Characters {
 
     /**
      * Construct new Student
-     * @param gp Game Panel
+     * @param gp target panel to draw on
      * @param key KeyHanlder
      */
     public Student(GamePanel gp, KeyHandler key) {
@@ -205,7 +205,7 @@ public class Student extends Characters {
 
     /**
      * draw the student
-     * @param g2 Graphic
+     * @param g2 Graphics2D object to draw on
      */
     public void draw(Graphics2D g2){
         

@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D; 
 import java.awt.Color;
-
+/**
+ * The GamePanel class represents the main panel for a simple game.
+ * It contains all the game logic and rendering, and handles user input.
+ */
 public class GamePanel extends JPanel implements Runnable{
     // Screen Setting Variables
 
@@ -121,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     /**
      * draw the components on the panel
+     *
      * @param g Graphic 
      */
     public void paintComponent(Graphics g){
