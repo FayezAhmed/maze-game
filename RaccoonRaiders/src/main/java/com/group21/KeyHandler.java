@@ -5,8 +5,6 @@ import java.awt.event.*;
 /**
  * KeyHandler class -- interact with Students <--> Keyboard input from player
  */
-
-
 public class KeyHandler implements KeyListener {
     protected GamePanel gp;
     protected boolean up, down, right, left;
