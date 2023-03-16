@@ -3,7 +3,7 @@ package com.group21;
 import java.awt.event.*;
 
 /**
- * KeyHanler class -- interact with Students <--> Keyboard input from player
+ * KeyHandler class -- interact with Students <--> Keyboard input from player
  */
 
 
@@ -11,9 +11,15 @@ public class KeyHandler implements KeyListener {
     protected GamePanel gp;
     protected boolean up, down, right, left;
 
+    /**
+     * Constructor.
+     * 
+     * @param gp the target GamePanel
+     */
     public KeyHandler(GamePanel gp){
         this.gp = gp;
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
         
@@ -23,6 +29,8 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
 
         int code = e.getKeyCode();
+
+        // Input for buttons on Title screen
         if(gp.state == gp.titleState) {
             switch (code){
                 case KeyEvent.VK_UP:
@@ -49,37 +57,39 @@ public class KeyHandler implements KeyListener {
             }
         }
 
-            switch (code) {
-                case KeyEvent.VK_UP:
-                    up = true;
-                    break;
-                case KeyEvent.VK_DOWN:
-                    down = true;
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    right = true;
-                    break;
-                case KeyEvent.VK_LEFT:
-                    left = true;
-                    break;
-                case KeyEvent.VK_P:
-                    if (gp.state == gp.gameState) {
-                        gp.state = gp.pauseState;
-                    }
-                    else if (gp.state == gp.pauseState) {
-                        gp.state = gp.gameState;
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gp.state == gp.gameState) {
-                        gp.state = gp.pauseState;
-                    }
-                    else if (gp.state == gp.pauseState) {
-                        gp.state = gp.gameState;
-                    }
-                    break;
-            }
+        // Input for movement in game and triggering Pause screen
+        switch (code) {
+            case KeyEvent.VK_UP:
+                up = true;
+                break;
+            case KeyEvent.VK_DOWN:
+                down = true;
+                break;
+            case KeyEvent.VK_RIGHT:
+                right = true;
+                break;
+            case KeyEvent.VK_LEFT:
+                left = true;
+                break;
+            case KeyEvent.VK_P:
+                if (gp.state == gp.gameState) {
+                    gp.state = gp.pauseState;
+                }
+                else if (gp.state == gp.pauseState) {
+                    gp.state = gp.gameState;
+                }
+                break;
+            case KeyEvent.VK_ESCAPE:
+                if (gp.state == gp.gameState) {
+                    gp.state = gp.pauseState;
+                }
+                else if (gp.state == gp.pauseState) {
+                    gp.state = gp.gameState;
+                }
+                break;
+        }
 
+        // Input for buttons on GameOver screen
         if (gp.state == gp.gameOverState) {
             switch (code){
                 case KeyEvent.VK_UP:
@@ -97,8 +107,6 @@ public class KeyHandler implements KeyListener {
                 case KeyEvent.VK_ENTER:
                     if(gp.ui.order == 0){
                         gp.state = gp.gameState;
-                        // gp.stopMusic();
-                        // gp.playMusic(0);
                         gp.retry();
                     }
                     if(gp.ui.order == 1){

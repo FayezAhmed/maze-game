@@ -12,13 +12,14 @@ public class Student extends Characters {
    
     protected KeyHandler key;
 
-    protected int heart = 3;            
+    protected int heart = 3;            // life
     protected int numCollected = 0;     // number of collected rewards
 
     /**
-     * Construct new Student
-     * @param gp target panel to draw on
-     * @param key KeyHanlder
+     * Construct new Student.
+     * 
+     * @param gp target GamePanel to draw on
+     * @param key KeyHandler
      */
     public Student(GamePanel gp, KeyHandler key) {
         super(gp);
@@ -33,7 +34,7 @@ public class Student extends Characters {
     }
 
     /**
-     * set character's default value
+     * Sets character's default values.
      */
     public void setDefaultValues(){
         x = 7 * gp.tileSize;
@@ -42,6 +43,9 @@ public class Student extends Characters {
         direction = "down";
     }
 
+    /**
+     * Restores the characters values.
+     */
     public void restoreHealthAndScore() {
         heart = 3;
         score = 0;
@@ -50,7 +54,7 @@ public class Student extends Characters {
     }
 
     /**
-     * Read the student sprite images 
+     * Read the student sprite images. 
      */
     public void getPlayerImage(){
         try{
@@ -69,7 +73,7 @@ public class Student extends Characters {
     }
 
     /**
-     * update the student's location (status) by interacting with keyboard inputs
+     * Update the student's location (status) by interacting with keyboard inputs.
      */
     public void update(){
         
@@ -90,15 +94,15 @@ public class Student extends Characters {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-            // rewards collision
+            // Rewards collision
             int rewardIndex = gp.cChecker.checkRewards(this, true);
             pickUpRewards(rewardIndex);
 
-            // punishments collision
+            // Punishments collision
             int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
             pickUpPunishments(punishmentsIndex);
 
-            // enemy collision
+            // Enemy collision
             int enemyIndex = gp.cChecker.checkEntity(this);
             interactEnemy(enemyIndex);
 
@@ -140,14 +144,15 @@ public class Student extends Characters {
             }
         }
 
-        // game over
+        // Game over clause
         if (heart <= 0 || score < 0) {
             gp.state = gp.gameOverState;
         }
     }
 
     /**
-     * picking up the item
+     * Increases score when picking up items.
+     * 
      * @param index index of the item on rewards array
      */
     public void pickUpRewards(int index){
@@ -155,9 +160,9 @@ public class Student extends Characters {
             score += gp.rewards[index].score;
             System.out.println(gp.rewards[index].name + " !! Score: " + score);
 
-            // double the speed , if bubble tea
+            // Double the speed if bubble tea is collected
             if (gp.rewards[index].name == "BubbleTea")
-                speed*=2;
+                speed *= 2;
 
             gp.rewards[index] = null;
             numCollected++;
@@ -165,7 +170,8 @@ public class Student extends Characters {
     }
 
     /**
-     * picking up the item
+     * Decreases score when picking up items.
+     * 
      * @param index index of the item on punishments array
      */
     public void pickUpPunishments(int index){
@@ -178,7 +184,8 @@ public class Student extends Characters {
     }
     
     /**
-     * touching an enemy
+     * Decreases player's health when it contacts and enemy.
+     * 
      * @param index index of the item on items array
      */
     public void interactEnemy(int index){
@@ -193,8 +200,9 @@ public class Student extends Characters {
     }
 
     /**
-     * Check if all the rewards are collected
-     * @return true --> all rewards are collected // false otherwise
+     * Checks if all the rewards are collected.
+     * 
+     * @return true if all rewards are collected, false otherwise
      */
     public boolean collectAllChecker(){
         if (numCollected == 10){
@@ -204,7 +212,8 @@ public class Student extends Characters {
     }
 
     /**
-     * draw the student
+     * Draw the student
+     * 
      * @param g2 Graphics2D object to draw on
      */
     public void draw(Graphics2D g2){
@@ -246,6 +255,7 @@ public class Student extends Characters {
                 break;
         }
 
+        // Visualizes that damage was taken
         if (invincible == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
         }

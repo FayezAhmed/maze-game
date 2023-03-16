@@ -10,16 +10,18 @@ public class CollisionChecker {
     private GamePanel gp;
 
     /**
-     * Constructor
-     * @param gp Game Panel that is affected
+     * Constructor.
+     * 
+     * @param gp GamePanel that is affected
      */
     public CollisionChecker(GamePanel gp){
         this.gp = gp;
     }
 
     /**
-     * check the tile if wall or water, character cannot go forward
-     * @param entity
+     * Checks whether the tile is a wall or water tile, and if true, the character cannot go forward.
+     * 
+     * @param entity the target character
      */
     public void checkTile(Characters entity){
         int left = entity.x + entity.solidArea.x;
@@ -71,7 +73,8 @@ public class CollisionChecker {
     }
 
     /**
-     * checks the collision with rewards and return the index of item
+     * Checks the collision with rewards and returns the index of the item.
+     * 
      * @param stu student
      * @param isStudent true if student, false otherwise
      * @return index of item
@@ -85,7 +88,7 @@ public class CollisionChecker {
                 stu.solidArea.x = stu.x + stu.solidArea.x;
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
-                // get the imtem's solid area position
+                // get the item's solid area position
                 gp.rewards[i].solidArea.x = gp.rewards[i].x + gp.rewards[i].solidArea.x + 10;
                 gp.rewards[i].solidArea.y = gp.rewards[i].y + gp.rewards[i].solidArea.y + 10;
             
@@ -145,7 +148,8 @@ public class CollisionChecker {
     }
 
     /**
-     * checks the collision with punishments and return the index of item
+     * Checks the collision with punishments and returns the index of the item.
+     * 
      * @param stu student
      * @param isStudent true if student, false otherwise
      * @return index of item
@@ -159,7 +163,7 @@ public class CollisionChecker {
                 stu.solidArea.x = stu.x + stu.solidArea.x;
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
-                // get the imtem's solid area position
+                // get the item's solid area position
                 gp.punishments[i].solidArea.x = gp.punishments[i].x + gp.punishments[i].solidArea.x + 10;
                 gp.punishments[i].solidArea.y = gp.punishments[i].y + gp.punishments[i].solidArea.y + 10;
             
@@ -219,7 +223,8 @@ public class CollisionChecker {
     }
 
     /**
-     * checks the collision if player contacts enemy
+     * Checks the collision if player contacts an enemy.
+     * 
      * @param stu student
      * @return index of enemy
      */
@@ -232,7 +237,7 @@ public class CollisionChecker {
                 stu.solidArea.x = stu.x + stu.solidArea.x;
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
-                // get the imtem's solid area position
+                // get the enemy's solid area position
                 gp.raccoons[i].solidArea.x = gp.raccoons[i].x + gp.raccoons[i].solidArea.x;
                 gp.raccoons[i].solidArea.y = gp.raccoons[i].y + gp.raccoons[i].solidArea.y;
             
@@ -275,14 +280,20 @@ public class CollisionChecker {
         return index;
     }
 
+    /**
+     * Checks if enemy contacts the player.
+     * 
+     * @param enemy the target enemy
+     * @return true is player is touched
+     */
     public boolean checkPlayer(Characters enemy) {
         boolean touchPlayer = false;
 
-        // get character's solid area position
+        // get enemy's solid area position
         enemy.solidArea.x = enemy.x + enemy.solidArea.x;
         enemy.solidArea.y = enemy.y + enemy.solidArea.y;
 
-        // get the imtem's solid area position
+        // get the student's solid area position
         gp.student.solidArea.x = gp.student.x + gp.student.solidArea.x;
         gp.student.solidArea.y = gp.student.y + gp.student.solidArea.y;
     
@@ -325,10 +336,11 @@ public class CollisionChecker {
     }
 
     /**
-     * check whether student goes to portal
+     * Checks whether the student goes to the portal.
+     * 
      * @param stu student
-     * @param isStudent check student, true = student, false otherwise
-     * @param p Portal
+     * @param isStudent check student, true if student, false otherwise
+     * @param p portal
      */
     public void checkPortal(Characters stu, boolean isStudent, Portal p){
         if (isStudent){

@@ -6,6 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 
+/**
+ * Portal class
+ */
 public class Portal {
 
     protected boolean collision;
@@ -15,6 +18,9 @@ public class Portal {
     protected int x, y;
     protected Rectangle solidArea = new Rectangle(39 * 32, 32, 16,16);
 
+    /**
+     * Constructor.
+     */
     public Portal(){
 
         collision = true;
@@ -33,9 +39,10 @@ public class Portal {
     }
 
     /**
-     * draw onto panel
+     * Draw onto panel.
+     * 
      * @param g2 the Graphics2D object to draw on
-     * @param gp target panel to draw on
+     * @param gp target GamePanel to draw on
      */
     public void draw(Graphics2D g2, GamePanel gp){
 

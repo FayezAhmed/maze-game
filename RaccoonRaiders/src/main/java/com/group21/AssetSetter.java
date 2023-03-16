@@ -8,7 +8,8 @@ public class AssetSetter {
     private GamePanel gp;
 
     /**
-     * Constructor
+     * Constructor.
+     * 
      * @param gp Game panel to be updated
      */
     public AssetSetter(GamePanel gp){
@@ -16,7 +17,7 @@ public class AssetSetter {
     }
 
     /**
-     * set the items location
+     * Sets the items locations.
      */
     public void setObject(){
         gp.rewards[0] = new Coffee();
@@ -101,7 +102,7 @@ public class AssetSetter {
         gp.punishments[9].y = 21 * gp.tileSize;
     }
     /**
-     * set the Raccoon location
+     * Set the Raccoons locations.
      */
     public void setRaccoon() {
         gp.raccoons[0] = new Raccoon(gp);

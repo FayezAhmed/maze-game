@@ -10,8 +10,8 @@ import java.awt.Color;
  * It contains all the game logic and rendering, and handles user input.
  */
 public class GamePanel extends JPanel implements Runnable{
+    
     // Screen Setting Variables
-
     protected final int tileSize = 32; // 32*32 tile
     protected final int maxScreenCol = 40;
     protected final int maxScreenRow = 24;
@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable{
     protected final int screenWidth = tileSize * maxScreenCol;    // 1280 pixels
     protected final int screenHeight = tileSize * maxScreenRow;   // 768 pixels
     
-    // FPS
+    //FPS
     protected final int FPS = 60;
 
     protected Thread gameThread;
@@ -31,22 +31,22 @@ public class GamePanel extends JPanel implements Runnable{
     protected CollisionChecker cChecker = new CollisionChecker(this);
     protected Pathfinder pFinder = new Pathfinder(this);
 
+    //ASSETS
+    protected AssetSetter setter = new AssetSetter(this);
     protected Items rewards[] = new Items[10];
     protected Items punishments[] = new Items[10];
-
-    protected AssetSetter setter = new AssetSetter(this);
     protected Characters raccoons[] = new Characters[5];
-
     protected Portal portal = new Portal();
 
-    //STATE
+    //STATES
     protected int state;
     protected final int titleState = 0;
     protected final int gameState = 1;
     protected final int pauseState = 2;
     protected final int gameOverState = 3;
+
     /**
-     * Default Constructor. Creates Game Panel 
+     * Default Constructor. Creates GamePanel 
      */
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight)); // setup size
@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     /**
-     * setting up the items on panel
+     * Setting up the items and enemies locations on panel.
      */
     public void setupGame(){
         setter.setObject();
@@ -67,13 +67,16 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     /**
-     * let Thread start the game
+     * Let Thread start the game.
      */
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * Resets the character's positions and values.
+     */
     public void retry() {
         student.setDefaultValues();
         student.restoreHealthAndScore();
@@ -106,7 +109,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     /**
-     * updates the game
+     * Updates the characters.
      */
     public void update(){
         if(state == gameState) {
@@ -123,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     /**
-     * draw the components on the panel
+     * Draws the components on the panel.
      *
      * @param g Graphic 
      */
@@ -141,7 +144,7 @@ public class GamePanel extends JPanel implements Runnable{
             tm.draw(g2);
 
             if (!student.collectAllChecker()){
-                //rewards
+                //REWARDS
                 for (int i = 0; i < rewards.length; i++){
                     if (rewards[i] != null)
                         rewards[i].draw(g2, this);
@@ -154,7 +157,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
             
 
-            //Punishments
+            //PUNISHMENTS
             for (int i = 0; i < rewards.length; i++){
                 if (punishments[i] != null)
                 punishments[i].draw(g2, this);
@@ -174,6 +177,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
         g2.dispose();   // dispose of this graphics contxt and release any system resources that it is using  
     }
+
     /**
      * Play the music
      *

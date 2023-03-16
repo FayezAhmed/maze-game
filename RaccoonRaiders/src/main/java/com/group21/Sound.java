@@ -11,7 +11,7 @@ public class Sound {
     URL soundURL[] = new URL[30];
 
     /**
-     * Constructor
+     * Constructor.
      */
     public Sound()
     {
@@ -20,10 +20,11 @@ public class Sound {
 //        soundURL[2] = getClass().getResource("/sound/MainBG.mp3");
 //        soundURL[3] = getClass().getResource("/sound/MainBG.mp3");
     }
+
     /**
      * Select the music file input stream.
      *
-     * @param i index of different music paths.
+     * @param i index of different music paths
      */
     public void setFile(int i) {
 
@@ -36,13 +37,15 @@ public class Sound {
             e.printStackTrace();
         }
     }
+
     /**
-     * Play the music
+     * Play the music.
      */
     public void play()
     {
         clip.start();
     }
+
     /**
      * Loop the music
      */
@@ -50,6 +53,7 @@ public class Sound {
     {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+    
     /**
      * Stop the music
      */

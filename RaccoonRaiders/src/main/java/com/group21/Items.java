@@ -9,7 +9,7 @@ import java.awt.Rectangle;
  */
 public abstract class Items {
 
-    //default variables
+    //Default Variables
     protected BufferedImage image;
     protected String name;
     protected int score;
@@ -20,9 +20,10 @@ public abstract class Items {
     protected int solidAreaDefaultY = 0;
 
     /**
-     * draw onto panel
+     * Draw onto panel.
+     * 
      * @param g2 the Graphics2D object to draw on
-     * @param gp target panel to draw on
+     * @param gp target GamePanel to draw on
      */
     public abstract void draw(Graphics2D g2, GamePanel gp);
 }

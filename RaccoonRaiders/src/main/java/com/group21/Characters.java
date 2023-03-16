@@ -32,18 +32,26 @@ public abstract class Characters {
     protected int spriteNumber = 1;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param gp Game panel to be updated
+     * @param gp target GamePanel to be updated
      */
     public Characters(GamePanel gp) {
         this.gp = gp;
     }
 
-    public void setAction() {}
-    public abstract void update();
     /**
-     * draw onto panel
+     * Sets the actions of characters.
+     */
+    public void setAction() {}
+    
+    /**
+     * Updates characters.
+     */
+    public abstract void update();
+    
+    /**
+     * Draw onto panel.
      *
      * @param g2 the Graphics2D object to draw on
      */

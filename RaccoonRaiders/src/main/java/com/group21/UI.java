@@ -26,14 +26,14 @@ public class UI {
     BufferedImage raccoonImage;
     public int order = 0;
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param gp target panel to draw on
+     * @param gp target GamePanel to draw on
      */
     public UI(GamePanel gp)
     {
         this.gp = gp;
-        // arial_italic = new Font("Arial", Font.ITALIC,40);
+
         //Background Title Image
         try {
             titleImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/titleImage.png"));
@@ -46,14 +46,14 @@ public class UI {
         } catch(IOException e) {
             e.printStackTrace();
         }
-        //create health heart
+        //Create health heart
         try {
             heartImage = ImageIO.read(getClass().getResourceAsStream("/UI_image/heart.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
 
-        //create font
+        //Create font
         try {
             InputStream is = getClass().getResourceAsStream("/font/Retro_Gaming.ttf");
             retro = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -77,11 +77,11 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 25f));
         g2.setColor(Color.white);
 
-        // HEART
+        //HEART
         g2.drawImage(heartImage, 16, 12,48,48, null);
         g2.drawString("x " + gp.student.heart, 74, 50);
 
-        // Score
+        //SCORE
         g2.drawString("Score: " + gp.student.score, 16, 100);
 
         //TITLE STATE
@@ -89,15 +89,17 @@ public class UI {
         {
             drawTitle();
         }
+        //PAUSE
         if(gp.state == gp.pauseState)
         {
             drawPause();
         }
-        // GAME OVER
+        //GAME OVER
         if (gp.state == gp.gameOverState) {
             drawGameOver();
         }
     }
+
     /**
      * Creates a new window with the specified title and dimensions.
      */
@@ -105,10 +107,8 @@ public class UI {
     {
         //Background
         g2.drawImage(titleImage, 0, 0,1280,768, null);
-//        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
         //TITLE
-        // g2.setFont(retro);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 100f));
         String txt = "RACCOON RAIDERS";
         int x = getCenterX(txt);
@@ -118,15 +118,14 @@ public class UI {
         g2.drawString(txt,x+5,y+5);
         g2.setColor(Color.white);
         g2.drawString(txt,x,y);
-//        String startTxt = "press Enter to begin";
 
-        //IMAGE OF Character
+        //IMAGE OF CHARACTER
         x = gp.screenWidth/2 - (gp.tileSize*2) /2 - 600;
         y += gp.tileSize*2 + 60;
 
         g2.drawImage(raccoonImage, 0,550, gp.tileSize*14, gp.tileSize*14, null);
 
-        //OPTION
+        //OPTIONS
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80f));
         txt = "NEW GAME";
         x = getCenterX(txt)+150;
@@ -145,7 +144,7 @@ public class UI {
         }
     }
     /**
-     * Creates a new interface on the Pause state
+     * Creates a new interface on the Pause state.
      */
     public void drawPause(){
         g2.setColor(new Color(0, 0, 0, 150));
@@ -167,7 +166,7 @@ public class UI {
      * Get the middle point of x-axis in the window.
      *
      * @param txt a String with different length
-     * @return the index of the middle x in pixel.
+     * @return the index of the middle x in pixel
      */
     public int getCenterX (String txt)
     {
@@ -176,7 +175,7 @@ public class UI {
         return x;
     }
     /**
-     * Creates a new interface on the GameOver state
+     * Creates a new interface on the GameOver state.
      */
     public void drawGameOver() {
         g2.setColor(new Color(0, 0, 0, 150));
@@ -190,7 +189,7 @@ public class UI {
         x = getCenterX(text);
         y = gp.tileSize * 15;
         
-        // Title
+        //GAME OVER
         g2.setColor(Color.white);
         g2.drawString(text, x, y-200);
         
@@ -200,7 +199,7 @@ public class UI {
         y = gp.tileSize * 15;
         g2.drawString(text, x, y - 100);
 
-        // Retry
+        //RETRY
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "RETRY";
         x = getCenterX(text);
@@ -210,7 +209,7 @@ public class UI {
             g2.drawString(">",x-gp.tileSize*3,y);
         }
         
-        // Exit
+        //EXIT
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "QUIT";
         x = getCenterX(text);

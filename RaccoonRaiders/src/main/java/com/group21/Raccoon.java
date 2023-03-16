@@ -13,8 +13,9 @@ import java.awt.image.*;
 public class Raccoon extends Characters{
 
     /**
-     * Constructor
-     * @param gp Game panel to be updated
+     * Constructor.
+     * 
+     * @param gp the GamePanel to be updated
      */
     public Raccoon(GamePanel gp) {
         super(gp);
@@ -33,7 +34,7 @@ public class Raccoon extends Characters{
     }
     
     /**
-     * Read the student sprite images 
+     * Read the raccoon sprite images.
      */
     public void getImage(){
         try{
@@ -51,14 +52,17 @@ public class Raccoon extends Characters{
         }
     }
 
+    /**
+     * Triggers the pathfinding algorithm on the raccoons.
+     */
     public void setAction() {
 
-        if (onPath == true) {
+        if (onPath == true) { // pathfinding algorithm
             int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
             int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
 
             searchPath(goalCol, goalRow);
-        } else {
+        } else { // random movement
             actionLockCounter++;
     
             if (actionLockCounter == 90) {
@@ -76,6 +80,12 @@ public class Raccoon extends Characters{
         }
     }
 
+    /**
+     * Searches for the shortest path to player.
+     * 
+     * @param goalCol goal column
+     * @param goalRow goal row
+     */
     public void searchPath(int goalCol, int goalRow) {
 
         int startCol = (x + solidArea.x)/gp.tileSize;
@@ -153,6 +163,9 @@ public class Raccoon extends Characters{
         }
     }
 
+    /**
+     * Damages player if raccoon contacts enemy.
+     */
     public void checkCollision() {
         collisionOn = false;
         gp.cChecker.checkTile(this);

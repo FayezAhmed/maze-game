@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 public class BubbleTea extends Items{
     /**
-     * Constructor
+     * Constructor.
      */
     public BubbleTea(){
         name = "BubbleTea";
@@ -20,9 +20,10 @@ public class BubbleTea extends Items{
     }
 
     /**
-     * draw onto panel
+     * Draw onto panel.
+     * 
      * @param g2 the Graphics2D object to draw on
-     * @param gp target panel to draw on
+     * @param gp target GamePanel to draw on
      */
     public void draw(Graphics2D g2, GamePanel gp){
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);

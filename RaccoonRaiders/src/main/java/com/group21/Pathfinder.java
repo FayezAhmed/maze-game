@@ -2,6 +2,9 @@ package com.group21;
 
 import java.util.ArrayList;
 
+/**
+ * Class for the pathfinding algorithm used by enemies
+ */
 public class Pathfinder {
     
     GamePanel gp;
@@ -12,13 +15,18 @@ public class Pathfinder {
     boolean goalReached = false;
     int step = 0;
 
+    /**
+     * Constructor.
+     * 
+     * @param gp the target GamePanel
+     */
     public Pathfinder(GamePanel gp) {
         this.gp = gp;
         instantiateNode();
     }
 
-    /*
-     * Creates node for every tile on the map
+    /**
+     * Creates a node for every tile on the map.
      */
     public void instantiateNode() {
         node = new Node[gp.maxScreenCol][gp.maxScreenRow];
@@ -38,13 +46,14 @@ public class Pathfinder {
         }
     }
 
-    /*
+    /**
      * Resets nodes' status and all other settings.
      */
     public void resetNodes() {
         int col = 0;
         int row = 0;
 
+        // Reset nodes' status
         while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
             
             node[col][row].open = false;
@@ -67,11 +76,19 @@ public class Pathfinder {
         step = 0;
     }
 
+    /**
+     * Sets the status of nodes.
+     * 
+     * @param startCol starting column
+     * @param startRow starting row
+     * @param goalCol goal column
+     * @param goalRow goal row
+     */
     public void setNodes(int startCol, int startRow, int goalCol, int goalRow) {
 
         resetNodes();
 
-        // set start and goal node
+        // Set the start and goal node
         startNode = node[startCol][startRow];
         currentNode = startNode;
         goalNode = node[goalCol][goalRow];
@@ -101,6 +118,11 @@ public class Pathfinder {
 
     }
 
+    /**
+     * Determines the cost for node in the pathfinding algorithm.
+     * 
+     * @param node the target Node
+     */
     public void getCost(Node node) {
         
         // G cost
@@ -118,6 +140,11 @@ public class Pathfinder {
         
     }
 
+    /**
+     * Searches for the best path using the pathfinding algorithm.
+     * 
+     * @return true if the goal has been reached, false otherwise
+     */
     public boolean search() {
         while (goalReached == false && step < 500) {
 
@@ -184,6 +211,11 @@ public class Pathfinder {
         return goalReached;
     }
 
+    /**
+     * Opens a node.
+     * 
+     * @param node the target Node
+     */
     public void openNode(Node node) {
         if(node.open == false && node.checked == false && node.solid == false) {
             
@@ -193,6 +225,9 @@ public class Pathfinder {
         }
     }
 
+    /**
+     * Tracks the path using the pathfinding algorithm.
+     */
     public void trackThePath() {
         Node current = goalNode;
 

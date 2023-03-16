@@ -20,7 +20,7 @@ public class TileManager {
     protected boolean drawPath = false;
 
     /**
-     * Deafult Constructor
+     * Deafult Constructor.
      * @param gp Main GamePanel
      */
     public TileManager(GamePanel gp){
@@ -32,7 +32,7 @@ public class TileManager {
     }
 
     /**
-     * Store txt file to <code>mapArr</code>
+     * Loads the map from a .txt file.
      */
     public void loadMap(){
         try{
@@ -64,7 +64,7 @@ public class TileManager {
     }
 
     /**
-     * store tile 1, tile 2, wall, water images to <code>tiles</code> array
+     * Store tile 1, tile 2, wall, water images to <code>tiles</code> array.
      */
     public void getTileImage(){
         try{
@@ -95,7 +95,8 @@ public class TileManager {
     }
 
     /**
-     * draw tiles on GamePanel
+     * Draw tiles on GamePanel.
+     * 
      * @param g2 Graphics2D
      */
     public void draw(Graphics2D g2){
