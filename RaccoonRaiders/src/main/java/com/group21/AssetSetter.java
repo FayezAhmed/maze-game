@@ -1,7 +1,8 @@
 package com.group21;
 
 /**
- * AssetSetter class
+ * AssetSetter class 
+ * Setting rewareds, punishments, and raccoons onto GamePanel
  */
 public class AssetSetter {
 

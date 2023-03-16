@@ -4,6 +4,9 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.Graphics2D;
 
+/**
+ * class BUbbleTea -- rewarding scores and double up the speed
+ */
 public class BubbleTea extends Items{
     /**
      * Constructor.
