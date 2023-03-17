@@ -143,19 +143,18 @@ public class GamePanel extends JPanel implements Runnable{
             //TITLE
             tm.draw(g2);
 
-            if (!student.collectAllChecker()){
-                //REWARDS
-                for (int i = 0; i < rewards.length; i++){
-                    if (rewards[i] != null)
-                        rewards[i].draw(g2, this);
+            // rewards and portal 
+            for (int i = 0; i < rewards.length; i++){
+                if (rewards[i] != null)
+                    rewards[i].draw(g2, this);
+                
+                // create portal if coffees are all collected
+                if (student.collectAllChecker()){
+                    portal.x = 38 * this.tileSize;
+                    portal.y = 1 * this.tileSize;
+                    portal.draw(g2, this);
                 }
             }
-            else{
-                portal.x = 38 * this.tileSize;
-                portal.y = 1 * this.tileSize;
-                portal.draw(g2, this);
-            }
-            
 
             //PUNISHMENTS
             for (int i = 0; i < rewards.length; i++){

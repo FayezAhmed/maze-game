@@ -106,7 +106,7 @@ public class Student extends Characters {
             int enemyIndex = gp.cChecker.checkEntity(this);
             interactEnemy(enemyIndex);
 
-            if (numCollected == 10){
+            if (collectAllChecker()){
                 gp.cChecker.checkPortal(this, true, gp.portal);
             }
             
@@ -163,9 +163,10 @@ public class Student extends Characters {
             // Double the speed if bubble tea is collected
             if (gp.rewards[index].name == "BubbleTea")
                 speed *= 2;
-
+            else{
+                numCollected++;
+            }
             gp.rewards[index] = null;
-            numCollected++;
         }
     }
 
@@ -205,7 +206,7 @@ public class Student extends Characters {
      * @return true if all rewards are collected, false otherwise
      */
     public boolean collectAllChecker(){
-        if (numCollected == 10){
+        if (numCollected == 9){
             return true;
         }
         return false;
