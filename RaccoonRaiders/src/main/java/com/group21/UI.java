@@ -25,6 +25,9 @@ public class UI {
     BufferedImage titleImage;
     BufferedImage raccoonImage;
     public int order = 0;
+    private Stopwatch timer;
+    protected double times;
+
     /**
      * Constructor.
      *
@@ -33,6 +36,8 @@ public class UI {
     public UI(GamePanel gp)
     {
         this.gp = gp;
+
+        timer = new Stopwatch();
 
         //Background Title Image
         try {
@@ -78,25 +83,41 @@ public class UI {
         g2.setColor(Color.white);
 
         //HEART
-        g2.drawImage(heartImage, 16, 12,48,48, null);
-        g2.drawString("x " + gp.student.heart, 74, 50);
+        g2.drawImage(heartImage, 16, 3,48,48, null);
+        g2.drawString("x " + gp.student.heart, 74, 40);
 
         //SCORE
-        g2.drawString("Score: " + gp.student.score, 16, 100);
+        g2.drawString("Score: " + gp.student.score, 16, 80);
+
+        if (gp.state == gp.gameState){
+            if (!timer.isRunning()){
+                timer.start();
+            }
+            if (timer.isPaused()){
+                timer.resume();
+            }
+
+            times = timer.elapsed() / 100000000;
+            times /= 100;
+            times *= 10;
+        }
+        g2.drawString("Time: " + String.format("%.1f", times), 16, 110);
 
         //TITLE STATE
         if(gp.state == gp.titleState)
-        {
+        {   
             drawTitle();
         }
         //PAUSE
         if(gp.state == gp.pauseState)
         {
             drawPause();
+            timer.pause();
         }
         //GAME OVER
         if (gp.state == gp.gameOverState) {
             drawGameOver();
+            timer.stop();
         }
     }
 
