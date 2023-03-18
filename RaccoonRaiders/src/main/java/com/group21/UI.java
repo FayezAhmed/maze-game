@@ -213,13 +213,22 @@ public class UI {
         
         //GAME OVER
         g2.setColor(Color.white);
-        g2.drawString(text, x, y-200);
-        
+        g2.drawString(text, x, y-230);
+
+
+        //SCORE
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
         text = "Score: " + gp.student.score;
         x = getCenterX(text);
         y = gp.tileSize * 15;
-        g2.drawString(text, x, y - 100);
+        g2.drawString(text, x, y - 135);
+
+        //TIME
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
+        text = "Time: " + String.format("%.1f", times);
+        x = getCenterX(text);
+        y = gp.tileSize * 15;
+        g2.drawString(text, x, y - 85);
 
         //RETRY
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
