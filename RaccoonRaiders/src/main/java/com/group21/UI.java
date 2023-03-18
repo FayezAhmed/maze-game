@@ -26,7 +26,7 @@ public class UI {
     BufferedImage raccoonImage;
     public int order = 0;
     private Stopwatch timer;
-    protected double times;
+    private double times;
 
     /**
      * Constructor.
@@ -89,6 +89,7 @@ public class UI {
         //SCORE
         g2.drawString("Score: " + gp.student.score, 16, 80);
 
+        //TIMER
         if (gp.state == gp.gameState){
             if (!timer.isRunning()){
                 timer.start();
