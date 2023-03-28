@@ -137,7 +137,7 @@ public class Student extends Characters {
     }
 
     /**
-     * make character sprite
+     * make character sprite.
      */
     public void makeSprite(){
         spriteCounter++;
