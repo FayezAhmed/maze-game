@@ -101,7 +101,7 @@ public class Student extends Characters {
      */
     public void update(){
         setUpMovement();
-        // Keep outside of the main if statement
+
         if (invincible == true) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
