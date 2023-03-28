@@ -355,7 +355,7 @@ public class CollisionChecker {
                         if (p.collision == true){
                             stu.collisionOn = true;
                         }
-                        gp.state = gp.gameOverState;
+                        gp.state = State.Over;
                     }
                     break;
                 case "down":
@@ -364,7 +364,7 @@ public class CollisionChecker {
                         if (p.collision == true){
                             stu.collisionOn = true;
                         }
-                        gp.state = gp.gameOverState;
+                        gp.state = State.Over;
                     }
                     break;
                 case "left":
@@ -373,7 +373,7 @@ public class CollisionChecker {
                         if (p.collision == true){
                             stu.collisionOn = true;
                         }
-                        gp.state = gp.gameOverState;
+                        gp.state = State.Over;
                     }
                     break;
                 case "right":
@@ -382,7 +382,7 @@ public class CollisionChecker {
                         if (p.collision == true){
                             stu.collisionOn = true;
                         }
-                        gp.state = gp.gameOverState;
+                        gp.state = State.Over;
                     }
                     break;
             }
