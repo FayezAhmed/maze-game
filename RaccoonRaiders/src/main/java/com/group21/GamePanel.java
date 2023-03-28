@@ -38,12 +38,6 @@ public class GamePanel extends JPanel implements Runnable{
     protected Characters raccoons[] = new Characters[5];
     protected Portal portal = new Portal();
 
-    //STATES
-    // protected int state;
-    // protected final int titleState = 0;
-    // protected final int gameState = 1;
-    // protected final int pauseState = 2;
-    // protected final int gameOverState = 3;
     protected State state;
 
     /**
