@@ -48,10 +48,10 @@ public class AssetSetter {
     int Xarrs[] = {35, 14, 20};
     int Yarrs[] = {9, 18, 5};
 
-    for (int i = 0; i < 10; i++) {
-      gp.rewards[i] = new Raccoon();
-      gp.rewards[i].x = Xarrs[i] * gp.tileSize;
-      gp.rewards[i].y = Yarrs[i] * gp.tileSize;
+    for (int i = 0; i < 3; i++) {
+      gp.raccoons[i] = new Raccoon(gp);
+      gp.raccoons[i].x = Xarrs[i] * gp.tileSize;
+      gp.raccoons[i].y = Yarrs[i] * gp.tileSize;
     }
   }
 }
