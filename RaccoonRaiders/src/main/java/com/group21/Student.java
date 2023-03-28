@@ -73,10 +73,9 @@ public class Student extends Characters {
     }
 
     /**
-     * Update the student's location (status) by interacting with keyboard inputs.
+     * interact with keys and based on the key input make character move
      */
-    public void update(){
-        
+    public void setUpMovement(){
         if (key.up == true || key.down == true || key.left == true || key.right == true){
             if (key.up == true && key.down == false && key.left == false && key.right == false){
                 direction = "up";
@@ -91,51 +90,18 @@ public class Student extends Characters {
                 direction = "left";
             }
 
-            collisionOn = false;
-            gp.cChecker.checkTile(this);
-
-            // Rewards collision
-            int rewardIndex = gp.cChecker.checkRewards(this, true);
-            pickUpRewards(rewardIndex);
-
-            // Punishments collision
-            int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
-            pickUpPunishments(punishmentsIndex);
-
-            // Enemy collision
-            int enemyIndex = gp.cChecker.checkEntity(this);
-            interactEnemy(enemyIndex);
-
-            if (collectAllChecker()){
-                gp.cChecker.checkPortal(this, true, gp.portal);
-            }
-            
-            if (collisionOn == false){
-                switch(direction){
-                    case "up": y -= speed;
-                        break;
-                    case "down": y += speed;
-                        break;
-                    case "right": x += speed;
-                        break;
-                    case "left": x -= speed;
-                        break;
-                }
-            }
-
-            spriteCounter++;
-            if (spriteCounter > 15){
-                if (spriteNumber == 1){
-                    spriteNumber = 2;
-                }
-                else if (spriteNumber == 2){
-                    spriteNumber = 1;
-                }
-                spriteCounter = 0;
-            }
+            setUpCollisionObject();
+            moveChar();
+            makeSprite();
         }
+    }
 
-        // Keep outside of the main if statement
+    /**
+     * Update the student's location (status) by interacting with keyboard inputs.
+     */
+    public void update(){
+        setUpMovement();
+
         if (invincible == true) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
@@ -167,6 +133,65 @@ public class Student extends Characters {
                 numCollected++;
             }
             gp.rewards[index] = null;
+        }
+    }
+
+    /**
+     * make character sprite.
+     */
+    public void makeSprite(){
+        spriteCounter++;
+        if (spriteCounter > 15){
+            if (spriteNumber == 1){
+                spriteNumber = 2;
+            }
+            else if (spriteNumber == 2){
+                spriteNumber = 1;
+            }
+            spriteCounter = 0;
+        }
+    }
+
+    /**
+     * based on direction, update the position of character
+     */
+    public void moveChar(){
+        if (collisionOn == false){
+            switch(direction){
+                case "up": y -= speed;
+                    break;
+                case "down": y += speed;
+                    break;
+                case "right": x += speed;
+                    break;
+                case "left": x -= speed;
+                    break;
+            }
+        }
+    }
+
+    /**
+     * setting up collision for student to interact with objects
+     */
+    public void setUpCollisionObject(){
+
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        // Rewards collision
+        int rewardIndex = gp.cChecker.checkRewards(this, true);
+        pickUpRewards(rewardIndex);
+
+        // Punishments collision
+        int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
+        pickUpPunishments(punishmentsIndex);
+
+        // Enemy collision
+        int enemyIndex = gp.cChecker.checkEntity(this);
+        interactEnemy(enemyIndex);
+
+        if (collectAllChecker()){
+            gp.cChecker.checkPortal(this, true, gp.portal);
         }
     }
 
