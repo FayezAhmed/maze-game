@@ -112,7 +112,7 @@ public class Student extends Characters {
 
         // Game over clause
         if (heart <= 0 || score < 0) {
-            gp.state = gp.gameOverState;
+            gp.state = State.Over;
         }
     }
 

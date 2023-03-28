@@ -88,7 +88,7 @@ public class UI {
         g2.drawString("Score: " + gp.student.score, 16, 80);
 
         //TIMER
-        if (gp.state == gp.gameState){
+        if (gp.state == State.Game){
             if (!timer.isRunning()){
                 timer.start();
             }
@@ -103,18 +103,18 @@ public class UI {
         g2.drawString("Time: " + String.format("%.1f", times), 16, 110);
 
         //TITLE STATE
-        if(gp.state == gp.titleState)
+        if(gp.state == State.Title)
         {   
             drawTitle();
         }
         //PAUSE
-        if(gp.state == gp.pauseState)
+        if(gp.state == State.Pause)
         {
             drawPause();
             timer.pause();
         }
         //GAME OVER
-        if (gp.state == gp.gameOverState) {
+        if (gp.state == State.Over) {
             drawGameOver();
             timer.stop();
         }

@@ -38,12 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
     protected Characters raccoons[] = new Characters[5];
     protected Portal portal = new Portal();
 
-    //STATES
-    protected int state;
-    protected final int titleState = 0;
-    protected final int gameState = 1;
-    protected final int pauseState = 2;
-    protected final int gameOverState = 3;
+    protected State state;
 
     /**
      * Default Constructor. Creates GamePanel 
@@ -54,6 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true); // let GamePanel focus to recieve key input
+        this.state = State.Title;
     }
 
     /**
@@ -62,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){
         setter.setObject();
         setter.setRaccoon();
-        state = titleState;
+        state = State.Title;
         playMusic(1);
     }
 
@@ -112,7 +108,7 @@ public class GamePanel extends JPanel implements Runnable{
      * Updates the characters.
      */
     public void update(){
-        if(state == gameState) {
+        if(state == State.Game) {
             // PLAYER
             student.update();
 
@@ -135,7 +131,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        if (state == titleState)
+        if (state == State.Title)
         {
             ui.draw(g2);
         }

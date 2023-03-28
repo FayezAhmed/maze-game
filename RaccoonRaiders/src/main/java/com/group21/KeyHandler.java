@@ -29,7 +29,7 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
 
         // Input for buttons on Title screen
-        if(gp.state == gp.titleState) {
+        if(gp.state == State.Title) {
             switch (code){
                 case KeyEvent.VK_UP:
                     gp.ui.order--;
@@ -45,7 +45,7 @@ public class KeyHandler implements KeyListener {
                     break;
                 case KeyEvent.VK_ENTER:
                     if(gp.ui.order == 0){
-                        gp.state = gp.gameState;
+                        gp.state = State.Game;
                         gp.stopMusic();
                         gp.playMusic(0);
                     }
@@ -70,25 +70,25 @@ public class KeyHandler implements KeyListener {
                 left = true;
                 break;
             case KeyEvent.VK_P:
-                if (gp.state == gp.gameState) {
-                    gp.state = gp.pauseState;
+                if (gp.state == State.Game) {
+                    gp.state = State.Pause;
                 }
-                else if (gp.state == gp.pauseState) {
-                    gp.state = gp.gameState;
+                else if (gp.state == State.Pause) {
+                    gp.state = State.Game;
                 }
                 break;
             case KeyEvent.VK_ESCAPE:
-                if (gp.state == gp.gameState) {
-                    gp.state = gp.pauseState;
+                if (gp.state == State.Game) {
+                    gp.state = State.Pause;
                 }
-                else if (gp.state == gp.pauseState) {
-                    gp.state = gp.gameState;
+                else if (gp.state == State.Pause) {
+                    gp.state = State.Game;
                 }
                 break;
         }
 
         // Input for buttons on GameOver screen
-        if (gp.state == gp.gameOverState) {
+        if (gp.state == State.Over) {
             switch (code){
                 case KeyEvent.VK_UP:
                     gp.ui.order--;
@@ -104,7 +104,7 @@ public class KeyHandler implements KeyListener {
                     break;
                 case KeyEvent.VK_ENTER:
                     if(gp.ui.order == 0){
-                        gp.state = gp.gameState;
+                        gp.state = State.Game;
                         gp.retry();
                     }
                     if(gp.ui.order == 1){
