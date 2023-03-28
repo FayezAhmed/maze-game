@@ -21,23 +21,27 @@ public class AssetSetter {
    */
   public void setObject() {
 
-    int Xarrs[] = {1, 1, 23, 11, 8, 35, 36, 13, 24, 15};
-    int Yarrs[] = {22, 7, 3, 1, 13, 16, 12, 14, 11, 22};
+    int Xarrs[] = {1, 1, 23, 11, 8, 35, 36, 13, 24};
+    int Yarrs[] = {22, 7, 3, 1, 13, 16, 12, 14, 11};
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 9; i++) {
       gp.rewards[i] = new Coffee();
       gp.rewards[i].x = Xarrs[i] * gp.tileSize;
       gp.rewards[i].y = Yarrs[i] * gp.tileSize;
     }
+
+    gp.rewards[9] = new BubbleTea();
+    gp.rewards[9].x = 15 * gp.tileSize;
+    gp.rewards[9].y = 22 * gp.tileSize;
 
     // set up punishments
     int Xarrs2[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
     int Yarrs2[] = {6, 8, 20, 16, 19, 15, 6, 18, 20, 21};
 
     for (int i = 0; i < 10; i++) {
-      gp.rewards[i] = new Punishment();
-      gp.rewards[i].x = Xarrs2[i] * gp.tileSize;
-      gp.rewards[i].y = Yarrs2[i] * gp.tileSize;
+      gp.punishments[i] = new Punishment();
+      gp.punishments[i].x = Xarrs2[i] * gp.tileSize;
+      gp.punishments[i].y = Yarrs2[i] * gp.tileSize;
     }
   }
 
