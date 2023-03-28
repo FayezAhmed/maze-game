@@ -24,7 +24,6 @@ public abstract class Characters {
     protected boolean invincible = false;
     protected int invincibleCounter = 0;
     protected int type; // 0 = player, 1 = enemy
-    protected boolean onPath = false;
 
     protected int solidAreaDefaultX, solidAreaDefaultY;
 

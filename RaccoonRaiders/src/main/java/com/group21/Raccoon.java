@@ -23,7 +23,6 @@ public class Raccoon extends Characters{
         type = 1;
         direction = "down";
         speed = 2;
-        onPath = true;
         
         solidArea = new Rectangle(5, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
