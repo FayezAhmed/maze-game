@@ -17,8 +17,6 @@ public class UI {
 
     GamePanel gp;
     Graphics2D g2;
-    Font arial_italic;
-    Font gayabond;
     Font retro;
     public String message = "";
     BufferedImage heartImage;
