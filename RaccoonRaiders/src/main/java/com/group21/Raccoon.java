@@ -56,28 +56,10 @@ public class Raccoon extends Characters{
      * Triggers the pathfinding algorithm on the raccoons.
      */
     public void setAction() {
+        int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
+        int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
 
-        if (onPath == true) { // pathfinding algorithm
-            int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
-            int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
-
-            searchPath(goalCol, goalRow);
-        } else { // random movement
-            actionLockCounter++;
-    
-            if (actionLockCounter == 90) {
-    
-                Random random = new Random();
-                int i = random.nextInt(100) + 1; // Picks num from 1-100
-        
-                if (i <= 25) direction = "up";
-                if (i > 25 && i <= 50) direction = "down";
-                if (i > 50 && i <= 75) direction = "left";
-                if (i > 75 && i <= 100) direction = "right";
-    
-                actionLockCounter = 0;
-            }
-        }
+        searchPath(goalCol, goalRow);
     }
 
     /**

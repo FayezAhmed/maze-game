@@ -1,6 +1,7 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -42,7 +43,22 @@ public abstract class Characters {
     /**
      * Sets the actions of characters.
      */
-    public void setAction() {}
+    public void setAction() {
+        actionLockCounter++;
+    
+        if (actionLockCounter == 90) {
+
+            Random random = new Random();
+            int i = random.nextInt(100) + 1; // Picks num from 1-100
+    
+            if (i <= 25) direction = "up";
+            if (i > 25 && i <= 50) direction = "down";
+            if (i > 50 && i <= 75) direction = "left";
+            if (i > 75 && i <= 100) direction = "right";
+
+            actionLockCounter = 0;
+        }
+    }
     
     /**
      * Updates characters.
