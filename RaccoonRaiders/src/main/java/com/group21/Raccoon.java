@@ -133,13 +133,6 @@ public class Raccoon extends Characters{
                     direction = "right";
                 }
             }
-
-            // int nextCol = gp.pFinder.pathList.get(0).col;
-            // int nextRow = gp.pFinder.pathList.get(0).row;
-            // if (nextCol == goalCol && nextRow == goalRow) {
-            //     onPath = false;
-            //     System.out.println("path found");
-            // }
         }
     }
 
