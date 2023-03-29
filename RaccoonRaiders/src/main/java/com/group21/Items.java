@@ -14,7 +14,7 @@ public abstract class Items {
     protected String name;
     protected int score;
     protected boolean collision = false;
-    protected int x,y;
+    protected int xPosition,yPosition;
     protected Rectangle solidArea = new Rectangle(0,0,16,16);
     protected int solidAreaDefaultX = 0;
     protected int solidAreaDefaultY = 0;

@@ -38,8 +38,8 @@ public class Student extends Characters {
      * Sets character's default values.
      */
     public void setDefaultValues(){
-        x = 7 * gp.tileSize;
-        y = 1 * gp.tileSize;
+        xPosition = 7 * gp.tileSize;
+        yPosition = 1 * gp.tileSize;
         speed = 2;
         direction = "down";
     }
@@ -140,13 +140,13 @@ public class Student extends Characters {
     public void moveChar(){
         if (collisionOn == false){
             switch(direction){
-                case "up": y -= speed;
+                case "up": yPosition -= speed;
                     break;
-                case "down": y += speed;
+                case "down": yPosition += speed;
                     break;
-                case "right": x += speed;
+                case "right": xPosition += speed;
                     break;
-                case "left": x -= speed;
+                case "left": xPosition -= speed;
                     break;
             }
         }
@@ -268,7 +268,7 @@ public class Student extends Characters {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
         }
         
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, xPosition, yPosition, gp.tileSize, gp.tileSize, null);
         
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         

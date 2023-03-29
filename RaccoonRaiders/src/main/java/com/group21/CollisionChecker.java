@@ -24,10 +24,10 @@ public class CollisionChecker {
      * @param entity the target character
      */
     public void checkTile(Characters entity){
-        int left = entity.x + entity.solidArea.x;
-        int right = entity.x - entity.solidArea.x + entity.solidArea.width;
-        int top = entity.y + entity.solidArea.y;
-        int bot = entity.y - entity.solidArea.y + entity.solidArea.height + 10;
+        int left = entity.xPosition + entity.solidArea.x;
+        int right = entity.xPosition - entity.solidArea.x + entity.solidArea.width;
+        int top = entity.yPosition + entity.solidArea.y;
+        int bot = entity.yPosition - entity.solidArea.y + entity.solidArea.height + 10;
 
         int leftCol = left/gp.tileSize;
         int rightCol = right/gp.tileSize;
@@ -86,12 +86,12 @@ public class CollisionChecker {
         for (int i = 0; i < items.length; i++){
             if (items[i] != null){
                 // get character's solid area position
-                stu.solidArea.x = stu.x + stu.solidArea.x;
-                stu.solidArea.y = stu.y + stu.solidArea.y;
+                stu.solidArea.x = stu.xPosition + stu.solidArea.x;
+                stu.solidArea.y = stu.yPosition + stu.solidArea.y;
 
                 // get the item's solid area position
-                items[i].solidArea.x = items[i].x + items[i].solidArea.x + 10;
-                items[i].solidArea.y = items[i].y + items[i].solidArea.y + 10;
+                items[i].solidArea.x = items[i].xPosition + items[i].solidArea.x + 10;
+                items[i].solidArea.y = items[i].yPosition + items[i].solidArea.y + 10;
             
                 switch(stu.direction){
                     case "up":
@@ -144,12 +144,12 @@ public class CollisionChecker {
         for (int i = 0; i < gp.raccoons.length; i++){
             if (gp.raccoons[i] != null){
                 // get character's solid area position
-                stu.solidArea.x = stu.x + stu.solidArea.x;
-                stu.solidArea.y = stu.y + stu.solidArea.y;
+                stu.solidArea.x = stu.xPosition + stu.solidArea.x;
+                stu.solidArea.y = stu.yPosition + stu.solidArea.y;
 
                 // get the enemy's solid area position
-                gp.raccoons[i].solidArea.x = gp.raccoons[i].x + gp.raccoons[i].solidArea.x;
-                gp.raccoons[i].solidArea.y = gp.raccoons[i].y + gp.raccoons[i].solidArea.y;
+                gp.raccoons[i].solidArea.x = gp.raccoons[i].xPosition + gp.raccoons[i].solidArea.x;
+                gp.raccoons[i].solidArea.y = gp.raccoons[i].yPosition + gp.raccoons[i].solidArea.y;
             
                 switch(stu.direction){
                     case "up":
@@ -200,12 +200,12 @@ public class CollisionChecker {
         boolean touchPlayer = false;
 
         // get enemy's solid area position
-        enemy.solidArea.x = enemy.x + enemy.solidArea.x;
-        enemy.solidArea.y = enemy.y + enemy.solidArea.y;
+        enemy.solidArea.x = enemy.xPosition + enemy.solidArea.x;
+        enemy.solidArea.y = enemy.yPosition + enemy.solidArea.y;
 
         // get the student's solid area position
-        gp.student.solidArea.x = gp.student.x + gp.student.solidArea.x;
-        gp.student.solidArea.y = gp.student.y + gp.student.solidArea.y;
+        gp.student.solidArea.x = gp.student.xPosition + gp.student.solidArea.x;
+        gp.student.solidArea.y = gp.student.yPosition + gp.student.solidArea.y;
     
         switch(enemy.direction){
             case "up":
@@ -255,8 +255,8 @@ public class CollisionChecker {
     public void checkPortal(Characters stu, boolean isStudent, Portal p){
         if (isStudent){
             // get character's solid area position
-            stu.solidArea.x = stu.x + stu.solidArea.x;
-            stu.solidArea.y = stu.y + stu.solidArea.y;
+            stu.solidArea.x = stu.xPosition + stu.solidArea.x;
+            stu.solidArea.y = stu.yPosition + stu.solidArea.y;
 
             switch(stu.direction){
                 case "up":

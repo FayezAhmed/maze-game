@@ -26,13 +26,13 @@ public class AssetSetter {
 
     for (int i = 0; i < 9; i++) {
       gp.rewards[i] = new Coffee();
-      gp.rewards[i].x = Xarrs[i] * gp.tileSize;
-      gp.rewards[i].y = Yarrs[i] * gp.tileSize;
+      gp.rewards[i].xPosition = Xarrs[i] * gp.tileSize;
+      gp.rewards[i].yPosition = Yarrs[i] * gp.tileSize;
     }
 
     gp.rewards[9] = new BubbleTea();
-    gp.rewards[9].x = 15 * gp.tileSize;
-    gp.rewards[9].y = 22 * gp.tileSize;
+    gp.rewards[9].xPosition = 15 * gp.tileSize;
+    gp.rewards[9].yPosition = 22 * gp.tileSize;
 
     // set up punishments
     int Xarrs2[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
@@ -40,8 +40,8 @@ public class AssetSetter {
 
     for (int i = 0; i < 10; i++) {
       gp.punishments[i] = new Punishment();
-      gp.punishments[i].x = Xarrs2[i] * gp.tileSize;
-      gp.punishments[i].y = Yarrs2[i] * gp.tileSize;
+      gp.punishments[i].xPosition = Xarrs2[i] * gp.tileSize;
+      gp.punishments[i].yPosition = Yarrs2[i] * gp.tileSize;
     }
   }
 
@@ -54,8 +54,8 @@ public class AssetSetter {
 
     for (int i = 0; i < 3; i++) {
       gp.raccoons[i] = new Raccoon(gp);
-      gp.raccoons[i].x = Xarrs[i] * gp.tileSize;
-      gp.raccoons[i].y = Yarrs[i] * gp.tileSize;
+      gp.raccoons[i].xPosition = Xarrs[i] * gp.tileSize;
+      gp.raccoons[i].yPosition = Yarrs[i] * gp.tileSize;
     }
   }
 }

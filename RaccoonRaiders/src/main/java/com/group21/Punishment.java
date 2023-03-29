@@ -30,6 +30,6 @@ public class Punishment extends Items{
      * @param gp target GamePanel to draw on
      */
     public void draw(Graphics2D g2, GamePanel gp){
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, xPosition, yPosition, gp.tileSize, gp.tileSize, null);
     }
 }

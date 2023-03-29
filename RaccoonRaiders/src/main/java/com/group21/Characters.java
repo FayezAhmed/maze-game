@@ -17,7 +17,7 @@ public abstract class Characters {
     protected GamePanel gp;
 
     // Character Variables
-    protected int x, y;    
+    protected int xPosition, yPosition;    
     protected int speed;
     protected BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     protected String direction;

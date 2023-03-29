@@ -15,7 +15,7 @@ public class Portal {
     protected BufferedImage p1, p2, p3, p4, p5, p6;
     protected int spriteCounter = 0;
     protected int spriteNumber = 1;
-    protected int x, y;
+    protected int xPosition, yPosition;
     protected Rectangle solidArea = new Rectangle(39 * 32, 32, 16,16);
 
     /**
@@ -92,7 +92,7 @@ public class Portal {
                 break;
         }
 
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, xPosition, yPosition, gp.tileSize, gp.tileSize, null);
     }
 }
 

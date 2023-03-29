@@ -33,8 +33,8 @@ public class Raccoon extends Characters{
      * Triggers the pathfinding algorithm on the raccoons.
      */
     public void setAction() {
-        int goalCol = (gp.student.x + gp.student.solidArea.x) / gp.tileSize;
-        int goalRow = (gp.student.y + gp.student.solidArea.y) / gp.tileSize;
+        int goalCol = (gp.student.xPosition + gp.student.solidArea.x) / gp.tileSize;
+        int goalRow = (gp.student.yPosition + gp.student.solidArea.y) / gp.tileSize;
 
         searchPath(goalCol, goalRow);
     }
@@ -47,8 +47,8 @@ public class Raccoon extends Characters{
      */
     public void searchPath(int goalCol, int goalRow) {
 
-        int startCol = (x + solidArea.x)/gp.tileSize;
-        int startRow = (y + solidArea.y)/gp.tileSize;
+        int startCol = (xPosition + solidArea.x)/gp.tileSize;
+        int startRow = (yPosition + solidArea.y)/gp.tileSize;
 
         gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
 
@@ -59,10 +59,10 @@ public class Raccoon extends Characters{
             int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
 
             // enemies solidarea positions
-            int enLeftX = x + solidArea.x;
-            int enRightX = x + solidArea.x + solidArea.width;
-            int enTopY = y + solidArea.y;
-            int enBottomY = y + solidArea.y + solidArea.height;
+            int enLeftX = xPosition + solidArea.x;
+            int enRightX = xPosition + solidArea.x + solidArea.width;
+            int enTopY = yPosition + solidArea.y;
+            int enBottomY = yPosition + solidArea.y + solidArea.height;
 
             if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
                 direction = "up";
@@ -142,13 +142,13 @@ public class Raccoon extends Characters{
 
         if (collisionOn == false){
             switch(direction){
-                case "up": y -= speed;
+                case "up": yPosition -= speed;
                     break;
-                case "down": y += speed;
+                case "down": yPosition += speed;
                     break;
-                case "right": x += speed;
+                case "right": xPosition += speed;
                     break;
-                case "left": x -= speed;
+                case "left": xPosition -= speed;
                     break;
             }
         }
@@ -206,7 +206,7 @@ public class Raccoon extends Characters{
             
         }
 
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, xPosition, yPosition, gp.tileSize, gp.tileSize, null);
     }
 
 }
