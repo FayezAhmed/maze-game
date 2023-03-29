@@ -146,8 +146,8 @@ public class GamePanel extends JPanel implements Runnable{
                 
                 // create portal if coffees are all collected
                 if (student.collectAllChecker()){
-                    portal.x = 38 * this.tileSize;
-                    portal.y = 1 * this.tileSize;
+                    portal.xPosition = 38 * this.tileSize;
+                    portal.yPosition = 1 * this.tileSize;
                     portal.draw(g2, this);
                 }
             }
