@@ -2,9 +2,6 @@ package com.group21;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import java.awt.image.*;
 /**
  * Main enemy character -- Raccoon class
@@ -22,32 +19,14 @@ public class Raccoon extends Characters{
         type = 1;
         direction = "down";
         speed = 2;
+        directory = "/raccoon_image/raccoon";
         
+        // hitting area
         solidArea = new Rectangle(5, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
         getImage();
-
-    }
-    
-    /**
-     * Read the raccoon sprite images.
-     */
-    public void getImage(){
-        try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/raccoon_image/raccoon_right_2.png"));
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
     }
 
     /**

@@ -1,7 +1,11 @@
 package com.group21;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -24,6 +28,7 @@ public abstract class Characters {
     protected boolean invincible = false;
     protected int invincibleCounter = 0;
     protected int type; // 0 = player, 1 = enemy
+    protected String directory;
 
     protected int solidAreaDefaultX, solidAreaDefaultY;
 
@@ -37,6 +42,25 @@ public abstract class Characters {
      */
     public Characters(GamePanel gp) {
         this.gp = gp;
+    }
+
+    /**
+     * Read the character's sprite images.
+     */
+    public void getImage(){
+        try{
+            up1 = ImageIO.read(getClass().getResourceAsStream(directory + "_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream(directory + "_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream(directory + "_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream(directory + "_down_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream(directory + "_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream(directory + "_left_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream(directory + "_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream(directory + "_right_2.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
