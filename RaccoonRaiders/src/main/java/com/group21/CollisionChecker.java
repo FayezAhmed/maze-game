@@ -96,45 +96,29 @@ public class CollisionChecker {
                     case "up":
                         stu.solidArea.y -= stu.speed;
                         if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
-                            if (gp.rewards[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "down":
                         stu.solidArea.y += stu.speed;
                         if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
-                            if (gp.rewards[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "left":
                         stu.solidArea.x -= stu.speed;
                         if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
-                            if (gp.rewards[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "right":
                         stu.solidArea.x += stu.speed;
                         if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
-                            if (gp.rewards[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                 }
@@ -171,45 +155,29 @@ public class CollisionChecker {
                     case "up":
                         stu.solidArea.y -= stu.speed;
                         if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            if (gp.punishments[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "down":
                         stu.solidArea.y += stu.speed;
                         if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            if (gp.punishments[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "left":
                         stu.solidArea.x -= stu.speed;
                         if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            if (gp.punishments[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                     case "right":
                         stu.solidArea.x += stu.speed;
                         if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            if (gp.punishments[i].collision == true){
-                                stu.collisionOn = true;
-                            }
-                            if (isStudent == true){
-                                index = i;
-                            }
+                            stu.collisionOn = true;
+                            index = i;
                         }
                         break;
                 }
