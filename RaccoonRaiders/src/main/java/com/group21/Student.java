@@ -161,11 +161,11 @@ public class Student extends Characters {
         gp.cChecker.checkTile(this);
 
         // Rewards collision
-        int rewardIndex = gp.cChecker.checkRewards(this, true);
+        int rewardIndex = gp.cChecker.checkObjects(this, true, gp.rewards);
         pickUpRewards(rewardIndex);
 
         // Punishments collision
-        int punishmentsIndex = gp.cChecker.checkPunishments(this, true);
+        int punishmentsIndex = gp.cChecker.checkObjects(this, true, gp.punishments);
         pickUpPunishments(punishmentsIndex);
 
         // Enemy collision

@@ -73,50 +73,51 @@ public class CollisionChecker {
     }
 
     /**
-     * Checks the collision with rewards and returns the index of the item.
+     * Checks the collision with given array items and returns the index of the item.
      * 
      * @param stu student
      * @param isStudent true if student, false otherwise
+     * @param items Items array to check collision with it
      * @return index of item
      */
-    public int checkRewards(Characters stu, boolean isStudent){
+    public int checkObjects(Characters stu, boolean isStudent, Items [] items){
         int index = -1;
 
-        for (int i = 0; i < gp.rewards.length; i++){
-            if (gp.rewards[i] != null){
+        for (int i = 0; i < items.length; i++){
+            if (items[i] != null){
                 // get character's solid area position
                 stu.solidArea.x = stu.x + stu.solidArea.x;
                 stu.solidArea.y = stu.y + stu.solidArea.y;
 
                 // get the item's solid area position
-                gp.rewards[i].solidArea.x = gp.rewards[i].x + gp.rewards[i].solidArea.x + 10;
-                gp.rewards[i].solidArea.y = gp.rewards[i].y + gp.rewards[i].solidArea.y + 10;
+                items[i].solidArea.x = items[i].x + items[i].solidArea.x + 10;
+                items[i].solidArea.y = items[i].y + items[i].solidArea.y + 10;
             
                 switch(stu.direction){
                     case "up":
                         stu.solidArea.y -= stu.speed;
-                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                        if (stu.solidArea.intersects(items[i].solidArea)){
                             stu.collisionOn = true;
                             index = i;
                         }
                         break;
                     case "down":
                         stu.solidArea.y += stu.speed;
-                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                        if (stu.solidArea.intersects(items[i].solidArea)){
                             stu.collisionOn = true;
                             index = i;
                         }
                         break;
                     case "left":
                         stu.solidArea.x -= stu.speed;
-                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                        if (stu.solidArea.intersects(items[i].solidArea)){
                             stu.collisionOn = true;
                             index = i;
                         }
                         break;
                     case "right":
                         stu.solidArea.x += stu.speed;
-                        if (stu.solidArea.intersects(gp.rewards[i].solidArea)){
+                        if (stu.solidArea.intersects(items[i].solidArea)){
                             stu.collisionOn = true;
                             index = i;
                         }
@@ -124,67 +125,8 @@ public class CollisionChecker {
                 }
                 stu.solidArea.x = stu.solidAreaDefaultX;
                 stu.solidArea.y = stu.solidAreaDefaultY;
-                gp.rewards[i].solidArea.x = gp.rewards[i].solidAreaDefaultX;
-                gp.rewards[i].solidArea.y = gp.rewards[i].solidAreaDefaultY;
-            }
-        }
-        return index;
-    }
-
-    /**
-     * Checks the collision with punishments and returns the index of the item.
-     * 
-     * @param stu student
-     * @param isStudent true if student, false otherwise
-     * @return index of item
-     */
-    public int checkPunishments(Characters stu, boolean isStudent){
-        int index = -1;
-
-        for (int i = 0; i < gp.punishments.length; i++){
-            if (gp.punishments[i] != null){
-                // get character's solid area position
-                stu.solidArea.x = stu.x + stu.solidArea.x;
-                stu.solidArea.y = stu.y + stu.solidArea.y;
-
-                // get the item's solid area position
-                gp.punishments[i].solidArea.x = gp.punishments[i].x + gp.punishments[i].solidArea.x + 10;
-                gp.punishments[i].solidArea.y = gp.punishments[i].y + gp.punishments[i].solidArea.y + 10;
-            
-                switch(stu.direction){
-                    case "up":
-                        stu.solidArea.y -= stu.speed;
-                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            stu.collisionOn = true;
-                            index = i;
-                        }
-                        break;
-                    case "down":
-                        stu.solidArea.y += stu.speed;
-                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            stu.collisionOn = true;
-                            index = i;
-                        }
-                        break;
-                    case "left":
-                        stu.solidArea.x -= stu.speed;
-                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            stu.collisionOn = true;
-                            index = i;
-                        }
-                        break;
-                    case "right":
-                        stu.solidArea.x += stu.speed;
-                        if (stu.solidArea.intersects(gp.punishments[i].solidArea)){
-                            stu.collisionOn = true;
-                            index = i;
-                        }
-                        break;
-                }
-                stu.solidArea.x = stu.solidAreaDefaultX;
-                stu.solidArea.y = stu.solidAreaDefaultY;
-                gp.punishments[i].solidArea.x = gp.punishments[i].solidAreaDefaultX;
-                gp.punishments[i].solidArea.y = gp.punishments[i].solidAreaDefaultY;
+                items[i].solidArea.x = items[i].solidAreaDefaultX;
+                items[i].solidArea.y = items[i].solidAreaDefaultY;
             }
         }
         return index;

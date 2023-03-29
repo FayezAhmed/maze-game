@@ -121,7 +121,7 @@ public class Raccoon extends Characters{
     public void checkCollision() {
         collisionOn = false;
         gp.cChecker.checkTile(this);
-        gp.cChecker.checkRewards(this, false);
+        gp.cChecker.checkObjects(this, false, gp.rewards);
         boolean touchPlayer = gp.cChecker.checkPlayer(this);
 
         if (this.type == 1 && touchPlayer == true) {
