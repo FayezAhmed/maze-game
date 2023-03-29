@@ -28,6 +28,18 @@ public class KeyHandler implements KeyListener {
 
         int code = e.getKeyCode();
 
+        inputTitleScreen(code);
+        inputPause(code);
+        inputMove(code);
+        inputGameOver(code);
+    }
+
+    /**
+     * 
+     * 
+     * @param code key code for input key
+     */
+    public void inputTitleScreen(int code){
         // Input for buttons on Title screen
         if(gp.state == State.Title) {
             switch (code){
@@ -54,21 +66,15 @@ public class KeyHandler implements KeyListener {
                     }
             }
         }
+    }
 
-        // Input for movement in game and triggering Pause screen
-        switch (code) {
-            case KeyEvent.VK_UP:
-                up = true;
-                break;
-            case KeyEvent.VK_DOWN:
-                down = true;
-                break;
-            case KeyEvent.VK_RIGHT:
-                right = true;
-                break;
-            case KeyEvent.VK_LEFT:
-                left = true;
-                break;
+    /**
+     * interact with key code to do pause
+     * 
+     * @param code key code for input key
+     */
+    public void inputPause(int code){
+        switch(code){
             case KeyEvent.VK_P:
                 if (gp.state == State.Game) {
                     gp.state = State.Pause;
@@ -86,7 +92,38 @@ public class KeyHandler implements KeyListener {
                 }
                 break;
         }
+    }
 
+    /**
+     * interact with key code to do move
+     * 
+     * @param code key code for input key
+     */
+    public void inputMove(int code){
+        // Input for movement in game and triggering Pause screen
+        switch (code) {
+            case KeyEvent.VK_UP:
+                up = true;
+                break;
+            case KeyEvent.VK_DOWN:
+                down = true;
+                break;
+            case KeyEvent.VK_RIGHT:
+                right = true;
+                break;
+            case KeyEvent.VK_LEFT:
+                left = true;
+                break;
+            
+        }
+    }
+
+    /**
+     * interact with key code to do finish game
+     * 
+     * @param code key code for input key
+     */
+    public void inputGameOver(int code){
         // Input for buttons on GameOver screen
         if (gp.state == State.Over) {
             switch (code){
@@ -112,8 +149,8 @@ public class KeyHandler implements KeyListener {
                     }
             }
         }
-
     }
+
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
