@@ -18,6 +18,7 @@ public class TileManager {
     protected ArrayList<Tile> tiles;  // store types of tile
     protected int mapArr[][]; // store map info
     protected boolean drawPath = false;
+    protected String directory = "/tiles_image/";
 
     /**
      * Deafult Constructor.
@@ -64,33 +65,22 @@ public class TileManager {
     }
 
     /**
-     * Store tile 1, tile 2, wall, water images to <code>tiles</code> array.
+     * Store tile images to <code>tiles</code> array.
      */
-    public void getTileImage(){
-        try{
-            tiles.add(new Tile());
-            tiles.get(0).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/tile1.png"));
+    public void getTileImage() {
+        String[] imageNames = {"tile1.png", "tile2.png", "wall.png", "water.png", "bridge.png", "tree.png"};
 
-            tiles.add(new Tile());
-            tiles.get(1).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/tile2.png"));
-
-            tiles.add(new Tile());
-            tiles.get(2).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/wall.png"));
-            tiles.get(2).collision = true;
-
-            tiles.add(new Tile());
-            tiles.get(3).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/water.png"));
-            tiles.get(3).collision = true;
-
-            tiles.add(new Tile());
-            tiles.get(4).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/bridge.png"));
-
-            tiles.add(new Tile());
-            tiles.get(5).image = ImageIO.read(getClass().getResourceAsStream("/tiles_image/tree.png"));
-            tiles.get(5).collision = true;
-
-        }catch(IOException e){
-            e.printStackTrace();
+        for (int i = 0; i < imageNames.length; i++) {
+            try {
+                Tile tile = new Tile();
+                tile.image = ImageIO.read(getClass().getResourceAsStream(directory + imageNames[i]));
+                if (i == 2 || i == 3 || i == 5) {
+                    tile.collision = true;
+                }
+                tiles.add(tile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
