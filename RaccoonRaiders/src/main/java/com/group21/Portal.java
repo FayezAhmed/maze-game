@@ -45,52 +45,35 @@ public class Portal {
      * @param gp target GamePanel to draw on
      */
     public void draw(Graphics2D g2, GamePanel gp){
-
+        BufferedImage image = null;
         spriteCounter++;
             if (spriteCounter > 90){
                 spriteCounter = 0;
             }
             else if (spriteCounter > 75){
                 spriteNumber = 6;
+                image = p6;
             }
             else if (spriteCounter > 60){
                 spriteNumber = 5;
+                image = p5;
             }
             else if (spriteCounter > 45){
                 spriteNumber = 4;
+                image = p4;
             }
             else if (spriteCounter > 30){
                 spriteNumber = 3;
+                image = p3;
             }
             else if (spriteCounter > 15){
                 spriteNumber = 2;
+                image = p2;
             }
             else{
                 spriteNumber = 1;
-            }
-
-        BufferedImage image = null;
-
-        switch(spriteNumber){
-            case 1:
                 image = p1;
-                break;
-            case 2:
-                image = p2;
-                break;
-            case 3:
-                image = p3;
-                break;
-            case 4:
-                image = p4;
-                break;  
-            case 5:
-                image = p5;
-                break;  
-            case 6:
-                image = p6;
-                break;
-        }
+            }
 
         g2.drawImage(image, xPosition, yPosition, gp.tileSize, gp.tileSize, null);
     }
