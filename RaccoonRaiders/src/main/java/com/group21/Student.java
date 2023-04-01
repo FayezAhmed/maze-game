@@ -106,7 +106,6 @@ public class Student extends Characters {
     public void pickUpRewards(int index){
         if (index != -1){
             score += gp.rewards[index].score;
-            System.out.println(gp.rewards[index].name + " !! Score: " + score);
 
             // Double the speed if bubble tea is collected
             if (gp.rewards[index].name == "BubbleTea")
@@ -185,7 +184,6 @@ public class Student extends Characters {
     public void pickUpPunishments(int index){
         if (index != -1){
             score -= gp.punishments[index].score;
-            System.out.println(gp.punishments[index].name + " !! Score: " + score);
             gp.punishments[index] = null;
             if (speed > 1) speed -= 1;
         }
@@ -199,9 +197,7 @@ public class Student extends Characters {
     public void interactEnemy(int index){
         if (index != -1){
             if (invincible == false) {
-                // score = 0;
                 heart -= 1;
-                System.out.println("You are hitting an enemy!! Score: " + score);
                 invincible = true;
             }
         }
