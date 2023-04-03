@@ -15,16 +15,16 @@ import java.io.InputStream;
  */
 public class UI {
 
-    GamePanel gp;
-    Graphics2D g2;
-    Font retro;
-    public String message = "";
-    BufferedImage heartImage;
-    BufferedImage titleImage;
-    BufferedImage raccoonImage;
-    public int order = 0;
-    private Stopwatch timer;
-    private double times;
+    protected GamePanel gp;
+    protected Graphics2D g2;
+    protected Font retro;
+    protected String message = "";
+    protected BufferedImage heartImage;
+    protected BufferedImage titleImage;
+    protected BufferedImage raccoonImage;
+    protected int order = 0;
+    protected Stopwatch timer;
+    protected double times;
 
     /**
      * Constructor.
