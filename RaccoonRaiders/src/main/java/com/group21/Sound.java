@@ -72,7 +72,7 @@ public class Sound {
     {
         if(clip != null){
             clip.stop();
+            clip.close();
         }
-
     }
 }
