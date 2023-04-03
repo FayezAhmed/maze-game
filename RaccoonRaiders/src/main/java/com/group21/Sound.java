@@ -8,19 +8,26 @@ import javax.sound.sampled.Clip;
  */
 public class Sound {
     Clip clip;
-    URL soundURL[] = new URL[30];
+    private URL[] soundURL;
 
     /**
      * Constructor.
      */
     public Sound()
     {
-        soundURL[0] = getClass().getResource("/sound/MainBG.wav");
-        soundURL[1] = getClass().getResource("/sound/Title.wav");
-//        soundURL[2] = getClass().getResource("/sound/MainBG.mp3");
-//        soundURL[3] = getClass().getResource("/sound/MainBG.mp3");
+        initializeSoundURL();
     }
+    /**
+     * Initialize the sound URL array.
+     */
+    private void initializeSoundURL() {
+        String[] fileNames = {"MainBG.wav", "Title.wav"};
+        soundURL = new URL[fileNames.length];
 
+        for (int i = 0; i < fileNames.length; i++) {
+            soundURL[i] = getClass().getResource("/sound/" + fileNames[i]);
+        }
+    }
     /**
      * Select the music file input stream.
      *
