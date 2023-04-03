@@ -15,14 +15,14 @@ public class UI {
 
     protected GamePanel gp;
     protected Graphics2D g2;
-    protected Font retro;
+    protected Font retroFont;
     protected String message = "";
     protected BufferedImage heartImage;
     protected BufferedImage titleImage;
     protected BufferedImage raccoonImage;
     protected int order = 0;
-    protected Stopwatch timer;
-    protected double times;
+    protected Stopwatch stopwatch;
+    protected double timeElapsed;
 
     /**
      * Constructor.
@@ -33,7 +33,7 @@ public class UI {
     {
         this.gp = gp;
 
-        timer = new Stopwatch();
+        stopwatch = new Stopwatch();
 
         //Background Title Image
         try {
@@ -57,7 +57,7 @@ public class UI {
         //Create font
         try {
             InputStream is = getClass().getResourceAsStream("/font/Retro_Gaming.ttf");
-            retro = Font.createFont(Font.TRUETYPE_FONT, is);
+            retroFont = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
 
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class UI {
     public void draw(Graphics2D g2)
     {
         this.g2 = g2;
-        g2.setFont(retro);
+        g2.setFont(retroFont);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 25f));
         g2.setColor(Color.white);
 
@@ -85,20 +85,20 @@ public class UI {
         //SCORE
         g2.drawString("Score: " + gp.student.score, 16, 80);
 
-        //TIMER
+        //Draw Time Elapsed
         if (gp.state == State.Game){
-            if (!timer.isRunning()){
-                timer.start();
+            if (!stopwatch.isRunning()){
+                stopwatch.start();
             }
-            if (timer.isPaused()){
-                timer.resume();
+            if (stopwatch.isPaused()){
+                stopwatch.resume();
             }
 
-            times = timer.elapsed() / 100000000;
-            times /= 100;
-            times *= 10;
+            timeElapsed = stopwatch.elapsed() / 100000000;
+            timeElapsed /= 100;
+            timeElapsed *= 10;
         }
-        g2.drawString("Time: " + String.format("%.1f", times), 16, 110);
+        g2.drawString("Time: " + String.format("%.1f", timeElapsed), 16, 110);
 
         //TITLE STATE
         if(gp.state == State.Title)
@@ -109,12 +109,12 @@ public class UI {
         if(gp.state == State.Pause)
         {
             drawPause();
-            timer.pause();
+            stopwatch.pause();
         }
         //GAME OVER
         if (gp.state == State.Over) {
             drawGameOver();
-            timer.stop();
+            stopwatch.stop();
         }
     }
 
@@ -219,9 +219,9 @@ public class UI {
         y = gp.tileSize * 15;
         g2.drawString(text, x, y - 135);
 
-        //TIME
+        //TIME ELAPSED
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,50f));
-        text = "Time: " + String.format("%.1f", times);
+        text = "Time: " + String.format("%.1f", timeElapsed);
         x = getCenterX(text);
         y = gp.tileSize * 15;
         g2.drawString(text, x, y - 85);
