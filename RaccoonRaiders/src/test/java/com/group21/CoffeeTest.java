@@ -3,7 +3,6 @@ package com.group21;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -36,7 +35,4 @@ public class CoffeeTest{
     public void collisionTest(){
         assertTrue(coffee.collision);
     }
-
-
 }
-
