@@ -103,5 +103,19 @@ class StudentTest {
         assertEquals(State.Over, student.gp.state);
     }
 
+    // Tests for sprites
+
+    @Test
+    public void testMakeSprite() {
+        student.spriteNumber = 1;
+        student.spriteCounter = 16;
+        student.makeSprite();
+        assertEquals(2, student.spriteNumber);
+
+        student.spriteCounter = 31;
+        student.makeSprite();
+        assertEquals(1, student.spriteNumber);
+    }
+    
 
 }    
