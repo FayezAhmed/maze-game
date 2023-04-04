@@ -10,7 +10,7 @@ public class Student extends Characters {
    
     protected KeyHandler key;
 
-    protected int heart = 3;            // life
+    protected int heart = 1;            // life
     protected int numCollected = 0;     // number of collected rewards
 
     /**
@@ -48,7 +48,7 @@ public class Student extends Characters {
      * Restores the characters values.
      */
     public void restoreHealthAndScore() {
-        heart = 3;
+        heart = 1;
         score = 0;
         invincible = false;
         numCollected = 0;
