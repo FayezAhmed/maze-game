@@ -117,5 +117,32 @@ class StudentTest {
         assertEquals(1, student.spriteNumber);
     }
     
+    // Tests for interactions with items
+
+    @Test // Integration test
+    public void testPickUpRewards() {
+        // Test for Coffee reward
+        student.gp.rewards[0] = new Coffee();
+        student.pickUpRewards(0);
+        assertEquals(50, student.score);
+        assertEquals(1, student.numCollected);
+        assertNull(student.gp.rewards[0]);
+        
+        // Test for BubbleTea reward
+        student.gp.rewards[0] = new BubbleTea();
+        int originalSpeed = student.speed;
+        student.pickUpRewards(0);
+        assertNotEquals(originalSpeed, student.speed);
+        assertEquals(150, student.score);
+        assertNull(student.gp.rewards[0]);
+    }
+    
+    @Test // Integration test
+    public void testPickUpPunishments() {
+        student.gp.punishments[0] = new Punishment();  
+        student.pickUpPunishments(0);
+        assertEquals(-50, student.score);
+        assertEquals(1, student.speed);
+    }
 
 }    
