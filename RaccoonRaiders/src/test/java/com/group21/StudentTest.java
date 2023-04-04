@@ -87,5 +87,21 @@ class StudentTest {
         assertEquals(student.xPosition, 7 * student.gp.tileSize);
     }
     
+    // Tests for game state
+
+    @Test
+    public void testUpdate() {
+        // Testing scenario where enemy hits player
+        student.heart = 0;
+        student.update();
+        assertEquals(State.Over, student.gp.state);
+
+        // Testing scenario where score becomes negative
+        student.heart = 1;
+        student.score = -1;
+        student.update();
+        assertEquals(State.Over, student.gp.state);
+    }
+
 
 }    
