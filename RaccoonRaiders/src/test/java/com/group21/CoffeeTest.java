@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-
 public class CoffeeTest{
 
     private Items coffee;
