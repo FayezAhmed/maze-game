@@ -26,8 +26,8 @@ public class AssetSetter {
 
     for (int i = 0; i < 9; i++) {
       gp.rewards[i] = new Coffee();
-      gp.rewards[i].xPosition = Xarrs[i] * gp.tileSize;
-      gp.rewards[i].yPosition = Yarrs[i] * gp.tileSize;
+      gp.rewards[i].xPosition = XPositions[i] * gp.tileSize;
+      gp.rewards[i].yPosition = YPositions[i] * gp.tileSize;
     }
 
     gp.rewards[9] = new BubbleTea();
@@ -35,13 +35,13 @@ public class AssetSetter {
     gp.rewards[9].yPosition = 22 * gp.tileSize;
 
     // set up punishments
-    int XPositions[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
-    int YPositions[] = {6, 8, 20, 16, 19, 15, 6, 18, 20, 21};
+    int XPositions2[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
+    int YPositions2[] = {6, 8, 20, 16, 19, 15, 6, 18, 20, 21};
 
     for (int i = 0; i < 10; i++) {
       gp.punishments[i] = new Punishment();
-      gp.punishments[i].xPosition = Xarrs2[i] * gp.tileSize;
-      gp.punishments[i].yPosition = Yarrs2[i] * gp.tileSize;
+      gp.punishments[i].xPosition = XPositions2[i] * gp.tileSize;
+      gp.punishments[i].yPosition = YPositions2[i] * gp.tileSize;
     }
   }
 
