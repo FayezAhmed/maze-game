@@ -44,4 +44,48 @@ class StudentTest {
         assertEquals(0, student.numCollected);
     }
 
+    // Tests movement
+
+    @Test // Integration test
+    public void testSetUpMovement() {
+        keyHandler.up = true;
+        student.setUpMovement();
+        assertEquals("up", student.direction);
+        
+        keyHandler.up = false;
+        keyHandler.down = true;
+        student.setUpMovement();
+        assertEquals("down", student.direction);
+
+        keyHandler.down = false;
+        keyHandler.right = true;
+        student.setUpMovement();
+        assertEquals("right", student.direction);
+
+        keyHandler.right = false;
+        keyHandler.left = true;
+        student.setUpMovement();
+        assertEquals("left", student.direction);
+    }
+
+    @Test
+    public void testMoveChar() {
+        student.direction = "up";
+        student.moveChar();
+        assertEquals(student.yPosition, 1 * student.gp.tileSize - student.speed);
+        
+        student.direction = "down";
+        student.moveChar();
+        assertEquals(student.yPosition, 1 * student.gp.tileSize);
+        
+        student.direction = "left";
+        student.moveChar();
+        assertEquals(student.xPosition, 7 * student.gp.tileSize - student.speed);
+        
+        student.direction = "right";
+        student.moveChar();
+        assertEquals(student.xPosition, 7 * student.gp.tileSize);
+    }
+    
+
 }    
