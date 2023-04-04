@@ -145,4 +145,18 @@ class StudentTest {
         assertEquals(1, student.speed);
     }
 
+    @Test // Integration test
+    public void testInteractEnemy() {
+        // Test health
+        student.heart = 2;
+        student.interactEnemy(0);
+        assertEquals(1, student.heart);
+        
+        // Test invincibility
+        student.invincible = false;
+        student.interactEnemy(1);
+        assertEquals(0, student.heart);
+        assertTrue(student.invincible);
+    }
+    
 }    
