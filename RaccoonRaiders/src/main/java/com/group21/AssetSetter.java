@@ -21,8 +21,8 @@ public class AssetSetter {
    */
   public void setObject() {
 
-    int Xarrs[] = {1, 1, 23, 11, 8, 35, 36, 13, 24};
-    int Yarrs[] = {22, 7, 3, 1, 13, 16, 12, 14, 11};
+    int XPositions[] = {1, 1, 23, 11, 8, 35, 36, 13, 24};
+    int YPositions[] = {22, 7, 3, 1, 13, 16, 12, 14, 11};
 
     for (int i = 0; i < 9; i++) {
       gp.rewards[i] = new Coffee();
@@ -35,8 +35,8 @@ public class AssetSetter {
     gp.rewards[9].yPosition = 22 * gp.tileSize;
 
     // set up punishments
-    int Xarrs2[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
-    int Yarrs2[] = {6, 8, 20, 16, 19, 15, 6, 18, 20, 21};
+    int XPositions[] = {5, 12, 16, 21, 30, 36, 38, 8, 10, 13};
+    int YPositions[] = {6, 8, 20, 16, 19, 15, 6, 18, 20, 21};
 
     for (int i = 0; i < 10; i++) {
       gp.punishments[i] = new Punishment();
