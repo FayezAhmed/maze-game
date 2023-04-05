@@ -158,5 +158,8 @@ class StudentTest {
         assertEquals(0, student.heart);
         assertTrue(student.invincible);
     }
-    
+
+    // @Test
+    // public void testSetUpCollisionObject() {
+    // }    
 }    
