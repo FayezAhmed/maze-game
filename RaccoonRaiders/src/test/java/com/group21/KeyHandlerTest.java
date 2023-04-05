@@ -10,20 +10,11 @@ public class KeyHandlerTest {
     
     private GamePanel gp;
     private KeyHandler key;
-    private KeyEvent e;
-    private int upCode;
-    private int downCode;
-    private int leftCode;
-    private int rightCode;
 
     @BeforeEach
     public void setup(){
         gp = new GamePanel();
         key = new KeyHandler(gp);
-        upCode = e.VK_UP;
-        downCode = e.VK_DOWN;
-        leftCode = e.VK_LEFT;
-        rightCode = e.VK_RIGHT;
     }
 
     @Test
@@ -33,17 +24,17 @@ public class KeyHandlerTest {
         assertEquals(0, gp.ui.order);
         
         // test for up key
-        key.inputTitleScreen(upCode);
+        key.inputTitleScreen(KeyEvent.VK_UP);
         assertEquals(1, gp.ui.order);
         
-        key.inputTitleScreen(upCode);
+        key.inputTitleScreen(KeyEvent.VK_UP);
         assertEquals(0, gp.ui.order);
 
         // test for down key
-        key.inputTitleScreen(downCode);
+        key.inputTitleScreen(KeyEvent.VK_DOWN);
         assertEquals(1, gp.ui.order);
 
-        key.inputTitleScreen(downCode);
+        key.inputTitleScreen(KeyEvent.VK_DOWN);
         assertEquals(0, gp.ui.order);
 
         // test for Enter key
@@ -80,16 +71,16 @@ public class KeyHandlerTest {
         // start the game
         key.inputTitleScreen(KeyEvent.VK_ENTER);
 
-        key.inputMove(upCode);
+        key.inputMove(KeyEvent.VK_UP);
         assertTrue(key.up);
 
-        key.inputMove(downCode);
+        key.inputMove(KeyEvent.VK_DOWN);
         assertTrue(key.down);
 
-        key.inputMove(leftCode);
+        key.inputMove(KeyEvent.VK_LEFT);
         assertTrue(key.left);
 
-        key.inputMove(rightCode);
+        key.inputMove(KeyEvent.VK_RIGHT);
         assertTrue(key.right);
     }
 
@@ -106,17 +97,17 @@ public class KeyHandlerTest {
         assertEquals(0, gp.ui.order);
 
         // for up
-        key.inputGameOver(upCode);
+        key.inputGameOver(KeyEvent.VK_UP);
         assertEquals(1, gp.ui.order);
 
-        key.inputGameOver(upCode);
+        key.inputGameOver(KeyEvent.VK_UP);
         assertEquals(0, gp.ui.order);
 
         // for down
-        key.inputGameOver(downCode);
+        key.inputGameOver(KeyEvent.VK_DOWN);
         assertEquals(1, gp.ui.order);
 
-        key.inputGameOver(downCode);
+        key.inputGameOver(KeyEvent.VK_DOWN);
         assertEquals(0, gp.ui.order);
 
         // for enter
