@@ -1,16 +1,16 @@
 package com.group21;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AssetTest {
 
   private GamePanel gp;
   private AssetSetter assetSetter;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     gp = new GamePanel(); // Create an instance of GamePanel for testing
     assetSetter = new AssetSetter(gp); // Create an instance of AssetSetter
