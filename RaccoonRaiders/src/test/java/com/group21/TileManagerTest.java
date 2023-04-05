@@ -24,6 +24,7 @@ public class TileManagerTest {
 
     @Test
     public void imagesTest(){
+        tm.getTileImage();
         for (Tile t : tm.tiles){
             assertNotNull(t);
         }
