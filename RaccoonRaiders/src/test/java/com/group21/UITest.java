@@ -2,7 +2,7 @@ package com.group21;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import org.junit.BeforeEach;
 import org.junit.Test;
 
 public class UITest {
@@ -10,7 +10,7 @@ public class UITest {
     private UI UI;
     private GamePanel gp;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         gp = new GamePanel();
         UI = new UI(gp);
