@@ -14,7 +14,7 @@ public class CoffeeTest{
         coffee = new Coffee();
     }
 
-    @Test
+    @Test // integration testing
     public void imageTest(){
         assertNotNull(coffee.image);
     }

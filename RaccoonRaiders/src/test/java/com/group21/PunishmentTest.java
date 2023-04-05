@@ -14,7 +14,7 @@ public class PunishmentTest {
         punishment = new Punishment();
     }
 
-    @Test
+    @Test // integration testing
     public void imageTest(){
         assertNotNull(punishment.image);
     }

@@ -15,15 +15,16 @@ public class TileManagerTest {
         tm = new TileManager(gp);
     }
 
-    @Test
+    @Test // integration testing
     public void mapArrayTest(){
         tm.loadMap();
 
         assertNotNull(tm.mapArr);
     }
 
-    @Test
+    @Test // integration testing
     public void imagesTest(){
+        tm.getTileImage();
         for (Tile t : tm.tiles){
             assertNotNull(t);
         }
