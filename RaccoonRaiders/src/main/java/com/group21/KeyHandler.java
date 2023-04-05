@@ -35,7 +35,7 @@ public class KeyHandler implements KeyListener {
     }
 
     /**
-     * 
+     * interact with key code to move the options to choose in title screen
      * 
      * @param code key code for input key
      */
