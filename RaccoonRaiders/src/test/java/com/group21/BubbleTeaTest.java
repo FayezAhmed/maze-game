@@ -30,7 +30,5 @@ public class BubbleTeaTest {
     }
 
     @Test
-    public void collisionTest(){
-        assertTrue(bubbletea.collision);
-    }
+    public void collisionTest(){assertTrue(bubbletea.collision);}
 }
