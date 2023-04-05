@@ -20,7 +20,6 @@ public class UITest {
 
     @Test
     public void testDrawTitle() {
-        Graphics2D g2 = null; // You can mock the Graphics2D object if necessary
         UI.drawTitle();
         assertEquals(UI.g2.getFont(), UI.retroFont);
         assertEquals(UI.g2.getFont().getStyle(), Font.PLAIN);
@@ -30,7 +29,6 @@ public class UITest {
 
     @Test
     public void testDrawPause() {
-        Graphics2D g2 = null; // You can mock the Graphics2D object if necessary
         UI.drawPause();
         assertEquals(UI.g2.getFont(), UI.retroFont);
         assertEquals(UI.g2.getFont().getStyle(), Font.PLAIN);
