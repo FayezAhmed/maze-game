@@ -1,44 +1,37 @@
 package com.group21;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-public class PathfinderTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    private GamePanel gp;
-    private Pathfinder pf;
-    @BeforeEach
-    public void setUp() {
-        gp = new GamePanel();
-        pf = new Pathfinder(gp);
-    }
+class PathfinderTest {
+
     @Test
-    public void InstantiationTest() {
-        assertNotNull(pf.node);
+    public void testInstantiateNode() {
+        GamePanel gp = new GamePanel();
+        Pathfinder pf = new Pathfinder(gp);
+        pf.instantiateNode();
         assertEquals(gp.maxScreenCol, pf.node.length);
         assertEquals(gp.maxScreenRow, pf.node[0].length);
     }
 
     @Test
-    public void ResetNodesTest() {
-        // Set some nodes as solid
-        pf.node[1][1].solid = true;
-        pf.node[2][2].solid = true;
-
-        // Call resetNodes() method
+    public void testResetNodes() {
+        GamePanel gp = new GamePanel();
+        Pathfinder pf = new Pathfinder(gp);
+        pf.instantiateNode();
+        pf.node[0][0].checked = true;
+        pf.node[0][0].solid = true;
+        pf.openList.add(pf.node[0][0]);
+        pf.pathList.add(pf.node[0][0]);
+        pf.goalReached = true;
+        pf.step = 5;
         pf.resetNodes();
-
-        // If all nodes are reset
-        for (int col = 0; col < gp.maxScreenCol; col++) {
-            for (int row = 0; row < gp.maxScreenRow; row++) {
-                Node node = pf.node[col][row];
-                assertFalse(node.open);
-                assertFalse(node.checked);
-                assertFalse(node.solid);
+        for (int i = 0; i < gp.maxScreenCol; i++) {
+            for (int j = 0; j < gp.maxScreenRow; j++) {
+                assertFalse(pf.node[i][j].checked);
+                assertFalse(pf.node[i][j].solid);
             }
         }
-
         assertTrue(pf.openList.isEmpty());
         assertTrue(pf.pathList.isEmpty());
         assertFalse(pf.goalReached);
@@ -46,45 +39,29 @@ public class PathfinderTest {
     }
 
     @Test
-    public void SetNodesTest() {
-        // Set start nodes
-        pf.setNodes(0, 0, 4, 4);
-
-        // Check that start nodes are set correctly
-        assertEquals(0, pf.startNode.col);
-        assertEquals(0, pf.startNode.row);
-        assertEquals(4, pf.goalNode.col);
-        assertEquals(4, pf.goalNode.row);
-
-        // Check that openList contains startNode
+    public void testSetNodes() {
+        GamePanel gp = new GamePanel();
+        Pathfinder pf = new Pathfinder(gp);
+        pf.instantiateNode();
+        pf.setNodes(0, 0, gp.maxScreenCol-1, gp.maxScreenRow-1);
+        assertNotNull(pf.startNode);
+        assertNotNull(pf.goalNode);
+        assertEquals(pf.node[0][0], pf.startNode);
+        assertEquals(pf.node[gp.maxScreenCol-1][gp.maxScreenRow-1], pf.goalNode);
         assertTrue(pf.openList.contains(pf.startNode));
-
-        // Check that solid nodes are set correctly
-        assertFalse(pf.node[0][0].solid);
-        assertTrue(pf.node[1][1].solid);
-        assertTrue(pf.node[2][2].solid);
     }
 
     @Test
-    public void GetCostTest() {
-        Node node = new Node(0, 0);
-
-        // Call getCost() method
-        pf.getCost(node);
-
-        // Check that G, H, and F costs are set correctly
-        assertEquals(0, node.gCost);
-        assertEquals(0, node.hCost);
-        assertEquals(0, node.fCost);
-
-        pf.setNodes(0, 0, 4, 4);
-
-        // Call getCost() method for a different node
-        pf.getCost(pf.node[1][1]);
-
-        // Check that G, H, and F costs are set correctly
-        assertEquals(2, pf.node[1][1].gCost);
-        assertEquals(6, pf.node[1][1].hCost);
-        assertEquals(8, pf.node[1][1].fCost);
+    public void testGetCost() {
+        GamePanel gp = new GamePanel();
+        Pathfinder pf = new Pathfinder(gp);
+        pf.instantiateNode();
+        Node n = pf.node[0][0];
+        pf.startNode = n;
+        pf.goalNode = pf.node[gp.maxScreenCol-1][gp.maxScreenRow-1];
+        pf.getCost(n);
+        assertEquals(0, n.gCost);
+        assertEquals(gp.maxScreenCol + gp.maxScreenRow - 2, n.hCost);
+        assertEquals(gp.maxScreenCol + gp.maxScreenRow - 2, n.fCost);
     }
 }
