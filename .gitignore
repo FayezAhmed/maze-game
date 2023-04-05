@@ -13,6 +13,10 @@
 # BlueJ files
 *.ctxt
 
+.classpath
+.project
+.settings
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -78,3 +82,4 @@ xcuserdata/
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
+/.metadata/
