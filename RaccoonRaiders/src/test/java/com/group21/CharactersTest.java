@@ -30,7 +30,7 @@ class CharactersTest {
         characters.getImage();
     }
 
-    @Test
+    @Test // integration testing
     void testGetImage() {
         assertNotNull(characters.up1);
         assertNotNull(characters.up2);

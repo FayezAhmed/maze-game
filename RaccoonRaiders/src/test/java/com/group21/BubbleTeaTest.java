@@ -14,7 +14,7 @@ public class BubbleTeaTest {
         bubbletea = new BubbleTea();
     }
 
-    @Test
+    @Test // integration testing
     public void imageTest(){
         assertNotNull(bubbletea.image);
     }

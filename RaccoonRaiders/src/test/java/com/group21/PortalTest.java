@@ -19,7 +19,7 @@ public class PortalTest {
         assertTrue(portal.collision);
     }
 
-    @Test
+    @Test // integration testing
     public void imagesNotNullTest(){
         assertNotNull(portal.p1);
         assertNotNull(portal.p2);
