@@ -1,15 +1,41 @@
 package com.group21;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import javax.sound.sampled.Clip;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class SoundTest {
+
+class SoundTest {
 
     private Sound sound;
+
     @BeforeEach
-    public void setUp() {sound = new Sound;}
+    void setUp() {
+        sound = new Sound();
+        sound.initializeSoundURL();
+    }
+
     @Test
-    public void fileTest() {assertNotNull(sound.ais);}
+    void testInitializeSoundURL() {
+        assertNotNull(sound.soundURL);
+        assertEquals(2, sound.soundURL.length);
+    }
+
+    @Test
+    void testSetFile() {
+        sound.setFile(0);
+        assertNotNull(sound.clip);
+        assertTrue(sound.clip instanceof Clip);
+        assertFalse(sound.clip.isRunning());
+    }
+
+    @Test
+    void testStop() {
+        sound.setFile(0);
+        sound.play();
+        sound.stop();
+        assertFalse(sound.clip.isRunning());
+    }
 
 }

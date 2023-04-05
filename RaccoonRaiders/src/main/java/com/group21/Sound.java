@@ -20,7 +20,7 @@ public class Sound {
     /**
      * Initialize the sound URL array.
      */
-    private void initializeSoundURL() {
+    public void initializeSoundURL() {
         String[] fileNames = {"MainBG.wav", "Title.wav"};
         soundURL = new URL[fileNames.length];
 
