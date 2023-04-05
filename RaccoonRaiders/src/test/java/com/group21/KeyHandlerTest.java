@@ -17,7 +17,7 @@ public class KeyHandlerTest {
         key = new KeyHandler(gp);
     }
 
-    @Test
+    @Test // integration test
     public void titlePageInteractionTest(){
 
         // check initial condition
@@ -84,7 +84,7 @@ public class KeyHandlerTest {
         assertTrue(key.right);
     }
 
-    @Test
+    @Test // integration testing
     public void inputGameOverTest(){
 
         // start game
