@@ -14,25 +14,89 @@ import java.awt.Rectangle;
  */
 public abstract class Characters {
 
+    /**
+     * target {@code GamePanel} 
+     */
     protected GamePanel gp;
 
-    // Character Variables
-    protected int xPosition, yPosition;    
+    /**
+     * The X coordinate on the Screen of {@code Characters}
+     */
+    protected int xPosition;
+
+    /**
+     * The Y coordinate on the Screen of {@code Characters}
+     */
+    protected int yPosition;
+    
+    /**
+     * The speed of {@code Characters}
+     */
     protected int speed;
+
+    /**
+     * Sprite Images for {@code Characters}'s movement
+     */
     protected BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+
+    /**
+     * The Direction of {@code Characters}
+     */
     protected String direction;
+
+    /**
+     * The option for collision, deafult is {@code false}
+     */
     protected boolean collisionOn = false;
+
+    /**
+     * Solid Area of {@code Characters} represented by {@code Ractangle}
+     */
     protected Rectangle solidArea = new Rectangle(0, 0, 32, 32);
+
+    /**
+     * Game Score
+     */
     protected int score = 0;
+
+    /**
+     * Action lock counter
+     */
     protected int actionLockCounter = 0;
+
+    /**
+     * The option for invincible 
+     */
     protected boolean invincible = false;
+
+    /**
+     * The counts of invincible
+     */
     protected int invincibleCounter = 0;
-    protected int type; // 0 = player, 1 = enemy
+    
+    /**
+     * The type of {@code Characters}, 0 for {@code Student} and 1 for {@code Raccoon}
+     */
+    protected int type; 
+
+    /**
+     * The directory of image resources
+     */
     protected String directory;
 
+    /**
+     * The default solid area of {@code Characters}
+     */
     protected int solidAreaDefaultX, solidAreaDefaultY;
 
+    /**
+     * The number representing for sprites
+     */
     protected int spriteCounter = 0;
+
+    /**
+     * The number representing for sprites
+     */
     protected int spriteNumber = 1;
 
     /**
