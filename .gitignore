@@ -5,7 +5,18 @@
 /RaccoonRaiders/*.class
 
 # maven target files
-/RaccoonRaiders/target/
+/RaccoonRaiders/target/classes
+/RaccoonRaiders/target/generated-sources
+/RaccoonRaiders/target/generated-test-sources
+/RaccoonRaiders/target/javadoc-bundle-options
+/RaccoonRaiders/target/maven-archiver
+/RaccoonRaiders/target/maven-status
+/RaccoonRaiders/target/site
+/RaccoonRaiders/target/surefire-reports
+/RaccoonRaiders/target/test-classes
+*.exec
+*.txt
+
 
 # Log file
 *.log
