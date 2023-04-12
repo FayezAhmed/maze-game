@@ -11,33 +11,104 @@ import java.awt.Color;
  */
 public class GamePanel extends JPanel implements Runnable{
     
-    // Screen Setting Variables
-    protected final int tileSize = 32; // 32*32 tile
+    /**
+     * The size of each tile (Deafult: 32)
+     */
+    protected final int tileSize = 32;
+
+    /**
+     * The number of columns (horizontal tiles) on the map (Deafult: 40)
+     */
     protected final int maxScreenCol = 40;
+
+    /**
+     * The number of rows (vertical tiles) on the map (Deafult: 24)
+     */
     protected final int maxScreenRow = 24;
 
-    protected final int screenWidth = tileSize * maxScreenCol;    // 1280 pixels
+    /**
+     * Screen Width (Default: 1280 pixels)
+     */
+    protected final int screenWidth = tileSize * maxScreenCol;    
+
+    /**
+     * Screen Height (Default: 768 pixels)
+     */
     protected final int screenHeight = tileSize * maxScreenRow;   // 768 pixels
     
-    //FPS
+    /**
+     * Frames per Seconds (Deafult: 60)
+     */
     protected final int FPS = 60;
 
+    /**
+     * Game {@code Thread}
+     */
     protected Thread gameThread;
+
+    /**
+     * {@code KeyHandler} to interact with keyboard inputs
+     */
     protected KeyHandler key = new KeyHandler(this);
+
+    /**
+     * Main {@code Characters} which is the {@code Student}
+     */
     protected Student student = new Student(this, key);
+
+    /**
+     * {@code Sound} to play music 
+     */
     protected Sound sound = new Sound();
+
+    /**
+     * {@code UI} on screen
+     */
     protected UI ui = new UI (this);
+
+    /**
+     * {@code TileManger}
+     */
     protected TileManager tm = new TileManager(this);
+
+    /**
+     * Collision Checker
+     */
     protected CollisionChecker cChecker = new CollisionChecker(this);
+
+    /**
+     * Path finder
+     */
     protected Pathfinder pFinder = new Pathfinder(this);
 
-    //ASSETS
+    /**
+     * Assset Setter
+     */
     protected AssetSetter setter = new AssetSetter(this);
+
+    /**
+     * Rewards {@code Items}
+     */
     protected Items rewards[] = new Items[10];
+
+    /**
+     * Punishments {@code Items}
+     */
     protected Items punishments[] = new Items[10];
+
+    /**
+     * Enemy Raccoons {@code Characters}
+     */
     protected Characters raccoons[] = new Characters[5];
+
+    /**
+     * {@code Portal} to exit after all rewards ({@code Coffee}) are collected
+     */
     protected Portal portal = new Portal();
 
+    /**
+     * The Game {@code State}
+     */
     protected State state;
 
     /**

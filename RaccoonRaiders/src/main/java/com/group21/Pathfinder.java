@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class Pathfinder {
     
+    /**
+     * target {@code GamePanel} 
+     */
     GamePanel gp;
     Node[][] node;
     ArrayList<Node> openList = new ArrayList<>();

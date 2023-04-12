@@ -2,6 +2,9 @@ package com.group21;
 
 import javax.swing.JFrame;
 
+/**
+ * Game Launcher
+ */
 public class Launcher {
     public static void main(String[] args){
 

@@ -6,7 +6,15 @@ import java.awt.event.*;
  * KeyHandler class -- interact with Students - Keyboard input from player
  */
 public class KeyHandler implements KeyListener {
+
+    /**
+     * target {@code GamePanel} 
+     */
     protected GamePanel gp;
+
+    /**
+     * {@code Student}'s direction (true - facing direction, false otherwise)
+     */
     protected boolean up, down, right, left;
 
     /**

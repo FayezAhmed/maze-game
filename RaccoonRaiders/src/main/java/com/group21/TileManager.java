@@ -13,12 +13,26 @@ import java.awt.*;
  */
 public class TileManager {
 
-    // Tile Manager default variables
+    /**
+     * target {@code GamePanel} 
+     */
     private GamePanel gp;
-    protected ArrayList<Tile> tiles;  // store types of tile
+    
+    /**
+     * The Tile Array
+     */
+    protected ArrayList<Tile> tiles;
+
+    /**
+     * Map information
+     */
     protected int mapArr[][]; // store map info
-    protected boolean drawPath = false;
-    protected String directory = "/tiles_image/";
+
+    /**
+     * 
+     */
+    private boolean drawPath = false;
+    private String directory = "/tiles_image/";
 
     /**
      * Deafult Constructor.

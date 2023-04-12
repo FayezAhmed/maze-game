@@ -8,10 +8,20 @@ import java.awt.image.*;
  */
 public class Student extends Characters {
    
+    /**
+     * {@code KeyHandler} to interact with keyboard input
+     */
     protected KeyHandler key;
 
-    protected int heart = 1;            // life
-    protected int numCollected = 0;     // number of collected rewards
+    /**
+     * Number of life 
+     */
+    protected int heart = 1;
+
+    /**
+     * number of collected rewards
+     */
+    protected int numCollected = 0; 
 
     /**
      * Construct new Student.

@@ -7,6 +7,9 @@ package com.group21;
 
 public class AssetSetter {
 
+  /**
+   * target {@code GamePanel} 
+   */
   private GamePanel gp;
 
   /**
