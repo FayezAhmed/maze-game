@@ -12,16 +12,38 @@ import javax.imageio.ImageIO;
  * The UI class provides methods for creating and managing the user interface.
  */
 public class UI {
-
+  /**
+   * target {@code GamePanel}
+   */
   protected GamePanel gp;
   protected Graphics2D g2;
+  /**
+   * a new front with named retro.
+   */
   protected Font retroFont;
-  protected String message = "";
+  /**
+   * The bufferedImage variable to load image of heart(health).
+   */
   protected BufferedImage heartImage;
+  /**
+   * The bufferedImage variable to load background image of title page.
+   */
   protected BufferedImage titleImage;
+  /**
+   * The bufferedImage variable to load image of raccoon.
+   */
   protected BufferedImage raccoonImage;
+  /**
+   * A operation variable
+   */
   protected int order = 0;
+  /**
+   * the stopwatch to record the game time.
+   */
   protected Stopwatch stopwatch;
+  /**
+   * The variable to input the stopwatch value
+   */
   protected double timeElapsed;
 
   /**
