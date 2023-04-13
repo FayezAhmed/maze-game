@@ -9,14 +9,49 @@ import java.awt.Rectangle;
  */
 public abstract class Items {
 
-    //Default Variables
+    /**
+     * {@code Items} Image
+     */
     protected BufferedImage image;
+
+    /**
+     * {@code Items} name
+     */
     protected String name;
+
+    /**
+     * {@code Items} Score
+     */
     protected int score;
+
+    /**
+     * The option for collision, deafult is {@code false}
+     */
     protected boolean collision = false;
-    protected int xPosition,yPosition;
+
+    /**
+     * The X coordinate on the Screen of {@code Items}
+     */
+    protected int xPosition;
+
+    /**
+     * The Y coordinate on the Screen of {@code Items}
+     */
+    protected int yPosition;
+
+    /**
+     * Solid Area of {@code Items} represented by {@code Ractangle}
+     */
     protected Rectangle solidArea = new Rectangle(0,0,16,16);
+
+    /**
+     * Defalut Solid Area on X (horizontal)
+     */
     protected int solidAreaDefaultX = 0;
+
+    /**
+     * Defalut Solid Area on Y (vertical)
+     */
     protected int solidAreaDefaultY = 0;
 
     /**

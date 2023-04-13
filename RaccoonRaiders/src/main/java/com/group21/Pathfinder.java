@@ -10,7 +10,11 @@ import java.util.ArrayList;
 public class Pathfinder {
     
     /**
+<<<<<<< HEAD
      * The GamePanel object associated with this Pathfinder instance.
+=======
+     * target {@code GamePanel} 
+>>>>>>> 21268d35ec442dd03b1fd3a7f8c6e5b057d19f0d
      */
     GamePanel gp;
     

@@ -5,6 +5,9 @@ package com.group21;
  */
 public class CollisionChecker {
 
+  /**
+   * target {@code GamePanel} 
+   */
   private GamePanel gp;
 
   /**

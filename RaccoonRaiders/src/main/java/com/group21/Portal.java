@@ -11,11 +11,39 @@ import java.awt.Rectangle;
  */
 public class Portal {
 
+    /**
+     * Check Collision
+     */
     protected boolean collision;
+
+    /**
+     * Sprite images for {@code Portal}
+     */
     protected BufferedImage p1, p2, p3, p4, p5, p6;
+
+    /**
+     * The number representing for sprites
+     */
     protected int spriteCounter = 0;
+
+    /**
+     * The number representing for sprites
+     */
     protected int spriteNumber = 1;
-    protected int xPosition, yPosition;
+
+    /**
+     * {@code Portal}'s X coordinate
+     */
+    protected int xPosition;
+
+    /**
+     * {@code Portal}'s X coordinate
+     */
+    protected int yPosition;
+
+     /**
+     * {@code Portal}'s solid area represented by {@code Rectangle}
+     */
     protected Rectangle solidArea = new Rectangle(39 * 32, 32, 16,16);
 
     /**

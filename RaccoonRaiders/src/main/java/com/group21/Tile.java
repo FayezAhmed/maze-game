@@ -7,7 +7,13 @@ import java.awt.image.BufferedImage;
  */
 public class Tile {
 
-    // Default Variables
+    /**
+     * Tile Image
+     */
     public BufferedImage image;
+
+    /**
+     * The collision option (Default: {@code false})
+     */
     public boolean collision = false;   
 }

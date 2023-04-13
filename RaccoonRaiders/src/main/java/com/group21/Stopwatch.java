@@ -5,10 +5,29 @@ package com.group21;
  */
 class Stopwatch {
 
+    /**
+     * true if {@code Stopwach} is running, false otherwise
+     */
     private boolean running;
+
+    /**
+     * true if {@code Stopwach} is paused, false otherwise
+     */
     private boolean paused;
+
+    /**
+     * The start time
+     */
     private long start;
+
+    /**
+     * The paused time
+     */
     private long pausedStart;
+
+    /**
+     * The end time
+     */
     private long end;
 
     /**
