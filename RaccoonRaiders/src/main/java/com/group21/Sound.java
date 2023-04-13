@@ -7,7 +7,13 @@ import javax.sound.sampled.Clip;
  * The Sound class provides methods for Sound control.
  */
 public class Sound {
+    /**
+     * The clip variable to control over the playback of in-memory sound.
+     */
     protected Clip clip;
+    /**
+     * To get the URL for sound files.
+     */
     protected URL[] soundURL;
 
     /**
