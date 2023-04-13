@@ -4,8 +4,6 @@
 
 CMPT276 Group project for group 21
 
-Progress : https://app.clickup.com/14235132/v/l/6-198620771-1?pr=60711082
-
 ### Commands to run
 
 ```sh
@@ -15,5 +13,27 @@ make run  ## to run the project
 
 make test ## to test the project
 ```
+
+### Artifacts
+
+Javadocs: /RaccoonRaiders/target/apidocs/
+
+Or [click here for Javadocs](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/group21/-/tree/master/RaccoonRaiders/target/apidocs)
+
+JAR Executable: /RaccoonRaiders/target/RaccoonRaiders.jar
+
+Or [click here for JAR](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/group21/-/blob/master/RaccoonRaiders/target/RaccoonRaiders.jar)
+
+### Controls
+
+<kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> - Move the character up/down/left/right.
+
+<kbd>P</kbd> - Pause the game.
+
+<kbd>Enter</kbd> - Select options on menus.
+
+### Other
+
+Progress : https://app.clickup.com/14235132/v/l/6-198620771-1?pr=60711082
 
 Pipeline: https://app.buddy.works/group21/group21
