@@ -16,6 +16,9 @@ public class UI {
    * target {@code GamePanel}
    */
   protected GamePanel gp;
+  /**
+   * The target 2D graphics for UI
+   */
   protected Graphics2D g2;
   /**
    * a new front with named retro.
