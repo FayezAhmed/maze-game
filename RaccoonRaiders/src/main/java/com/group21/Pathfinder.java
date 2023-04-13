@@ -3,20 +3,59 @@ package com.group21;
 import java.util.ArrayList;
 
 /**
- * Class for the pathfinding algorithm used by enemies
+ * Pathfinder class represents the A* pathfinding algorithm used to find a path from a start node to a goal node.
+ * It creates nodes for every tile on the map, sets their status, and uses a cost function to determine the 
+ * optimal path from start to goal.
  */
 public class Pathfinder {
     
+    /**
+     * The GamePanel object associated with this Pathfinder instance.
+     */
     GamePanel gp;
+    
+    /**
+     * A 2D array of nodes representing the grid used for pathfinding.
+     */
     Node[][] node;
+    
+    /**
+     * An ArrayList of nodes representing the open list used by the pathfinding algorithm.
+     */
     ArrayList<Node> openList = new ArrayList<>();
+
+    /**
+     * An ArrayList of nodes representing the final path found by the pathfinding algorithm.
+     */
     public ArrayList<Node> pathList = new ArrayList<>();
-    Node startNode, goalNode, currentNode;
+
+    /**
+     * The starting node for the pathfinding algorithm.
+     */
+    Node startNode;
+
+    /**
+     * The goal node for the pathfinding algorithm.
+     */
+    Node goalNode; 
+    
+    /**
+     * The current node being evaluated by the pathfinding algorithm.
+     */
+    Node currentNode;
+    
+    /**
+     * A boolean representing whether or not the goal node has been reached by the pathfinding algorithm.
+     */
     boolean goalReached = false;
+
+    /**
+     * An integer representing the current step of the pathfinding algorithm.
+     */
     int step = 0;
 
     /**
-     * Constructor.
+     * Constructor that initializes the Pathfinder object with a target GamePanel.
      * 
      * @param gp the target GamePanel
      */
@@ -27,6 +66,7 @@ public class Pathfinder {
 
     /**
      * Creates a node for every tile on the map.
+     * The nodes are stored in a 2D array for easy access.
      */
     public void instantiateNode() {
         node = new Node[gp.maxScreenCol][gp.maxScreenRow];
@@ -35,10 +75,11 @@ public class Pathfinder {
         int row = 0;
 
         while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
-            
+            // create a new node for the tile at the current column and row
             node[col][row] = new Node(col,row);
-
             col++;
+
+            // if the column index is at its maximum value, reset it to zero and increment the row index
             if (col == gp.maxScreenCol) {
                 col = 0;
                 row++;
@@ -48,6 +89,7 @@ public class Pathfinder {
 
     /**
      * Resets nodes' status and all other settings.
+     * This method is used to reset the state of the pathfinding algorithm when a new path is being calculated.
      */
     public void resetNodes() {
         int col = 0;
@@ -55,14 +97,16 @@ public class Pathfinder {
 
         // Reset nodes' status
         while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
-            
+            // set the open, checked, and solid status of the current node to false
             node[col][row].open = false;
             node[col][row].checked = false;
             node[col][row].solid = false;
 
+            // create a new node for the tile at the current column and row
             node[col][row] = new Node(col,row);
 
             col++;
+            // if the column index is at its maximum value, reset it to zero and increment the row index
             if (col == gp.maxScreenCol) {
                 col = 0;
                 row++;
