@@ -24,6 +24,12 @@ JAR Executable: /RaccoonRaiders/target/RaccoonRaiders.jar
 
 Or [click here for JAR](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/group21/-/blob/master/RaccoonRaiders/target/RaccoonRaiders.jar)
 
+### Tutorial/Demo
+
+https://www.youtube.com/watch?v=d7QG1P4O0Fk
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d7QG1P4O0Fk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### Controls
 
 <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> - Move the character.
