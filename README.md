@@ -26,11 +26,11 @@ Or [click here for JAR](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/gr
 
 ### Controls
 
-<kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> - Move the character up/down/left/right.
+<kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> - Move the character.
 
-<kbd>P</kbd> - Pause the game.
+<kbd>P</kbd> or <kbd>Esc</kbd> - Pause the game.
 
-<kbd>Enter</kbd> - Select options on menus.
+<kbd>Enter</kbd> - Select option on menu.
 
 ### Other
 
