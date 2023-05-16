@@ -18,17 +18,15 @@ make test ## to test the project
 
 Javadocs: /RaccoonRaiders/target/apidocs/
 
-Or [click here for Javadocs](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/group21/-/tree/master/RaccoonRaiders/target/apidocs)
+Or [click here for Javadocs](https://github.com/FayezAhmed/maze-game/tree/master/RaccoonRaiders/target/apidocs)
 
 JAR Executable: /RaccoonRaiders/target/RaccoonRaiders.jar
 
-Or [click here for JAR](https://csil-git1.cs.surrey.sfu.ca/cmpt276s23_group21/group21/-/blob/master/RaccoonRaiders/target/RaccoonRaiders.jar)
+Or [click here for JAR](https://github.com/FayezAhmed/maze-game/raw/master/RaccoonRaiders/target/RaccoonRaiders.jar)
 
 ### Tutorial/Demo
 
 https://www.youtube.com/watch?v=d7QG1P4O0Fk
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/d7QG1P4O0Fk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Controls
 
