@@ -40,7 +40,7 @@ To test the project, execute the following commands:
 make test
 ```
 
-Junit testing was performed, and both unit and integration tests were written to ensure the game's functionality. Testing coverage is reported using the jacoco plugin.
+Junit testing was performed, and both unit and integration tests were written to ensure the game's functionality. Testing coverage is reported using the JaCoCo plugin.
 
 ## Artifacts
 
