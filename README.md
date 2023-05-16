@@ -57,4 +57,9 @@ Check out the project progress on [ClickUp](https://app.clickup.com/14235132/v/l
 
 ## Developers
 
-Raccoon Raiders was developed by a group of 4 developers as part of the CMPT276 group project for group 21.
+Raccoon Raiders was developed by the following team members:
+
+- [@FayezAhmed](https://github.com/FayezAhmed) - Fayez Ahmed
+- [@junuiui](https://github.com/junuiui) - Jun (Junui) Hong
+- [@K1ou](https://github.com/K1ou) - K1ou
+- [@holychicken99](https://github.com/holychicken99) - HolyChicken99
