@@ -44,8 +44,8 @@ Junit testing was performed, and both unit and integration tests were written to
 
 ## Artifacts
 
-- Javadocs: [Click here for Javadocs](https://github.com/FayezAhmed/maze-game/tree/master/RaccoonRaiders/target/apidocs)
 - JAR Executable: [Click here for JAR](https://github.com/FayezAhmed/maze-game/raw/master/RaccoonRaiders/target/RaccoonRaiders.jar)
+- Javadocs
 
 ## Tutorial/Demo
 
